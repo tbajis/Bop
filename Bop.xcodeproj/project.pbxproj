@@ -28,6 +28,9 @@
 		13187DF01EA846F5003426FB /* BopMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187DEF1EA846F5003426FB /* BopMapViewController.swift */; };
 		13187DF21EA8474F003426FB /* BopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187DF11EA8474F003426FB /* BopTableViewController.swift */; };
 		13187DF41EA8477C003426FB /* BopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187DF31EA8477C003426FB /* BopDetailViewController.swift */; };
+		13187DF81EA855B4003426FB /* FoursquareClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187DF71EA855B4003426FB /* FoursquareClient.swift */; };
+		13187DFA1EA855C9003426FB /* FoursquareConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187DF91EA855C8003426FB /* FoursquareConstants.swift */; };
+		13187DFD1EA855F1003426FB /* FoursquareConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187DFC1EA855F1003426FB /* FoursquareConvenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,9 @@
 		13187DEF1EA846F5003426FB /* BopMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BopMapViewController.swift; sourceTree = "<group>"; };
 		13187DF11EA8474F003426FB /* BopTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BopTableViewController.swift; sourceTree = "<group>"; };
 		13187DF31EA8477C003426FB /* BopDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BopDetailViewController.swift; sourceTree = "<group>"; };
+		13187DF71EA855B4003426FB /* FoursquareClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareClient.swift; sourceTree = "<group>"; };
+		13187DF91EA855C8003426FB /* FoursquareConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareConstants.swift; sourceTree = "<group>"; };
+		13187DFC1EA855F1003426FB /* FoursquareConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareConvenience.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,8 +185,8 @@
 		13187DE31EA8455A003426FB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				13187DF51EA85582003426FB /* Clients */,
 				13187DA91EA842C7003426FB /* Bop.xcdatamodeld */,
-				13187DEB1EA84651003426FB /* InterestButton.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -188,6 +194,7 @@
 		13187DE41EA84561003426FB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				13187DEB1EA84651003426FB /* InterestButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -226,6 +233,24 @@
 				13187DDF1EA8448F003426FB /* DigitsKitResources.bundle */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		13187DF51EA85582003426FB /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				13187DF61EA8558C003426FB /* Foursquare */,
+			);
+			name = Clients;
+			sourceTree = "<group>";
+		};
+		13187DF61EA8558C003426FB /* Foursquare */ = {
+			isa = PBXGroup;
+			children = (
+				13187DF71EA855B4003426FB /* FoursquareClient.swift */,
+				13187DFC1EA855F1003426FB /* FoursquareConvenience.swift */,
+				13187DF91EA855C8003426FB /* FoursquareConstants.swift */,
+			);
+			name = Foursquare;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,13 +409,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13187DFD1EA855F1003426FB /* FoursquareConvenience.swift in Sources */,
 				13187DEE1EA846CE003426FB /* InterestPickerViewController.swift in Sources */,
 				13187DEC1EA84651003426FB /* InterestButton.swift in Sources */,
 				13187DF01EA846F5003426FB /* BopMapViewController.swift in Sources */,
+				13187DFA1EA855C9003426FB /* FoursquareConstants.swift in Sources */,
 				13187DF41EA8477C003426FB /* BopDetailViewController.swift in Sources */,
 				13187DEA1EA845CD003426FB /* GCDBlackBox.swift in Sources */,
 				13187DA51EA842C7003426FB /* LoginViewController.swift in Sources */,
 				13187DAB1EA842C7003426FB /* Bop.xcdatamodeld in Sources */,
+				13187DF81EA855B4003426FB /* FoursquareClient.swift in Sources */,
 				13187DA31EA842C7003426FB /* AppDelegate.swift in Sources */,
 				13187DF21EA8474F003426FB /* BopTableViewController.swift in Sources */,
 			);
