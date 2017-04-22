@@ -12,4 +12,17 @@ import Foundation
 
 extension FoursquareClient {
     
+    
+    
+    
+    // Generate the date in specified format "YYYMMDD"
+    func generateDate() -> String {
+        
+        let dateFormatter = DateFormatter()
+        let date = Date()
+        
+        dateFormatter.dateFormat = "yyyyMMdd"
+        let convertedDate = dateFormatter.string(from: date)
+        return convertedDate
+    }
 }

@@ -38,12 +38,19 @@ extension FoursquareClient {
         static let Response = "response"
         static let Venues = "venues"
         static let Id = "id"
+        static let Name = "name"
+        static let Location = "location"
+        static let Latitude = "lat"
+        static let Longitude = "lng"
+        static let Address = "formattedAdress"
+        static let Stats = "stats"
+        static let Checkins = "checkinsCount"
         static let Photos = "photos"
         static let Items = "items"
         static let Prefix = "prefix"
         static let Suffix = "suffix"
         static let Width = "width"
-        static let height = "height"
+        static let Height = "height"
     }
     
     // MARK: Errors

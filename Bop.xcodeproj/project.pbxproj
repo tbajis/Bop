@@ -31,6 +31,8 @@
 		13187DF81EA855B4003426FB /* FoursquareClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187DF71EA855B4003426FB /* FoursquareClient.swift */; };
 		13187DFA1EA855C9003426FB /* FoursquareConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187DF91EA855C8003426FB /* FoursquareConstants.swift */; };
 		13187DFD1EA855F1003426FB /* FoursquareConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187DFC1EA855F1003426FB /* FoursquareConvenience.swift */; };
+		13187E001EAAB3C8003426FB /* VenueResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187DFF1EAAB3C8003426FB /* VenueResponse.swift */; };
+		13187E021EABE84B003426FB /* PhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187E011EABE84B003426FB /* PhotoResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		13187DF71EA855B4003426FB /* FoursquareClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareClient.swift; sourceTree = "<group>"; };
 		13187DF91EA855C8003426FB /* FoursquareConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareConstants.swift; sourceTree = "<group>"; };
 		13187DFC1EA855F1003426FB /* FoursquareConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareConvenience.swift; sourceTree = "<group>"; };
+		13187DFF1EAAB3C8003426FB /* VenueResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueResponse.swift; sourceTree = "<group>"; };
+		13187E011EABE84B003426FB /* PhotoResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +253,8 @@
 				13187DF71EA855B4003426FB /* FoursquareClient.swift */,
 				13187DFC1EA855F1003426FB /* FoursquareConvenience.swift */,
 				13187DF91EA855C8003426FB /* FoursquareConstants.swift */,
+				13187DFF1EAAB3C8003426FB /* VenueResponse.swift */,
+				13187E011EABE84B003426FB /* PhotoResponse.swift */,
 			);
 			name = Foursquare;
 			sourceTree = "<group>";
@@ -415,11 +421,13 @@
 				13187DF01EA846F5003426FB /* BopMapViewController.swift in Sources */,
 				13187DFA1EA855C9003426FB /* FoursquareConstants.swift in Sources */,
 				13187DF41EA8477C003426FB /* BopDetailViewController.swift in Sources */,
+				13187E021EABE84B003426FB /* PhotoResponse.swift in Sources */,
 				13187DEA1EA845CD003426FB /* GCDBlackBox.swift in Sources */,
 				13187DA51EA842C7003426FB /* LoginViewController.swift in Sources */,
 				13187DAB1EA842C7003426FB /* Bop.xcdatamodeld in Sources */,
 				13187DF81EA855B4003426FB /* FoursquareClient.swift in Sources */,
 				13187DA31EA842C7003426FB /* AppDelegate.swift in Sources */,
+				13187E001EAAB3C8003426FB /* VenueResponse.swift in Sources */,
 				13187DF21EA8474F003426FB /* BopTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

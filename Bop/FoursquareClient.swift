@@ -98,14 +98,11 @@ class FoursquareClient: NSObject {
         }
     }
     
-    // Generate the date in specified format "YYYMMDD"
-    func generateDate() -> String {
-        
-        let dateFormatter = DateFormatter()
-        let date = Date()
-        
-        dateFormatter.dateFormat = "yyyyMMdd"
-        let convertedDate = dateFormatter.string(from: date)
-        return convertedDate
+    // MARK: Shared Instance
+    class func sharedInstance() -> FoursquareClient {
+        struct Singleton {
+            static var sharedInstance = FoursquareClient()
+        }
+        return Singleton.sharedInstance
     }
 }
