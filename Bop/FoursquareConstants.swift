@@ -8,9 +8,9 @@
 
 import Foundation
 
-// MARK: - FoursquareClient (Constants)
+// MARK: - FoursquareConstants
 
-extension FoursquareClient {
+class FoursquareConstants {
 
     // MARK: Constants
     struct Constants {
@@ -30,6 +30,18 @@ extension FoursquareClient {
         
         // MARK: Search venues
         static let GETSearchVenues = "/venues/search"
+    }
+    
+    // MARK: JSON Request Keys
+    struct JSONRequestKeys {
+        
+        static let ClientId = "client_id"
+        static let ClientSecret = "client_secret"
+        static let Location = "ll"
+        static let Query = "query"
+        static let Limit = "limit"
+        static let Date = "v"
+        static let ResponseType = "m"
     }
     
     // MARK: JSON Response Keys

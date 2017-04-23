@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct VenueResponse {
+
+struct VenueResponse: FoursquareClient {
     
     // MARK: Properties
     var id: String?
@@ -21,27 +22,27 @@ struct VenueResponse {
     // MARK: Initializers
     init(value: [String:AnyObject]) {
         
-        self.id = value[FoursquareClient.JSONResponseKeys.Id] as? String
-        self.name = value[FoursquareClient.JSONResponseKeys.Name] as? String
-        self.address = value[FoursquareClient.JSONResponseKeys.Address] as? [String]
-        self.latitude = value[FoursquareClient.JSONResponseKeys.Latitude] as? Double
-        self.longitude = value[FoursquareClient.JSONResponseKeys.Longitude] as? Double
-        self.checkinsCount = value[FoursquareClient.JSONResponseKeys.Checkins] as? Int
+        self.id = value[FoursquareConstants.JSONResponseKeys.Id] as? String
+        self.name = value[FoursquareConstants.JSONResponseKeys.Name] as? String
+        self.address = value[FoursquareConstants.JSONResponseKeys.Address] as? [String]
+        self.latitude = value[FoursquareConstants.JSONResponseKeys.Latitude] as? Double
+        self.longitude = value[FoursquareConstants.JSONResponseKeys.Longitude] as? Double
+        self.checkinsCount = value[FoursquareConstants.JSONResponseKeys.Checkins] as? Int
     }
 
-    // Helpers
+// Helpers
     static func venuesFromJSON(_ results: [[String:AnyObject]]) -> [VenueResponse] {
         
         var venues = [VenueResponse]()
         
         for (index, var result) in results.enumerated() {
-            guard let _ = result[FoursquareClient.JSONResponseKeys.Id] as? String, let _ = result[FoursquareClient.JSONResponseKeys.Name] else {
+            guard let _ = result[FoursquareConstants.JSONResponseKeys.Id] as? String, let _ = result[FoursquareConstants.JSONResponseKeys.Name] else {
                 break
             }
-            guard let locArray = result[FoursquareClient.JSONResponseKeys.Location] as? [String:AnyObject], let _ = locArray[FoursquareClient.JSONResponseKeys.Latitude] as? Double, let _ = locArray[FoursquareClient.JSONResponseKeys.Longitude] as? Double, let _ = locArray[FoursquareClient.JSONResponseKeys.Location] as? [String] else {
+            guard let locArray = result[FoursquareConstants.JSONResponseKeys.Location] as? [String:AnyObject], let _ = locArray[FoursquareConstants.JSONResponseKeys.Latitude] as? Double, let _ = locArray[FoursquareConstants.JSONResponseKeys.Longitude] as? Double, let _ = locArray[FoursquareConstants.JSONResponseKeys.Location] as? [String] else {
                 break
             }
-            guard let statsArray = result[FoursquareClient.JSONResponseKeys.Stats] as? [String:AnyObject], let _ = statsArray[FoursquareClient.JSONResponseKeys.Checkins] as? Int else {
+            guard let statsArray = result[FoursquareConstants.JSONResponseKeys.Stats] as? [String:AnyObject], let _ = statsArray[FoursquareConstants.JSONResponseKeys.Checkins] as? Int else {
                 break
             }
             venues.append(VenueResponse(value: results[index]))

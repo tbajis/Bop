@@ -19,8 +19,8 @@ struct PhotoResponse {
     // MARK: Initializers
     init(value: [String:AnyObject]) {
         self.mediaURL = value["mediaURL"] as? URL
-        self.height = value[FoursquareClient.JSONResponseKeys.Height] as? Int
-        self.width = value[FoursquareClient.JSONResponseKeys.Width] as? Int
+        self.height = value[FoursquareConstants.JSONResponseKeys.Height] as? Int
+        self.width = value[FoursquareConstants.JSONResponseKeys.Width] as? Int
     }
     
     // Helpers
@@ -29,7 +29,7 @@ struct PhotoResponse {
         var photos = [PhotoResponse]()
         
         for (_, var result) in results.enumerated() {
-            guard let prefix = result[FoursquareClient.JSONResponseKeys.Prefix] as? String, let suffix = result[FoursquareClient.JSONResponseKeys.Suffix] as? String, let width = result[FoursquareClient.JSONResponseKeys.Width] as? Int, let height = result[FoursquareClient.JSONResponseKeys.Height] as? Int else {
+            guard let prefix = result[FoursquareConstants.JSONResponseKeys.Prefix] as? String, let suffix = result[FoursquareConstants.JSONResponseKeys.Suffix] as? String, let width = result[FoursquareConstants.JSONResponseKeys.Width] as? Int, let height = result[FoursquareConstants.JSONResponseKeys.Height] as? Int else {
                 break
             }
             let photoURL = prefix + "\(width)x\(height)" + suffix
@@ -37,8 +37,8 @@ struct PhotoResponse {
                 if UIApplication.shared.canOpenURL(url) {
                     let filteredPhoto: [String:AnyObject] = [
                         "mediaURL": url as AnyObject,
-                        FoursquareClient.JSONResponseKeys.Height: height as AnyObject,
-                        FoursquareClient.JSONResponseKeys.Width: width as AnyObject
+                        FoursquareConstants.JSONResponseKeys.Height: height as AnyObject,
+                        FoursquareConstants.JSONResponseKeys.Width: width as AnyObject
                     ]
                     photos.append(PhotoResponse(value: filteredPhoto))
                 }

@@ -8,17 +8,21 @@
 
 import Foundation
 
+protocol FoursquareClient {
+
+}
+
 // MARK: - FoursquareClient: NSObject
 
-class FoursquareClient: NSObject {
+extension FoursquareClient {
     
     // Shared session
-    var session = URLSession.shared
+//    var session = URLSession.shared
     
     // MARK: Initializers
-    override init() {
-        super.init()
-    }
+//    override init() {
+//        super.init()
+//    }
     
     // MARK: GET
     func taskForGETMethod(_ method: String, parameters: [String:AnyObject], completionHandlerForGET: @escaping (_ result: [String:AnyObject]?, _ error: String?) -> Void) -> URLSessionDataTask {
@@ -31,24 +35,24 @@ class FoursquareClient: NSObject {
         print(request.url!)
         
         // Make the request
-        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
             func sendError(_ error: String) {
                 print(error)
                 completionHandlerForGET(nil, error)
             }
             // GUARD against an error
             guard error == nil else {
-                sendError(FoursquareClient.Error.Request + "\(error!.localizedDescription)")
+                sendError(FoursquareConstants.Error.Request + "\(error!.localizedDescription)")
                 return
             }
             // GUARD against an unsuccessful response
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                sendError(FoursquareClient.Error.StatusCode)
+                sendError(FoursquareConstants.Error.StatusCode)
                 return
             }
             // GUARD against no data being returned
             guard let data = data else {
-                sendError(FoursquareClient.Error.Data)
+                sendError(FoursquareConstants.Error.Data)
                 return
             }
             // Parse and use the data (happens in completion handler)
@@ -62,9 +66,9 @@ class FoursquareClient: NSObject {
     private func foursquareURLBuilder(parameters: [String:AnyObject], withPathExtension: String?) -> URL {
         
         var components = URLComponents()
-        components.scheme = FoursquareClient.Constants.ApiScheme
-        components.host = FoursquareClient.Constants.ApiHost
-        components.path = FoursquareClient.Constants.ApiPath + (withPathExtension ?? "")
+        components.scheme = FoursquareConstants.Constants.ApiScheme
+        components.host = FoursquareConstants.Constants.ApiHost
+        components.path = FoursquareConstants.Constants.ApiPath + (withPathExtension ?? "")
         components.queryItems = [URLQueryItem]()
         
         for (key, value) in parameters {
@@ -82,7 +86,7 @@ class FoursquareClient: NSObject {
         do {
             parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:AnyObject]
         } catch {
-            completionHandlerForConvertedData(nil, FoursquareClient.Error.Serialization)
+            completionHandlerForConvertedData(nil, FoursquareConstants.Error.Serialization)
         }
         completionHandlerForConvertedData(parsedResult, nil)
     }
@@ -96,13 +100,5 @@ class FoursquareClient: NSObject {
         } else {
             return method
         }
-    }
-    
-    // MARK: Shared Instance
-    class func sharedInstance() -> FoursquareClient {
-        struct Singleton {
-            static var sharedInstance = FoursquareClient()
-        }
-        return Singleton.sharedInstance
     }
 }

@@ -47,9 +47,9 @@ class InterestPickerViewController: UIViewController {
                 /* TODO: Initialize an instance of managed object Interest */
                 /* TODO: PerformSegue */
                 print("query: \(category)")
-                interest = category
+                self.interest = category
+                performSegue(withIdentifier: "ShowMapAndTable", sender: self)
             }
-            performSegue(withIdentifier: "ShowMapAndTable", sender: self)
         }
     }
     
@@ -57,8 +57,10 @@ class InterestPickerViewController: UIViewController {
     
     // Helpers
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let nextController = storyboard?.instantiateViewController(withIdentifier: "BopMapViewController") as! BopMapViewController
-        nextController.interest = interest
-        
-    }
+        if segue.identifier == "ShowMapAndTable" {
+            if let destinationController = segue.destination as? MapAndTableTabBarController {
+            destinationController.interest = self.interest
+            }
+            }
+        }
 }

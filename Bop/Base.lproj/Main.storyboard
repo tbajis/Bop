@@ -161,7 +161,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tNu-DO-jvW" id="NHK-7z-vhu">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -194,10 +194,10 @@
             </objects>
             <point key="canvasLocation" x="98" y="1796"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Map And Table Tab Bar Controller-->
         <scene sceneID="eli-m2-D5o">
             <objects>
-                <tabBarController id="Stq-qN-A4O" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MapAndTableTabBarController" id="Stq-qN-A4O" customClass="MapAndTableTabBarController" customModule="Bop" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="mde-Z3-Zi6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
