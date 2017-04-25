@@ -27,9 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Check for an existing Twitter session before presenting the login screen.
         if Twitter.sharedInstance().sessionStore.session() == nil {
+            
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
-            window?.rootViewController = loginViewController
+            self.window?.makeKeyAndVisible()
+            self.window?.rootViewController?.present(loginViewController!, animated: true, completion: nil)
+//            window?.rootViewController = loginViewController
         }
         return true
     }

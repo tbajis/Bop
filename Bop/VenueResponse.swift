@@ -7,9 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
-
-struct VenueResponse: FoursquareClient {
+struct VenueResponse {
     
     // MARK: Properties
     var id: String?
@@ -28,25 +28,5 @@ struct VenueResponse: FoursquareClient {
         self.latitude = value[FoursquareConstants.JSONResponseKeys.Latitude] as? Double
         self.longitude = value[FoursquareConstants.JSONResponseKeys.Longitude] as? Double
         self.checkinsCount = value[FoursquareConstants.JSONResponseKeys.Checkins] as? Int
-    }
-
-// Helpers
-    static func venuesFromJSON(_ results: [[String:AnyObject]]) -> [VenueResponse] {
-        
-        var venues = [VenueResponse]()
-        
-        for (index, var result) in results.enumerated() {
-            guard let _ = result[FoursquareConstants.JSONResponseKeys.Id] as? String, let _ = result[FoursquareConstants.JSONResponseKeys.Name] else {
-                break
-            }
-            guard let locArray = result[FoursquareConstants.JSONResponseKeys.Location] as? [String:AnyObject], let _ = locArray[FoursquareConstants.JSONResponseKeys.Latitude] as? Double, let _ = locArray[FoursquareConstants.JSONResponseKeys.Longitude] as? Double, let _ = locArray[FoursquareConstants.JSONResponseKeys.Location] as? [String] else {
-                break
-            }
-            guard let statsArray = result[FoursquareConstants.JSONResponseKeys.Stats] as? [String:AnyObject], let _ = statsArray[FoursquareConstants.JSONResponseKeys.Checkins] as? Int else {
-                break
-            }
-            venues.append(VenueResponse(value: results[index]))
-        }
-        return venues
     }
 }

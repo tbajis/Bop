@@ -54,7 +54,7 @@ class FoursquareConstants {
         static let Location = "location"
         static let Latitude = "lat"
         static let Longitude = "lng"
-        static let Address = "formattedAdress"
+        static let Address = "formattedAddress"
         static let Stats = "stats"
         static let Checkins = "checkinsCount"
         static let Photos = "photos"

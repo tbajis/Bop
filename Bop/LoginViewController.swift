@@ -82,6 +82,7 @@ class LoginViewController: UIViewController, UIAlertViewDelegate {
     @IBAction func loginAsGuest(_ sender: UIButton) {
         // Log Answers Custom Event.
         Answers.logCustomEvent(withName: "Logged In as Guest", customAttributes: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: Utilities
@@ -91,7 +92,8 @@ class LoginViewController: UIViewController, UIAlertViewDelegate {
     
     // MARK: Helpers
     func navigateToMainAppScreen() {
-        performSegue(withIdentifier: "ShowInterestPickerViewController", sender: self)
+        self.dismiss(animated: true, completion: nil)
+//        performSegue(withIdentifier: "ShowInterestPickerViewController", sender: self)
     }
     
 }

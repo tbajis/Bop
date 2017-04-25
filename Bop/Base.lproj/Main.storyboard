@@ -47,7 +47,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginAsGuest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fhc-Jo-e3j"/>
-                                    <segue destination="uo9-PR-BDk" kind="presentation" id="9bw-No-4tQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -122,9 +121,23 @@
                     <view key="view" contentMode="scaleToFill" id="V4s-gu-wFE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="in2-O4-PZX">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gVv-51-G1E" firstAttribute="top" secondItem="in2-O4-PZX" secondAttribute="bottom" id="Z24-j5-p0S"/>
+                            <constraint firstItem="in2-O4-PZX" firstAttribute="top" secondItem="sUa-wC-m5c" secondAttribute="bottom" id="a5X-Ob-A2C"/>
+                            <constraint firstAttribute="trailing" secondItem="in2-O4-PZX" secondAttribute="trailing" id="adp-yd-cNn"/>
+                            <constraint firstItem="in2-O4-PZX" firstAttribute="leading" secondItem="V4s-gu-wFE" secondAttribute="leading" id="r1f-Gv-ssN"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GKD-Z3-11N"/>
+                    <connections>
+                        <outlet property="mapView" destination="in2-O4-PZX" id="dyp-Yj-mVs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vVt-Oe-329" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -161,7 +174,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tNu-DO-jvW" id="NHK-7z-vhu">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -194,10 +207,10 @@
             </objects>
             <point key="canvasLocation" x="98" y="1796"/>
         </scene>
-        <!--Map And Table Tab Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="eli-m2-D5o">
             <objects>
-                <tabBarController storyboardIdentifier="MapAndTableTabBarController" id="Stq-qN-A4O" customClass="MapAndTableTabBarController" customModule="Bop" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MapAndTableTabBarController" id="Stq-qN-A4O" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="mde-Z3-Zi6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -323,7 +336,4 @@
             <point key="canvasLocation" x="1837.5999999999999" y="453.82308845577217"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="9bw-No-4tQ"/>
-    </inferredMetricsTieBreakers>
 </document>

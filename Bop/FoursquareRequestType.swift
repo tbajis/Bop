@@ -1,5 +1,5 @@
 //
-//  FoursquareClient.swift
+//  FoursquareRequestType.swift
 //  Bop
 //
 //  Created by Thomas Manos Bajis on 4/19/17.
@@ -8,22 +8,14 @@
 
 import Foundation
 
-protocol FoursquareClient {
+protocol FoursquareRequestType {
 
 }
 
-// MARK: - FoursquareClient: NSObject
+// MARK: - FoursquareRequestType
 
-extension FoursquareClient {
-    
-    // Shared session
-//    var session = URLSession.shared
-    
-    // MARK: Initializers
-//    override init() {
-//        super.init()
-//    }
-    
+extension FoursquareRequestType {
+
     // MARK: GET
     func taskForGETMethod(_ method: String, parameters: [String:AnyObject], completionHandlerForGET: @escaping (_ result: [String:AnyObject]?, _ error: String?) -> Void) -> URLSessionDataTask {
         

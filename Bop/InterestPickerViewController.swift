@@ -44,7 +44,7 @@ class InterestPickerViewController: UIViewController {
         for button in interestButtons {
             if button.backgroundColor == UIColor.gray {
                 let category = button.queryString(for: InterestButton.Category(rawValue: button.tag)!)
-                /* TODO: Initialize an instance of managed object Interest */
+                /* TODO: Initialize an instance of managed object Interest  by starting network request */
                 /* TODO: PerformSegue */
                 print("query: \(category)")
                 self.interest = category
@@ -58,9 +58,7 @@ class InterestPickerViewController: UIViewController {
     // Helpers
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowMapAndTable" {
-            if let destinationController = segue.destination as? MapAndTableTabBarController {
-            destinationController.interest = self.interest
-            }
-            }
+        
         }
+    }
 }
