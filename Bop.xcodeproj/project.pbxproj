@@ -100,6 +100,7 @@
 		13187E1F1EAEF95A003426FB /* Interest+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Interest+CoreDataProperties.swift"; path = "../Interest+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		13187E201EAEF95A003426FB /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pin.swift; path = ../Pin.swift; sourceTree = "<group>"; };
 		13187E211EAEF95A003426FB /* Pin+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pin+CoreDataProperties.swift"; path = "../Pin+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		13707C391EB191CA00A59482 /* Bop3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bop3.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -776,10 +777,11 @@
 		13187DA91EA842C7003426FB /* Bop.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				13707C391EB191CA00A59482 /* Bop3.xcdatamodel */,
 				13187E1B1EAEF753003426FB /* Bop 2.xcdatamodel */,
 				13187DAA1EA842C7003426FB /* Bop.xcdatamodel */,
 			);
-			currentVersion = 13187E1B1EAEF753003426FB /* Bop 2.xcdatamodel */;
+			currentVersion = 13707C391EB191CA00A59482 /* Bop3.xcdatamodel */;
 			path = Bop.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -16,6 +16,16 @@ class InterestButton: UIButton {
         case Sport = 0, Music = 1, Food = 2, Art = 3, Fashion = 4, Culture = 5
     }
     
+    var isToggle: Bool = false {
+        didSet {
+            if isToggle {
+                self.backgroundColor = UIColor.gray
+            } else {
+                self.backgroundColor = UIColor.red
+            }
+        }
+    }
+    
     // MARK: Methods
     func queryString(for buttonType: Category) -> String {
         

@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    // Create a shared stack for managing the main context
+    static let stack = CoreDataStack(modelName: "Bop")!
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -31,8 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
             self.window?.makeKeyAndVisible()
-            self.window?.rootViewController?.present(loginViewController!, animated: true, completion: nil)
-//            window?.rootViewController = loginViewController
+            self.window?.rootViewController = loginViewController
         }
         return true
     }
