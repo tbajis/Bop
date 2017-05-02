@@ -30,39 +30,35 @@ class InterestPickerViewController: UIViewController, NSFetchedResultsController
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        /* TODO: set up a fetched results request for Interest entity
-         if there is a result, check for which interest corresponding button, set it to be highlighted
-         set all other buttons not highlighted
-         */
+
         fetchedResultsController?.delegate = self
+        executeSearch()
         continueButton.isEnabled = false
+        
         // Set buttons to red background color
         for button in interestButtons {
             button.backgroundColor = UIColor.red
         }
-        // Set background color of persisted interest
-        configureInterest()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        if interestSaved() {
+            deleteInterest()
+        }
+    }
+    
     // MARK: Actions
     @IBAction func interestButtonPressed(_ sender: InterestButton) {
         
         toggleButton(sender, {
             self.updateContinueButton()
         })
-        
-        /*for button in interestButtons {
-            button.backgroundColor = UIColor.red
-            sender.backgroundColor = UIColor.gray
-            continueButton.isEnabled = true
-        }
-        if sender.backgroundColor == UIColor.gray {
-            let persistedCategory = String(sender.tag)
-            let persistedQuery = sender.queryString(for: InterestButton.Category(rawValue: sender.tag)!)
-            self.interest = Interest(category: persistedCategory, query: persistedQuery, context: AppDelegate.stack.context)
-        }*/
     }
     
     @IBAction func continueButtonPressed(_ sender: UIButton) {
+        
         for button in interestButtons {
             if button.isToggle {
                 let category = String(button.tag)
@@ -73,31 +69,9 @@ class InterestPickerViewController: UIViewController, NSFetchedResultsController
                 navigateToTabViewController()
             }
         }
-        
-        
-        /*for button in interestButtons {
-            if button.backgroundColor == UIColor.gray {
-                let category = button.queryString(for: InterestButton.Category(rawValue: button.tag)!)
-                /* TODO: Initialize an instance of managed object Interest  by starting network request */
-                /* TODO: PerformSegue */
-                print("query: \(category)")
-                performSegue(withIdentifier: "ShowMapAndTable", sender: self)
-            }
-        }*/
     }
     
     // Utilities
-    func configureInterest() {
-        
-        executeSearch()
-        if let interests = fetchedResultsController?.fetchedObjects as? [Interest] {
-            for interest in interests {
-                AppDelegate.stack.context.delete(interest)
-                AppDelegate.stack.save()
-            }
-        }
-    }
-    
     func executeSearch() {
         
         if let fc = fetchedResultsController {
@@ -105,15 +79,6 @@ class InterestPickerViewController: UIViewController, NSFetchedResultsController
                 try fc.performFetch()
             } catch let e as NSError {
                 print("Error while trying to perform a search: \n\(e)\n\(fetchedResultsController)")
-            }
-        }
-    }
-    
-    func setButton(with tag: Int) {
-        
-        for button in interestButtons {
-            if button.tag == tag {
-                button.backgroundColor = UIColor.gray
             }
         }
     }
@@ -139,9 +104,26 @@ class InterestPickerViewController: UIViewController, NSFetchedResultsController
         }
     }
     
+    func interestSaved() -> Bool {
+        if let interests = fetchedResultsController?.fetchedObjects as? [Interest], interests.count > 0 {
+           return true
+        } else {
+            return false
+        }
+    }
+    
+    func deleteInterest() {
+        if let interests = fetchedResultsController?.fetchedObjects as? [Interest] {
+            for interest in interests {
+                AppDelegate.stack.context.delete(interest)
+            }
+        }
+    }
+    
     // Helpers
     func navigateToTabViewController() {
-        performSegue(withIdentifier: "ShowMapAndTable", sender: self)
+        let nextController = storyboard?.instantiateViewController(withIdentifier: "MapAndTableTabBarController") as! UITabBarController
+        present(nextController, animated: true, completion: nil)
     }
     
     // MARK: - NSFetchedResultsControllerDelegate

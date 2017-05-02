@@ -22,7 +22,7 @@ extension FoursquareRequestType {
             FoursquareConstants.JSONRequestKeys.ClientSecret: FoursquareConstants.ClientSecret,
             FoursquareConstants.JSONRequestKeys.Location: generateLocation(latitude, longitude),
             FoursquareConstants.JSONRequestKeys.Query: query,
-            FoursquareConstants.JSONRequestKeys.Limit: "1",
+            FoursquareConstants.JSONRequestKeys.Limit: "10",
             FoursquareConstants.JSONRequestKeys.Date: generateDate(),
             FoursquareConstants.JSONRequestKeys.ResponseType: "foursquare"
         ] as [String:AnyObject]

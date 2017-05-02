@@ -14,7 +14,14 @@ import MapKit
 class BopMapViewController: UIViewController, FoursquareRequestType {
     
     // MARK: Properties
-    
+    // Create a fetchedResultsController to retrieve and monitor changes in CoreDataModel
+    lazy var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>? = {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Interest")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: AppDelegate.stack.context, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultsController
+    }()
+
     // MARK: Outlets
     @IBOutlet weak var mapView: MKMapView!
     
@@ -23,12 +30,54 @@ class BopMapViewController: UIViewController, FoursquareRequestType {
         super.viewDidLoad()
         
         mapView.delegate = self
-        loadMapPins()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        executeSearch()
+        if let interests = fetchedResultsController?.fetchedObjects as? [Interest], interests.count > 0 {
+            for interest in interests {
+                if let pins = interest.pins?.count, pins > 0 {
+                    loadPersistedLocations()
+                } else {
+                    loadMapPins()
+                }
+            }
+            loadPersistedLocations()
+        } else {
+            navigateToInterestPicker()
+        }
     }
     
     // Helpers
+    func loadPersistedLocations() {
+    
+        guard let interests = fetchedResultsController?.fetchedObjects as? [Interest] else {
+            print("An error occured loading persisted pins")
+            return
+        }
+        for interest in interests {
+            guard let pins = interest.pins as? [Pin] else {
+                print("No pins found for interst")
+                return
+            }
+            for pin in pins {
+                let lat = CLLocationDegrees(pin.latitude)
+                let lon = CLLocationDegrees(pin.longitude)
+                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+                let venueName = pin.name
+                
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = coordinate
+                annotation.title = venueName
+                self.mapView.addAnnotation(annotation)
+            }
+        }
+    }
+    
     func loadMapPins() {
-        /* TODO: Set a conditional statement that will execute in this fashion if pins have been loaded */
+        
         getVenuesBySearch(using: "movies", latitude: 40.7, longitude: -74) { (success, venues, error) in
             performUIUpdatesOnMain {
                 guard success else {
@@ -56,11 +105,28 @@ class BopMapViewController: UIViewController, FoursquareRequestType {
     }
 
     // Utilities
+    func navigateToInterestPicker() {
+        
+        let interestController = storyboard?.instantiateViewController(withIdentifier: "InterestPickerViewController") as! InterestPickerViewController
+        present(interestController, animated: true, completion: nil)
+    }
+    
     func displayError(_ error: String?) {
         
         let alertController = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func executeSearch() {
+        
+        if let fc = fetchedResultsController {
+            do {
+                try fc.performFetch()
+            } catch let e as NSError {
+                print("Error while trying to perform a search: \n\(e)\n\(fetchedResultsController)")
+            }
+        }
     }
 }
 

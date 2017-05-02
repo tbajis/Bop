@@ -59,7 +59,7 @@ class LoginViewController: UIViewController, UIAlertViewDelegate {
         /* TODO: Add more customized appearances for configuration (ie. configuration?.backgroundColor, configuration?.accentColor */
         
         // Start Digits authentication flow
-        Digits.sharedInstance().authenticate(with: nil, configuration: configuration!) { session, error in
+        Digits.sharedInstance().authenticate(with: nil, configuration: configuration!) { (session, error) in
             if session != nil {
                 performUIUpdatesOnMain {
                     // Navigate to the main app to select intersts.
@@ -71,14 +71,14 @@ class LoginViewController: UIViewController, UIAlertViewDelegate {
                 
                 // Log Answers Custom Event.
                 Answers.logLogin(withMethod: "Digits", success: true, customAttributes: ["User ID": session?.userID as Any])
+                
             } else {
                 // Log Answers Custom Event.
                 Answers.logLogin(withMethod: "Digits", success: false, customAttributes: ["Error": error?.localizedDescription as Any])
             }
-            
         }
     }
-    
+
     @IBAction func loginAsGuest(_ sender: UIButton) {
         // Log Answers Custom Event.
         Answers.logCustomEvent(withName: "Logged In as Guest", customAttributes: nil)
@@ -90,10 +90,10 @@ class LoginViewController: UIViewController, UIAlertViewDelegate {
         /* TODO: Configure button attributes here */
     }
     
-    // MARK: Helpers
+    // MARK: Helpers 
     func navigateToMainAppScreen() {
-        performSegue(withIdentifier: "ShowInterestPickerViewController", sender: self)
+        
+        let tabBarController = storyboard?.instantiateViewController(withIdentifier: "MapAndTableTabBarController") as! UITabBarController
+        present(tabBarController, animated: true, completion: nil)
     }
-    
 }
-
