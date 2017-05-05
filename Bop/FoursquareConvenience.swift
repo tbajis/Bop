@@ -25,6 +25,7 @@ extension FoursquareRequestType {
             FoursquareConstants.JSONRequestKeys.Limit: "10",
             FoursquareConstants.JSONRequestKeys.Date: generateDate(),
             FoursquareConstants.JSONRequestKeys.ResponseType: "foursquare"
+//            FoursquareConstants.JSONRequestKeys.Radius: "10"
         ] as [String:AnyObject]
         
         let _ = taskForGETMethod(FoursquareConstants.Methods.GETSearchVenues, parameters: parameters) { (result, error) in

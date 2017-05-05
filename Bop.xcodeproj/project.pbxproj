@@ -40,6 +40,8 @@
 		13187E251EAEF95A003426FB /* Interest+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187E1F1EAEF95A003426FB /* Interest+CoreDataProperties.swift */; };
 		13187E261EAEF95A003426FB /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187E201EAEF95A003426FB /* Pin.swift */; };
 		13187E271EAEF95A003426FB /* Pin+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187E211EAEF95A003426FB /* Pin+CoreDataProperties.swift */; };
+		13707C3B1EB83ABD00A59482 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13707C3A1EB83ABD00A59482 /* CoreLocation.framework */; };
+		13707C3F1EBA437E00A59482 /* CoreDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13707C3E1EBA437E00A59482 /* CoreDataObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +103,8 @@
 		13187E201EAEF95A003426FB /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pin.swift; path = ../Pin.swift; sourceTree = "<group>"; };
 		13187E211EAEF95A003426FB /* Pin+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pin+CoreDataProperties.swift"; path = "../Pin+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		13707C391EB191CA00A59482 /* Bop3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bop3.xcdatamodel; sourceTree = "<group>"; };
+		13707C3A1EB83ABD00A59482 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		13707C3E1EBA437E00A59482 /* CoreDataObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13707C3B1EB83ABD00A59482 /* CoreLocation.framework in Frameworks */,
 				13187DD81EA843AE003426FB /* Fabric.framework in Frameworks */,
 				13187DDB1EA843AE003426FB /* TwitterCore.framework in Frameworks */,
 				13187DDD1EA84445003426FB /* Crashlytics.framework in Frameworks */,
@@ -193,6 +198,7 @@
 		13187DE21EA844DD003426FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				13707C3A1EB83ABD00A59482 /* CoreLocation.framework */,
 				13187DD71EA843AE003426FB /* TwitterCore.framework */,
 				13187DD51EA843AE003426FB /* TwitterKit.framework */,
 				13187DD41EA843AE003426FB /* Fabric.framework */,
@@ -289,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				13187E061EAEEEF4003426FB /* CoreDataStack.swift */,
+				13707C3E1EBA437E00A59482 /* CoreDataObject.swift */,
 				13187E141EAEF2CB003426FB /* Interest */,
 				13187E161EAEF2FC003426FB /* Pin */,
 				13187E171EAEF305003426FB /* Photo */,
@@ -480,6 +487,7 @@
 				13187DF01EA846F5003426FB /* BopMapViewController.swift in Sources */,
 				13187DFA1EA855C9003426FB /* FoursquareConstants.swift in Sources */,
 				13187DF41EA8477C003426FB /* BopDetailViewController.swift in Sources */,
+				13707C3F1EBA437E00A59482 /* CoreDataObject.swift in Sources */,
 				13187E271EAEF95A003426FB /* Pin+CoreDataProperties.swift in Sources */,
 				13187E251EAEF95A003426FB /* Interest+CoreDataProperties.swift in Sources */,
 				13187E241EAEF95A003426FB /* Interest.swift in Sources */,

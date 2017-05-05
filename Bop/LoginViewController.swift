@@ -14,7 +14,7 @@ import Crashlytics
 class LoginViewController: UIViewController, UIAlertViewDelegate {
     
     // MARK: Properties
-    
+
     // MARK: Outlets
     @IBOutlet weak var loginTwitterButton: UIButton!
     @IBOutlet weak var loginPhoneButton: UIButton!
@@ -80,8 +80,10 @@ class LoginViewController: UIViewController, UIAlertViewDelegate {
     }
 
     @IBAction func loginAsGuest(_ sender: UIButton) {
+        
         // Log Answers Custom Event.
         Answers.logCustomEvent(withName: "Logged In as Guest", customAttributes: nil)
+        UserDefaults.standard.set(true, forKey: "guestLoggedIn")
         navigateToMainAppScreen()
     }
     
@@ -93,7 +95,22 @@ class LoginViewController: UIViewController, UIAlertViewDelegate {
     // MARK: Helpers 
     func navigateToMainAppScreen() {
         
-        let tabBarController = storyboard?.instantiateViewController(withIdentifier: "MapAndTableTabBarController") as! UITabBarController
-        present(tabBarController, animated: true, completion: nil)
+        if interestSaved() {
+            let tabBarController = storyboard?.instantiateViewController(withIdentifier: "MapAndTableTabBarController") as! UITabBarController
+            present(tabBarController, animated: true, completion: nil)
+        } else {
+            let interestPickerController = storyboard?.instantiateViewController(withIdentifier: "InterestPickerViewController") as! InterestPickerViewController
+            present(interestPickerController, animated: true, completion: nil)
+        }
+    }
+    
+    func interestSaved() -> Bool {
+        
+        CoreDataObject.sharedInstance().executeInterestSearch()
+        guard let interest = CoreDataObject.sharedInstance().fetchedInterestResultsController.fetchedObjects as? [Interest], interest.count > 0 else {
+            print("No interest in CoreData")
+            return false
+        }
+        return true
     }
 }

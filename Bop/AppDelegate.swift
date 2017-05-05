@@ -15,36 +15,37 @@ import DigitsKit
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, NSFetchedResultsControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    
-    // Create a fetchedResultsController to retrieve and monitor changes in CoreDataModel
-    lazy var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>? = {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Interest")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: AppDelegate.stack.context, sectionNameKeyPath: nil, cacheName: nil)
-        return fetchedResultsController
-    }()
     
     // Create a shared stack for managing the main context
     static let stack = CoreDataStack(modelName: "Bop")!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        let dirPaths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        var docsDir = dirPaths[0]
+        
+        print("THIS IS THE LINK:\(docsDir):THIS IS THE END OF THE LINK")
         // Register for Twitter with Fabric.app.
         Fabric.with([Twitter.self, Digits.self, Crashlytics.self])
         
+        var guestLoggedIn: Bool = (UserDefaults.standard.object(forKey: "guestLoggedIn") as? Bool) ?? false
+        
+        
         // Check for an existing Twitter session before presenting the login screen.
-        if Twitter.sharedInstance().sessionStore.session() == nil && Digits.sharedInstance().session() == nil {
+        if Twitter.sharedInstance().sessionStore.session() == nil && Digits.sharedInstance().session() == nil && guestLoggedIn == false {
             
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
+            self.window?.makeKeyAndVisible()
+            self.window?.rootViewController = loginViewController
+        } else {
             if interestSaved() {
-                navigateToTabViewController()
+                setInitialToTabViewController()
             } else {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
-                self.window?.makeKeyAndVisible()
-                self.window?.rootViewController = loginViewController
+                setInitialToInterestPicker()
             }
         }
         return true
@@ -72,27 +73,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSFetchedResultsControlle
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
     }
-    
-    // MARK: - NSFetchedResultsControllerDelegate
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-    }
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-    }
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-    }
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-    }
-    
+
     func interestSaved() -> Bool {
         
-        if let interests = fetchedResultsController?.fetchedObjects as? [Interest], interests.count > 0 {
-            return true
-        } else {
+        CoreDataObject.sharedInstance().executeInterestSearch()
+        guard let interests = CoreDataObject.sharedInstance().fetchedInterestResultsController.fetchedObjects as? [Interest], interests.count == 1 else {
+            print("No interest in CoreData")
             return false
         }
+        for interest in interests {
+            CoreDataObject.sharedInstance().interest = interest
+        }
+        return true
     }
     
-    func navigateToTabViewController() {
+    func setInitialToInterestPicker() {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let interestPickerViewController = storyboard.instantiateViewController(withIdentifier: "InterestPickerViewController") as? InterestPickerViewController
+        self.window?.makeKeyAndVisible()
+        self.window?.rootViewController = interestPickerViewController
+    }
+    
+    func setInitialToTabViewController() {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let tabBarController = storyboard.instantiateViewController(withIdentifier: "MapAndTableTabBarController") as? UITabBarController

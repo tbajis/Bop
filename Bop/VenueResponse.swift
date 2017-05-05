@@ -17,7 +17,7 @@ struct VenueResponse {
     var address: [String]?
     var latitude: Double?
     var longitude: Double?
-    var checkinsCount: Int?
+    var checkinsCount: Double?
     
     // MARK: Initializers
     init(value: [String:AnyObject]) {
@@ -27,6 +27,6 @@ struct VenueResponse {
         self.address = value[FoursquareConstants.JSONResponseKeys.Address] as? [String]
         self.latitude = value[FoursquareConstants.JSONResponseKeys.Latitude] as? Double
         self.longitude = value[FoursquareConstants.JSONResponseKeys.Longitude] as? Double
-        self.checkinsCount = value[FoursquareConstants.JSONResponseKeys.Checkins] as? Int
+        self.checkinsCount = value[FoursquareConstants.JSONResponseKeys.Checkins] as? Double ?? 0
     }
 }

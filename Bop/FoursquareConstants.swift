@@ -42,6 +42,7 @@ class FoursquareConstants {
         static let Limit = "limit"
         static let Date = "v"
         static let ResponseType = "m"
+        static let Radius = "radius"
     }
     
     // MARK: JSON Response Keys
