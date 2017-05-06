@@ -42,6 +42,7 @@
 		13187E271EAEF95A003426FB /* Pin+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187E211EAEF95A003426FB /* Pin+CoreDataProperties.swift */; };
 		13707C3B1EB83ABD00A59482 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13707C3A1EB83ABD00A59482 /* CoreLocation.framework */; };
 		13707C3F1EBA437E00A59482 /* CoreDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13707C3E1EBA437E00A59482 /* CoreDataObject.swift */; };
+		13707C431EBD61C800A59482 /* CoreDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13707C421EBD61C800A59482 /* CoreDataTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		13707C391EB191CA00A59482 /* Bop3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bop3.xcdatamodel; sourceTree = "<group>"; };
 		13707C3A1EB83ABD00A59482 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		13707C3E1EBA437E00A59482 /* CoreDataObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataObject.swift; sourceTree = "<group>"; };
+		13707C421EBD61C800A59482 /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 				13187DA41EA842C7003426FB /* LoginViewController.swift */,
 				13187DED1EA846CE003426FB /* InterestPickerViewController.swift */,
 				13187DEF1EA846F5003426FB /* BopMapViewController.swift */,
+				13707C421EBD61C800A59482 /* CoreDataTableViewController.swift */,
 				13187DF11EA8474F003426FB /* BopTableViewController.swift */,
 				13187DF31EA8477C003426FB /* BopDetailViewController.swift */,
 			);
@@ -492,6 +495,7 @@
 				13187E251EAEF95A003426FB /* Interest+CoreDataProperties.swift in Sources */,
 				13187E241EAEF95A003426FB /* Interest.swift in Sources */,
 				13187E021EABE84B003426FB /* PhotoResponse.swift in Sources */,
+				13707C431EBD61C800A59482 /* CoreDataTableViewController.swift in Sources */,
 				13187DEA1EA845CD003426FB /* GCDBlackBox.swift in Sources */,
 				13187DA51EA842C7003426FB /* LoginViewController.swift in Sources */,
 				13187DAB1EA842C7003426FB /* Bop.xcdatamodeld in Sources */,
