@@ -150,16 +150,17 @@
                     <navigationItem key="navigationItem" id="GKD-Z3-11N"/>
                     <connections>
                         <outlet property="mapView" destination="in2-O4-PZX" id="dyp-Yj-mVs"/>
+                        <segue destination="7WK-6I-fCy" kind="show" identifier="showDetailFromMap" id="qR4-Pt-cRp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vVt-Oe-329" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3245.5999999999999" y="-143.47826086956522"/>
         </scene>
-        <!--View Controller-->
+        <!--Bop Detail View Controller-->
         <scene sceneID="xZk-jP-VN9">
             <objects>
-                <viewController id="7WK-6I-fCy" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BopDetailViewController" id="7WK-6I-fCy" customClass="BopDetailViewController" customModule="Bop" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mWz-HC-G59"/>
                         <viewControllerLayoutGuide type="bottom" id="kXn-Xe-2Kc"/>
@@ -187,7 +188,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tNu-DO-jvW" id="NHK-7z-vhu">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -198,6 +199,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="7wU-M8-aUM"/>
+                    <connections>
+                        <segue destination="7WK-6I-fCy" kind="show" identifier="showDetailFromTable" id="HMj-Gj-LrQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TnK-Sy-Zab" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -348,4 +352,7 @@
             <point key="canvasLocation" x="876" y="1018"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="HMj-Gj-LrQ"/>
+    </inferredMetricsTieBreakers>
 </document>

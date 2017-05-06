@@ -15,7 +15,6 @@ import CoreLocation
 class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationManagerDelegate {
     
     // MARK: Properties
-    
     // Create an instance of CLLocationManager to track user's location
     let locationManager = CLLocationManager()
     
@@ -32,6 +31,7 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
         super.viewDidLoad()
  
         mapView.delegate = self
+        loadMapRegion()
         configureMapWithPins() { (success) in
             if success {
                 self.placePinsOnMap()
@@ -97,7 +97,6 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
                     let pin = Pin(name: venue.name, id: venue.id, latitude: locationCoord.latitude, longitude: locationCoord.longitude, address: "", checkinsCount: venue.checkinsCount!, context: AppDelegate.stack.context)
                     pin.interest = CoreDataObject.sharedInstance().interest
                     AppDelegate.stack.save()
-                    searchCompletionStatus(true)
                 }
                 searchCompletionStatus(true)
             }
@@ -145,6 +144,14 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetailFromMap" {
+            let pin = sender as! Pin
+            let detailController = segue.destination as! BopDetailViewController
+            detailController.pin = pin
+        }
+    }
+    
     // Utilities
     func chooseInterest(_ completion: @escaping () -> Void) {
         
@@ -171,6 +178,8 @@ extension BopMapViewController: MKMapViewDelegate {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
             pinView!.pinTintColor = .red
             pinView!.animatesDrop = true
+            pinView?.canShowCallout = true
+            pinView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         } else {
             pinView!.annotation = annotation
         }
@@ -179,6 +188,10 @@ extension BopMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
+        if control == view.rightCalloutAccessoryView {
+            let pin = view.annotation as! Pin
+            performSegue(withIdentifier: "showDetailFromMap", sender: pin)
+        }
     }
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         let persistedRegion = [

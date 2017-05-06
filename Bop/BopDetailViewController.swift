@@ -11,4 +11,7 @@ import UIKit
 
 class BopDetailViewController: UIViewController {
     
+    // MARK: Properties
+    var pin: Pin?
+
 }

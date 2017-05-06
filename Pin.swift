@@ -17,6 +17,13 @@ class Pin: NSManagedObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
+    var title: String? {
+        return name
+    }
+    var subtitle: String? {
+        let count = Int(checkinsCount)
+        return "Check In Count is: \(count)"
+    }
     
     // MARK: Initializer
     convenience init(name: String?, id: String?, latitude: Double, longitude: Double, address: String?, checkinsCount: Double, context: NSManagedObjectContext) {
