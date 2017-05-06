@@ -40,6 +40,11 @@ class BopTableViewController: CoreDataTableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let pin = fetchedResultsController?.object(at: indexPath) as! Pin
+        performSegue(withIdentifier: "showDetailFromTable", sender: pin)
+    }
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

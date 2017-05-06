@@ -6,12 +6,20 @@
 //  Copyright © 2017 Thomas Manos Bajis. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import TwitterKit
 
-class BopDetailViewController: UIViewController {
+// MARK: BopDetailViewController: TWTRTTimelineViewController
+class BopDetailViewController: TWTRTimelineViewController {
     
     // MARK: Properties
     var pin: Pin?
-
+    
+    // MARK: Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let client = TWTRAPIClient()
+        self.dataSource = TWTRSearchTimelineDataSource(searchQuery: "#Trump", apiClient: client)
+    }
 }

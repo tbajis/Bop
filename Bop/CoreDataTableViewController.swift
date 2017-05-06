@@ -39,6 +39,10 @@ extension CoreDataTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         fatalError("MUST IMPLEMENT THIS METHOD")
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        fatalError("MUST IMPLEMENT THIS METHOD")
+    }
 }
 
 // MARK: - CoreDataTableViewController (Table Data Source)

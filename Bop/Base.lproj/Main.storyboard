@@ -76,34 +76,6 @@
             </objects>
             <point key="canvasLocation" x="412" y="306"/>
         </scene>
-        <!--Bop Table View Controller-->
-        <scene sceneID="aVK-yi-2IY">
-            <objects>
-                <tableViewController id="zo9-Pp-265" customClass="BopTableViewController" customModule="Bop" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Vpg-jF-YmM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dys-dT-vuw">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dys-dT-vuw" id="HAc-Cx-LBv">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="zo9-Pp-265" id="buH-DL-kCS"/>
-                            <outlet property="delegate" destination="zo9-Pp-265" id="5sg-Hx-9Rc"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bAs-fa-Wcv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4250" y="305"/>
-        </scene>
         <!--Map-->
         <scene sceneID="TOe-vg-56a">
             <objects>
@@ -121,7 +93,7 @@
             </objects>
             <point key="canvasLocation" x="2329" y="-143"/>
         </scene>
-        <!--Bop Map View Controller-->
+        <!--Venues-->
         <scene sceneID="SaR-I2-gJS">
             <objects>
                 <viewController storyboardIdentifier="BopMapViewController" id="qKG-Wg-Njq" customClass="BopMapViewController" customModule="Bop" customModuleProvider="target" sceneMemberID="viewController">
@@ -175,20 +147,22 @@
                             <constraint firstItem="iES-1Y-o3E" firstAttribute="leading" secondItem="V4s-gu-wFE" secondAttribute="leadingMargin" constant="36" id="iQO-6l-4nm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="GKD-Z3-11N"/>
+                    <navigationItem key="navigationItem" title="Venues" id="GKD-Z3-11N">
+                        <barButtonItem key="backBarButtonItem" title="Map" id="8vf-Fw-DPn"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="in2-O4-PZX" id="dyp-Yj-mVs"/>
-                        <segue destination="zo9-Pp-265" kind="show" identifier="showDetailFromMap" id="VbN-tk-466"/>
+                        <segue destination="TQf-ae-mMP" kind="show" identifier="showDetailFromMap" id="hib-CI-Mg3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vVt-Oe-329" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3245.5999999999999" y="-143.47826086956522"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Bop Table View Controller-->
         <scene sceneID="GYW-tC-rQI">
             <objects>
-                <tableViewController storyboardIdentifier="BopTableViewController" id="sXC-7X-Qrj" customClass="BopTableViewController" customModule="Bop" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="BopTableViewController" id="sXC-7X-Qrj" userLabel="Bop Table View Controller" customClass="BopTableViewController" customModule="Bop" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hBl-Um-yHH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -226,12 +200,40 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="7wU-M8-aUM"/>
                     <connections>
-                        <segue destination="zo9-Pp-265" kind="show" identifier="showDetailFromTable" id="chl-rk-bLF"/>
+                        <segue destination="TQf-ae-mMP" kind="show" identifier="showDetailFromTable" id="Z3y-Pm-VwU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TnK-Sy-Zab" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3246" y="669"/>
+        </scene>
+        <!--Bop Detail View Controller-->
+        <scene sceneID="Zwr-u7-m2Z">
+            <objects>
+                <tableViewController id="TQf-ae-mMP" customClass="BopDetailViewController" customModule="Bop" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1dt-jX-Zby">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="6gc-Wi-RSP">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6gc-Wi-RSP" id="1Ya-hW-34x">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="TQf-ae-mMP" id="qhm-eD-h1G"/>
+                            <outlet property="delegate" destination="TQf-ae-mMP" id="8ei-kZ-Er8"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t5y-KH-2N7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4348" y="278"/>
         </scene>
         <!--Table-->
         <scene sceneID="OWx-ML-mh3">
@@ -379,6 +381,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="chl-rk-bLF"/>
+        <segue reference="hib-CI-Mg3"/>
     </inferredMetricsTieBreakers>
 </document>
