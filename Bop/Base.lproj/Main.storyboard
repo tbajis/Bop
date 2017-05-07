@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -149,15 +150,78 @@
                     </view>
                     <navigationItem key="navigationItem" title="Venues" id="GKD-Z3-11N">
                         <barButtonItem key="backBarButtonItem" title="Map" id="8vf-Fw-DPn"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="m5C-Xq-Ls5"/>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="refresh" id="DPo-Dk-2Wl"/>
+                            <barButtonItem systemItem="search" id="cXq-bi-ToC"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="in2-O4-PZX" id="dyp-Yj-mVs"/>
-                        <segue destination="TQf-ae-mMP" kind="show" identifier="showDetailFromMap" id="hib-CI-Mg3"/>
+                        <segue destination="Ucs-Ev-xIV" kind="show" identifier="showDetailFromMap" id="eeu-ov-Lq0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vVt-Oe-329" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3245.5999999999999" y="-143.47826086956522"/>
+        </scene>
+        <!--Bop Detail View Controller-->
+        <scene sceneID="VQV-Dd-S9b">
+            <objects>
+                <viewController storyboardIdentifier="TestViewController" id="Ucs-Ev-xIV" customClass="BopDetailViewController" customModule="Bop" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ugl-B7-kKN"/>
+                        <viewControllerLayoutGuide type="bottom" id="hQB-Ba-ac4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L3z-At-CC7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y6b-uU-Kfh">
+                                <rect key="frame" x="16" y="191" width="343" height="456"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="yPM-I8-qWD" kind="embed" id="SZP-g7-uyZ"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="twitterView" destination="y6b-uU-Kfh" id="Q3a-Sj-cWx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mPI-IG-dnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4148" y="251"/>
+        </scene>
+        <!--Bop Twitter View Controller-->
+        <scene sceneID="7pv-sM-OWK">
+            <objects>
+                <tableViewController id="yPM-I8-qWD" customClass="BopTwitterViewController" customModule="Bop" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4B8-0Q-X5I">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="456"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ev8-f7-pee">
+                                <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ev8-f7-pee" id="AIR-UO-npr">
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="yPM-I8-qWD" id="h0V-A3-jaS"/>
+                            <outlet property="delegate" destination="yPM-I8-qWD" id="HXQ-2L-dM4"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TtO-FV-WId" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5014" y="118"/>
         </scene>
         <!--Bop Table View Controller-->
         <scene sceneID="GYW-tC-rQI">
@@ -198,42 +262,17 @@
                             <outlet property="delegate" destination="sXC-7X-Qrj" id="NN5-b2-jWM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="7wU-M8-aUM"/>
+                    <navigationItem key="navigationItem" title="Venues" id="7wU-M8-aUM">
+                        <barButtonItem key="backBarButtonItem" title="Table" id="5v0-Qx-vSp"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="TzI-ow-E9l"/>
+                    </navigationItem>
                     <connections>
-                        <segue destination="TQf-ae-mMP" kind="show" identifier="showDetailFromTable" id="Z3y-Pm-VwU"/>
+                        <segue destination="Ucs-Ev-xIV" kind="show" identifier="showDetailFromTable" id="e7k-Is-rTd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TnK-Sy-Zab" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3246" y="669"/>
-        </scene>
-        <!--Bop Detail View Controller-->
-        <scene sceneID="Zwr-u7-m2Z">
-            <objects>
-                <tableViewController id="TQf-ae-mMP" customClass="BopDetailViewController" customModule="Bop" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1dt-jX-Zby">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="6gc-Wi-RSP">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6gc-Wi-RSP" id="1Ya-hW-34x">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="TQf-ae-mMP" id="qhm-eD-h1G"/>
-                            <outlet property="delegate" destination="TQf-ae-mMP" id="8ei-kZ-Er8"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="t5y-KH-2N7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4348" y="278"/>
         </scene>
         <!--Table-->
         <scene sceneID="OWx-ML-mh3">
@@ -381,6 +420,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hib-CI-Mg3"/>
+        <segue reference="e7k-Is-rTd"/>
     </inferredMetricsTieBreakers>
 </document>
