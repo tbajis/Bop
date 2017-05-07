@@ -153,7 +153,11 @@
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="m5C-Xq-Ls5"/>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="refresh" id="DPo-Dk-2Wl"/>
-                            <barButtonItem systemItem="search" id="cXq-bi-ToC"/>
+                            <barButtonItem systemItem="search" id="cXq-bi-ToC">
+                                <connections>
+                                    <action selector="launchInterestPicker:" destination="qKG-Wg-Njq" id="PGe-Vm-v1M"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -177,15 +181,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y6b-uU-Kfh">
-                                <rect key="frame" x="16" y="191" width="343" height="456"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6b-uU-Kfh">
+                                <rect key="frame" x="16" y="272" width="343" height="346"/>
                                 <connections>
                                     <segue destination="yPM-I8-qWD" kind="embed" id="SZP-g7-uyZ"/>
                                 </connections>
                             </containerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dL1-ut-NTb">
+                                <rect key="frame" x="16" y="64" width="343" height="149"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="149" id="Hyp-TY-bOA"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dL1-ut-NTb" firstAttribute="trailing" secondItem="L3z-At-CC7" secondAttribute="trailingMargin" id="D8w-v9-rwn"/>
+                            <constraint firstItem="hQB-Ba-ac4" firstAttribute="top" secondItem="y6b-uU-Kfh" secondAttribute="bottom" id="Jal-HE-7QF"/>
+                            <constraint firstItem="y6b-uU-Kfh" firstAttribute="top" secondItem="dL1-ut-NTb" secondAttribute="bottom" constant="59" id="L9h-JQ-cAO"/>
+                            <constraint firstItem="dL1-ut-NTb" firstAttribute="top" secondItem="Ugl-B7-kKN" secondAttribute="bottom" id="TcG-6g-Ubk"/>
+                            <constraint firstItem="y6b-uU-Kfh" firstAttribute="top" secondItem="dL1-ut-NTb" secondAttribute="bottom" constant="59" id="dEv-eS-DyH"/>
+                            <constraint firstItem="dL1-ut-NTb" firstAttribute="leading" secondItem="L3z-At-CC7" secondAttribute="leadingMargin" id="lFP-h6-3uI"/>
+                            <constraint firstItem="y6b-uU-Kfh" firstAttribute="trailing" secondItem="L3z-At-CC7" secondAttribute="trailingMargin" id="xQS-fV-K41"/>
+                            <constraint firstItem="y6b-uU-Kfh" firstAttribute="leading" secondItem="L3z-At-CC7" secondAttribute="leadingMargin" id="z4D-sW-4ba"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="twitterView" destination="y6b-uU-Kfh" id="Q3a-Sj-cWx"/>
@@ -193,14 +212,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mPI-IG-dnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4148" y="251"/>
+            <point key="canvasLocation" x="4148" y="250.52473763118442"/>
         </scene>
         <!--Bop Twitter View Controller-->
         <scene sceneID="7pv-sM-OWK">
             <objects>
                 <tableViewController id="yPM-I8-qWD" customClass="BopTwitterViewController" customModule="Bop" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4B8-0Q-X5I">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="456"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="346"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -420,6 +439,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="e7k-Is-rTd"/>
+        <segue reference="eeu-ov-Lq0"/>
     </inferredMetricsTieBreakers>
 </document>

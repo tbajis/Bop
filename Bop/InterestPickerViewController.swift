@@ -14,6 +14,7 @@ class InterestPickerViewController: UIViewController {
     
     // MARK: Properties
     var completionHandlerForDismissal: () -> Void = { }
+    var isfirstPick = (UserDefaults.standard.object(forKey: "isFirstPick") as? Bool) ?? true
     
     // MARK: Outlets
     @IBOutlet var interestButtons: [InterestButton]!
@@ -24,6 +25,7 @@ class InterestPickerViewController: UIViewController {
         super.viewDidLoad()
 
         continueButton.isEnabled = false
+        CoreDataObject.sharedInstance().executeInterestSearch()
         
         // Set buttons to red background color
         for button in interestButtons {
@@ -34,6 +36,19 @@ class InterestPickerViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        if let interests = CoreDataObject.sharedInstance().fetchedInterestResultsController.fetchedObjects as? [Interest] {
+            for interest in interests {
+                AppDelegate.stack.context.delete(interest)
+                AppDelegate.stack.save()
+            }
+        }
+        
+        if let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin] {
+            for pin in pins {
+                AppDelegate.stack.context.delete(pin)
+                AppDelegate.stack.save()
+            }
+        }
     }
     
     // MARK: Actions
@@ -56,9 +71,19 @@ class InterestPickerViewController: UIViewController {
                     print("An error occured: Overwriting Interest")
                     return
                 }
-                CoreDataObject.sharedInstance().interest = Interest(category: category, query: query, context: AppDelegate.stack.context)
+                let instance = Interest(category: category, query: query, context: AppDelegate.stack.context)
                 AppDelegate.stack.save()
-                navigateToTabBarController()
+                
+                switch isfirstPick {
+                case true:
+                    CoreDataObject.sharedInstance().interest = instance
+                    navigateToTabBarController( {
+                        UserDefaults.standard.set(false, forKey: "isFirstPick")
+                    })
+                case false:
+                    CoreDataObject.sharedInstance().interest = instance
+                    dismissToTabViewController(completionHandlerForDismissal)
+                }
             }
         }
     }
@@ -86,10 +111,10 @@ class InterestPickerViewController: UIViewController {
     }
     
     // Helpers
-    func navigateToTabBarController() {
+    func navigateToTabBarController(_ completion: @escaping(() -> Void)) {
         
         let tabBarController = storyboard?.instantiateViewController(withIdentifier: "MapAndTableTabBarController") as! UITabBarController
-        present(tabBarController, animated: true, completion: nil)
+        present(tabBarController, animated: true, completion: completion)
     }
     
     func dismissToTabViewController(_ completionHandler: @escaping () -> Void) {

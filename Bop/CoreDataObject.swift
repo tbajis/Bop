@@ -29,7 +29,7 @@ class CoreDataObject: NSObject {
     lazy var fetchedPinResultsController: NSFetchedResultsController<NSFetchRequestResult> = {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Pin")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
-        fetchRequest.predicate = NSPredicate(format: "interest == %@", CoreDataObject.sharedInstance().interest!)
+//        fetchRequest.predicate = NSPredicate(format: "interest == %@", self.interest!)
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: AppDelegate.stack.context, sectionNameKeyPath: nil, cacheName: nil)
         return fetchedResultsController
     }()

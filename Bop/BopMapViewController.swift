@@ -39,11 +39,13 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
                 self.displayError("An error occured placing pins on the map")
             }
         }
+        print("ViewDidLoad called")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+
     }
     
     // MARK: Actions
@@ -52,9 +54,36 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
         
     }
     
+    @IBAction func launchInterestPicker(_ sender: UIBarButtonItem) {
+        
+        if mapView.annotations.count > 0 {
+            for annotation in mapView.annotations {
+                mapView.removeAnnotation(annotation)
+            }
+        }
+        chooseInterest() {
+            self.configureMapWithPins() { (success) in
+                if success {
+                    self.placePinsOnMap()
+                } else {
+                    self.displayError("An error occured placing pins on the map")
+                }
+            }
+        }
+    }
+
     @IBAction func presetButtonPressed(_ sender: UIButton) {
         
         CoreDataObject.sharedInstance().executePinSearch()
+        configureMapWithPins() { (success) in
+            if success {
+                self.placePinsOnMap()
+            } else {
+                self.displayError("An error occured placing pins on the map")
+            }
+        }
+
+        /*CoreDataObject.sharedInstance().executePinSearch()
         if mapView.annotations.count > 0 {
             self.removePinsFromMap() { (success) in
                 if success {
@@ -64,9 +93,8 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
                         self.placePinsOnMap()
                     }
                 }
-            
             }
-        }
+        }*/
     }
     
     // Helpers
@@ -106,6 +134,11 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
     private func placePinsOnMap() {
     
         CoreDataObject.sharedInstance().executePinSearch()
+        if let interests = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin] {
+            print("NUMBER OF PINS IS: \(interests.count)")
+        } else {
+            print("THERE ARE NO PINS")
+        }
         var pinsToAdd = [Pin]()
         for pin in CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as! [Pin] {
             pinsToAdd.append(pin)
