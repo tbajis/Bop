@@ -45,6 +45,35 @@ extension FoursquareRequestType {
         }
     }
     
+    func getPhotosForVenue(using id: String, completionHandlerForGetPhotos: @escaping(_ success: Bool, _ photos: [PhotoResponse]?, _ error: String?) -> Void) {
+        
+        // Create Parameters for request
+        let parameters = [
+            FoursquareConstants.JSONRequestKeys.ClientId: FoursquareConstants.ClientId,
+            FoursquareConstants.JSONRequestKeys.ClientSecret: FoursquareConstants.ClientSecret,
+            FoursquareConstants.JSONRequestKeys.Date: generateDate(),
+            FoursquareConstants.JSONRequestKeys.Limit: "1"
+        ] as [String:AnyObject]
+        
+        var mutableMethod: String = FoursquareConstants.Methods.GETVenuePhotos
+        mutableMethod = substituteKeyInMethod(mutableMethod, key: FoursquareConstants.JSONRequestKeys.VenueID, value: id)
+        
+        let _ = taskForGETMethod(mutableMethod, parameters: parameters) { (result, error) in
+        
+            guard error == nil else {
+                print("There was an error in getPhotosForVenue")
+                completionHandlerForGetPhotos(false, nil, error)
+                return
+            }
+            guard let responseDict = result?["response"] as? [String:AnyObject], let photoDict = responseDict["photos"] as? [String:AnyObject], let itemsArrayOfDicts = photoDict["items"] as? [[String:AnyObject]] else {
+                print("There was an error parsing in getVenuesBySearch")
+                completionHandlerForGetPhotos(false, nil, nil)
+                return
+            }
+            let photos = self.photosFromJSON(itemsArrayOfDicts)
+            completionHandlerForGetPhotos(true, photos, nil)
+        }
+    }
     
     // Generate the date in specified format "YYYMMDD"
     func generateDate() -> String {

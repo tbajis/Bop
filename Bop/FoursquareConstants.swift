@@ -30,6 +30,9 @@ class FoursquareConstants {
         
         // MARK: Search venues
         static let GETSearchVenues = "/venues/search"
+        
+        // MARK: Venue Photos
+        static let GETVenuePhotos = "/venues/<VenueID>/photos"
     }
     
     // MARK: JSON Request Keys
@@ -43,6 +46,7 @@ class FoursquareConstants {
         static let Date = "v"
         static let ResponseType = "m"
         static let Radius = "radius"
+        static let VenueID = "<VenueID>"
     }
     
     // MARK: JSON Response Keys
