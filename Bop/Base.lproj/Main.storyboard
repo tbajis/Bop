@@ -184,14 +184,19 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6b-uU-Kfh">
                                 <rect key="frame" x="16" y="272" width="343" height="346"/>
                                 <connections>
-                                    <segue destination="yPM-I8-qWD" kind="embed" id="SZP-g7-uyZ"/>
+                                    <segue destination="yPM-I8-qWD" kind="embed" id="qUp-C6-w2U"/>
                                 </connections>
                             </containerView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dL1-ut-NTb">
                                 <rect key="frame" x="16" y="64" width="343" height="149"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="149" id="Hyp-TY-bOA"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="9fa-7h-hOX" appends="YES" id="K7E-MY-pYw"/>
+                                    <outletCollection property="gestureRecognizers" destination="rGE-lb-puD" appends="YES" id="gOM-cl-5Dr"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -212,6 +217,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mPI-IG-dnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="9fa-7h-hOX">
+                    <connections>
+                        <action selector="swipedRight:" destination="Ucs-Ev-xIV" id="I02-Bv-FkM"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="rGE-lb-puD">
+                    <connections>
+                        <action selector="swipedLeft:" destination="Ucs-Ev-xIV" id="htU-WQ-coC"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4148" y="250.52473763118442"/>
         </scene>
@@ -228,7 +243,7 @@
                                 <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ev8-f7-pee" id="AIR-UO-npr">
-                                    <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -241,7 +256,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TtO-FV-WId" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5014" y="118"/>
+            <point key="canvasLocation" x="4956" y="395"/>
         </scene>
         <!--Bop Table View Controller-->
         <scene sceneID="GYW-tC-rQI">

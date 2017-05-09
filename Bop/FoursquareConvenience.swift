@@ -69,7 +69,7 @@ extension FoursquareRequestType {
             FoursquareConstants.JSONRequestKeys.ClientId: FoursquareConstants.ClientId,
             FoursquareConstants.JSONRequestKeys.ClientSecret: FoursquareConstants.ClientSecret,
             FoursquareConstants.JSONRequestKeys.Date: generateDate(),
-            FoursquareConstants.JSONRequestKeys.Limit: "1"
+            FoursquareConstants.JSONRequestKeys.Limit: "3"
         ] as [String:AnyObject]
         
         var mutableMethod: String = FoursquareConstants.Methods.GETVenuePhotos

@@ -15,6 +15,9 @@ class BopDetailViewController: UIViewController, FoursquareRequestType {
     
     // MARK: Properties
     var pin: Pin?
+    var imageIndex = 0
+    var venueImages = [UIImage]()
+    var maxImages = 2
     
     // MARK: Outlets
     @IBOutlet weak var twitterView: UIView!
@@ -28,10 +31,15 @@ class BopDetailViewController: UIViewController, FoursquareRequestType {
             if success {
                 for photo in photos! {
                     self.getFoursquareImages(photo) { (success, error, imageData) in
-                        if success {
-                            self.venueImageView.image = UIImage(data: imageData!)
-                        } else {
-                            print("Image could not be downloaded")
+                        performUIUpdatesOnMain {
+                            if success && error == nil {
+                                let venueImage = UIImage(data: imageData!)
+                                self.venueImages.append(venueImage!)
+                            } else {
+                                print("Image could not be downloaded")
+                            }
+                        self.venueImageView.image = self.venueImages[self.imageIndex]
+                        print("There are \(self.venueImages.count) images")
                         }
                     
                     }
@@ -40,9 +48,62 @@ class BopDetailViewController: UIViewController, FoursquareRequestType {
                 self.displayError("Image could not be downloaded and displayed")
             }
         }
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func swipedRight(_ sender: Any) {
+    
+        print("User swiped right")
+        imageIndex -= 1
+        if imageIndex < 0 {
+            imageIndex = maxImages
+        }
+        venueImageView.image = venueImages[imageIndex]
+    }
+    
+    @IBAction func swipedLeft(_ sender: Any) {
+    
+        print("User swiped left")
+        imageIndex += 1
+        if imageIndex > maxImages {
+            imageIndex = 0
+        }
+        venueImageView.image = venueImages[imageIndex]
+    }
+    
+    
+    
+    @IBAction func userDidSwipe(_ sender: Any) {
         
+        if let gesture = sender as? UISwipeGestureRecognizer {
+            
+            switch gesture.direction {
+            case UISwipeGestureRecognizerDirection.right:
+                print("User swiped right")
+                imageIndex -= 1
+                if imageIndex < 0 {
+                    imageIndex = maxImages
+                }
+                venueImageView.image = venueImages[imageIndex]
+            case UISwipeGestureRecognizerDirection.left:
+                print("User swiped left")
+                imageIndex += 1
+                if imageIndex > maxImages {
+                    imageIndex = 0
+                }
+                venueImageView.image = venueImages[imageIndex]
+            default:
+                break
+            }
+
+        }
         
     }
+    
+    @IBAction func imageSwiped(_ sender: Any) {
+        
+            }
     
     // MARK: Helpers
     func configureUI(completion: @escaping (_ success: Bool, [Photo]?) -> Void) {
