@@ -15,7 +15,7 @@ extension Photo {
     // MARK: Properties
     @NSManaged var height: Double
     @NSManaged var id: String?
-    @NSManaged var mediaURL: String?
+    @NSManaged var mediaURL: String
     @NSManaged var width: Double
     @NSManaged var pin: Pin?
 

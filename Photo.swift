@@ -12,11 +12,11 @@ import CoreData
 class Photo: NSManagedObject {
 
     // MARK: Initializer
-    convenience init(id: String?, prefix: String?, suffix: String?, height: Double, width: Double, context: NSManagedObjectContext) {
+    convenience init(id: String?, prefix: String?, suffix: String?, height: Double, width: Double, mediaURL: String, context: NSManagedObjectContext) {
         if let ent = NSEntityDescription.entity(forEntityName: "Photo", in: context) {
             self.init(entity: ent, insertInto: context)
             self.id = id
-            self.mediaURL = formatMediaURL(prefix: prefix, suffix: suffix, height: height, width: width)
+            self.mediaURL = mediaURL
             self.width = width
             self.height = height
         } else {

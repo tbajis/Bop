@@ -14,6 +14,23 @@ import UIKit
 
 extension FoursquareRequestType {
     
+    func getFoursquareImages(_ photo: Photo?, completionHandlerForGETFoursquarePhotos: @escaping ( _ success: Bool, _ errorString: String?, _ imageData: Data?) -> Void) -> URLSessionTask {
+        
+        let foursquareURL = photo?.mediaURL
+        let requestURL = URL(string: foursquareURL!)
+        let request = URLRequest(url: requestURL!)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let e = error {
+                completionHandlerForGETFoursquarePhotos(false, e.localizedDescription, nil)
+            } else {
+                completionHandlerForGETFoursquarePhotos(true, nil, data)
+            }
+        }
+        task.resume()
+        return task
+    }
+    
     func getVenuesBySearch(using query: String, latitude: Double, longitude: Double, completionHandlerForSearchVenues: @escaping(_ success: Bool, _ venues: [VenueResponse]?, _ error: String?) -> Void) {
         
         // Create Parameters for request
@@ -45,7 +62,7 @@ extension FoursquareRequestType {
         }
     }
     
-    func getPhotosForVenue(using id: String, completionHandlerForGetPhotos: @escaping(_ success: Bool, _ photos: [PhotoResponse]?, _ error: String?) -> Void) {
+    func getPhotosForVenue(using id: String?, completionHandlerForGetPhotos: @escaping(_ success: Bool, _ photos: [PhotoResponse]?, _ error: String?) -> Void) {
         
         // Create Parameters for request
         let parameters = [
@@ -56,7 +73,7 @@ extension FoursquareRequestType {
         ] as [String:AnyObject]
         
         var mutableMethod: String = FoursquareConstants.Methods.GETVenuePhotos
-        mutableMethod = substituteKeyInMethod(mutableMethod, key: FoursquareConstants.JSONRequestKeys.VenueID, value: id)
+        mutableMethod = substituteKeyInMethod(mutableMethod, key: FoursquareConstants.JSONRequestKeys.VenueID, value: id!)
         
         let _ = taskForGETMethod(mutableMethod, parameters: parameters) { (result, error) in
         
@@ -130,7 +147,7 @@ extension FoursquareRequestType {
         var photos = [PhotoResponse]()
         
         for (_, var result) in results.enumerated() {
-            guard let prefix = result[FoursquareConstants.JSONResponseKeys.Prefix] as? String, let suffix = result[FoursquareConstants.JSONResponseKeys.Suffix] as? String, let width = result[FoursquareConstants.JSONResponseKeys.Width] as? Int, let height = result[FoursquareConstants.JSONResponseKeys.Height] as? Int else {
+            guard let id = result[FoursquareConstants.JSONResponseKeys.Id] as? String, let prefix = result[FoursquareConstants.JSONResponseKeys.Prefix] as? String, let suffix = result[FoursquareConstants.JSONResponseKeys.Suffix] as? String, let width = result[FoursquareConstants.JSONResponseKeys.Width] as? Int, let height = result[FoursquareConstants.JSONResponseKeys.Height] as? Int else {
                 break
             }
             let photoURL = prefix + "\(width)x\(height)" + suffix
@@ -139,7 +156,8 @@ extension FoursquareRequestType {
                     let filteredPhoto: [String:AnyObject] = [
                         "mediaURL": url as AnyObject,
                         FoursquareConstants.JSONResponseKeys.Height: height as AnyObject,
-                        FoursquareConstants.JSONResponseKeys.Width: width as AnyObject
+                        FoursquareConstants.JSONResponseKeys.Width: width as AnyObject,
+                        FoursquareConstants.JSONResponseKeys.Id: id as AnyObject
                     ]
                     photos.append(PhotoResponse(value: filteredPhoto))
                 }

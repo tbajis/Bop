@@ -208,6 +208,7 @@
                     </view>
                     <connections>
                         <outlet property="twitterView" destination="y6b-uU-Kfh" id="Q3a-Sj-cWx"/>
+                        <outlet property="venueImageView" destination="dL1-ut-NTb" id="oyX-Au-bE6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mPI-IG-dnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
