@@ -44,6 +44,8 @@
 		13707C3F1EBA437E00A59482 /* CoreDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13707C3E1EBA437E00A59482 /* CoreDataObject.swift */; };
 		13707C431EBD61C800A59482 /* CoreDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13707C421EBD61C800A59482 /* CoreDataTableViewController.swift */; };
 		13707C4F1EBE9C6900A59482 /* BopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13707C4E1EBE9C6900A59482 /* BopDetailViewController.swift */; };
+		13707C511EC4CC0800A59482 /* BopVenueImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13707C501EC4CC0800A59482 /* BopVenueImageViewController.swift */; };
+		13707C551EC4D6E300A59482 /* BopPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13707C541EC4D6E300A59482 /* BopPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +111,8 @@
 		13707C3E1EBA437E00A59482 /* CoreDataObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataObject.swift; sourceTree = "<group>"; };
 		13707C421EBD61C800A59482 /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewController.swift; sourceTree = "<group>"; };
 		13707C4E1EBE9C6900A59482 /* BopDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BopDetailViewController.swift; sourceTree = "<group>"; };
+		13707C501EC4CC0800A59482 /* BopVenueImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BopVenueImageViewController.swift; sourceTree = "<group>"; };
+		13707C541EC4D6E300A59482 /* BopPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BopPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,10 +240,8 @@
 				13187DA41EA842C7003426FB /* LoginViewController.swift */,
 				13187DED1EA846CE003426FB /* InterestPickerViewController.swift */,
 				13187DEF1EA846F5003426FB /* BopMapViewController.swift */,
-				13707C421EBD61C800A59482 /* CoreDataTableViewController.swift */,
-				13187DF11EA8474F003426FB /* BopTableViewController.swift */,
-				13707C4E1EBE9C6900A59482 /* BopDetailViewController.swift */,
-				13187DF31EA8477C003426FB /* BopTwitterViewController.swift */,
+				13707C521EC4D65500A59482 /* BopTableViewController */,
+				13707C531EC4D67C00A59482 /* BopDetailViewController */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -325,6 +327,26 @@
 				13187E1D1EAEF95A003426FB /* Photo+CoreDataProperties.swift */,
 			);
 			name = Photo;
+			sourceTree = "<group>";
+		};
+		13707C521EC4D65500A59482 /* BopTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				13707C421EBD61C800A59482 /* CoreDataTableViewController.swift */,
+				13187DF11EA8474F003426FB /* BopTableViewController.swift */,
+			);
+			name = BopTableViewController;
+			sourceTree = "<group>";
+		};
+		13707C531EC4D67C00A59482 /* BopDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				13707C4E1EBE9C6900A59482 /* BopDetailViewController.swift */,
+				13707C541EC4D6E300A59482 /* BopPageViewController.swift */,
+				13707C501EC4CC0800A59482 /* BopVenueImageViewController.swift */,
+				13187DF31EA8477C003426FB /* BopTwitterViewController.swift */,
+			);
+			name = BopDetailViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -489,6 +511,7 @@
 				13707C4F1EBE9C6900A59482 /* BopDetailViewController.swift in Sources */,
 				13187E221EAEF95A003426FB /* Photo.swift in Sources */,
 				13187DEE1EA846CE003426FB /* InterestPickerViewController.swift in Sources */,
+				13707C511EC4CC0800A59482 /* BopVenueImageViewController.swift in Sources */,
 				13187DEC1EA84651003426FB /* InterestButton.swift in Sources */,
 				13187E231EAEF95A003426FB /* Photo+CoreDataProperties.swift in Sources */,
 				13187DF01EA846F5003426FB /* BopMapViewController.swift in Sources */,
@@ -497,6 +520,7 @@
 				13707C3F1EBA437E00A59482 /* CoreDataObject.swift in Sources */,
 				13187E271EAEF95A003426FB /* Pin+CoreDataProperties.swift in Sources */,
 				13187E251EAEF95A003426FB /* Interest+CoreDataProperties.swift in Sources */,
+				13707C551EC4D6E300A59482 /* BopPageViewController.swift in Sources */,
 				13187E241EAEF95A003426FB /* Interest.swift in Sources */,
 				13187E021EABE84B003426FB /* PhotoResponse.swift in Sources */,
 				13707C431EBD61C800A59482 /* CoreDataTableViewController.swift in Sources */,

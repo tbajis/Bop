@@ -190,31 +190,74 @@
                                     <segue destination="yPM-I8-qWD" kind="embed" id="qUp-C6-w2U"/>
                                 </connections>
                             </containerView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJz-ge-peg">
-                                <rect key="frame" x="0.0" y="64" width="375" height="152"/>
-                            </scrollView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wht-gu-EwR">
+                                <rect key="frame" x="16" y="64" width="343" height="165"/>
+                                <connections>
+                                    <segue destination="IH9-G4-K5u" kind="embed" id="xOn-qS-gtd"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BJz-ge-peg" firstAttribute="leading" secondItem="L3z-At-CC7" secondAttribute="leading" id="6LT-f0-q2d"/>
+                            <constraint firstItem="wht-gu-EwR" firstAttribute="top" secondItem="Ugl-B7-kKN" secondAttribute="bottom" id="9TK-lf-oA2"/>
                             <constraint firstItem="hQB-Ba-ac4" firstAttribute="top" secondItem="y6b-uU-Kfh" secondAttribute="bottom" id="CwD-J6-zaF"/>
-                            <constraint firstAttribute="trailing" secondItem="BJz-ge-peg" secondAttribute="trailing" id="bs5-2x-e66"/>
+                            <constraint firstItem="y6b-uU-Kfh" firstAttribute="top" secondItem="wht-gu-EwR" secondAttribute="bottom" constant="43" id="D01-Nq-g1K"/>
+                            <constraint firstItem="wht-gu-EwR" firstAttribute="leading" secondItem="L3z-At-CC7" secondAttribute="leadingMargin" id="KKV-Hf-yKo"/>
                             <constraint firstItem="y6b-uU-Kfh" firstAttribute="leading" secondItem="L3z-At-CC7" secondAttribute="leadingMargin" id="g3r-rK-Yha"/>
+                            <constraint firstItem="wht-gu-EwR" firstAttribute="trailing" secondItem="L3z-At-CC7" secondAttribute="trailingMargin" id="hMN-0M-Pho"/>
                             <constraint firstItem="y6b-uU-Kfh" firstAttribute="trailing" secondItem="L3z-At-CC7" secondAttribute="trailingMargin" id="iXi-kv-nLC"/>
                             <constraint firstItem="y6b-uU-Kfh" firstAttribute="top" secondItem="L3z-At-CC7" secondAttribute="top" constant="272" id="llX-jN-ZPz"/>
-                            <constraint firstItem="y6b-uU-Kfh" firstAttribute="top" secondItem="BJz-ge-peg" secondAttribute="bottom" constant="56" id="m1q-u0-YlR"/>
-                            <constraint firstItem="y6b-uU-Kfh" firstAttribute="top" secondItem="BJz-ge-peg" secondAttribute="bottom" constant="56" id="qOZ-vC-GCC"/>
-                            <constraint firstItem="BJz-ge-peg" firstAttribute="top" secondItem="Ugl-B7-kKN" secondAttribute="bottom" id="t7z-gH-Y3w"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imagePageView" destination="wht-gu-EwR" id="l9o-Dc-P0m"/>
                         <outlet property="twitterView" destination="y6b-uU-Kfh" id="Q3a-Sj-cWx"/>
-                        <outlet property="venueScrollView" destination="BJz-ge-peg" id="Ena-Nd-0ce"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mPI-IG-dnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4148" y="250.52473763118442"/>
+        </scene>
+        <!--Bop Page View Controller-->
+        <scene sceneID="uyC-88-AQh">
+            <objects>
+                <pageViewController storyboardIdentifier="BopPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="IH9-G4-K5u" customClass="BopPageViewController" customModule="Bop" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w9b-zx-gdn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4982" y="-138"/>
+        </scene>
+        <!--Bop Venue Image View Controller-->
+        <scene sceneID="K4B-vb-bCB">
+            <objects>
+                <viewController storyboardIdentifier="BopVenueImageViewController" id="vAk-VN-rvA" customClass="BopVenueImageViewController" customModule="Bop" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cve-a7-Int"/>
+                        <viewControllerLayoutGuide type="bottom" id="LSq-4A-1AD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="w1i-5c-n9X">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4cG-6e-1Z9">
+                                <rect key="frame" x="16" y="20" width="343" height="647"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="4cG-6e-1Z9" secondAttribute="trailing" id="ANK-Tw-lpV"/>
+                            <constraint firstItem="4cG-6e-1Z9" firstAttribute="leading" secondItem="w1i-5c-n9X" secondAttribute="leadingMargin" id="B6F-e3-2cJ"/>
+                            <constraint firstItem="LSq-4A-1AD" firstAttribute="top" secondItem="4cG-6e-1Z9" secondAttribute="bottom" id="frx-my-Qm0"/>
+                            <constraint firstItem="4cG-6e-1Z9" firstAttribute="top" secondItem="cve-a7-Int" secondAttribute="bottom" id="p15-QG-DzK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentImageView" destination="4cG-6e-1Z9" id="uin-qz-pkv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IYH-k9-wKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5697" y="-143"/>
         </scene>
         <!--Bop Twitter View Controller-->
         <scene sceneID="7pv-sM-OWK">

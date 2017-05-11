@@ -15,13 +15,14 @@ class BopDetailViewController: UIViewController, FoursquareRequestType {
     
     // MARK: Properties
     var pin: Pin?
-    var imageIndex = 0
     var venueImages = [UIImage]()
     var scrollViewImages = [UIImage]()
 
     // MARK: Outlets
     @IBOutlet weak var twitterView: UIView!
     @IBOutlet weak var venueScrollView: UIScrollView!
+    @IBOutlet weak var imagePageView: UIView!
+    
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,8 @@ class BopDetailViewController: UIViewController, FoursquareRequestType {
     func configureSetUp(completion: @escaping (_ success: Bool) -> Void) {
         configureUI() { (success, photos) in
             self.configureImages(success, photos) { (success) in
-                self.configureScrollView()
+//                self.configureScrollView()
+//                self.configurePageViewController()
             }
         
         }
@@ -118,4 +120,8 @@ class BopDetailViewController: UIViewController, FoursquareRequestType {
         }
     }
     
+    func configurePageViewController() {
+        
+        let pageViewController = storyboard?.instantiateViewController(withIdentifier: "BopPageViewController") as! BopPageViewController
+    }
 }
