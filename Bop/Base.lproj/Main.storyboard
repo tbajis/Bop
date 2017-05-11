@@ -106,8 +106,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="in2-O4-PZX">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="in2-O4-PZX">
                                 <rect key="frame" x="0.0" y="142" width="375" height="476"/>
+                                <connections>
+                                    <outlet property="delegate" destination="qKG-Wg-Njq" id="aai-fy-8Ie"/>
+                                </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86F-5a-Qn8">
                                 <rect key="frame" x="239" y="112" width="78" height="30"/>
