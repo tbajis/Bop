@@ -17,96 +17,68 @@ class BopDetailViewController: UIViewController, FoursquareRequestType {
     var pin: Pin?
     var imageIndex = 0
     var venueImages = [UIImage]()
-    var maxImages = 2
-    
+    var scrollViewImages = [UIImage]()
+
     // MARK: Outlets
     @IBOutlet weak var twitterView: UIView!
-    @IBOutlet weak var venueImageView: UIImageView!
+    @IBOutlet weak var venueScrollView: UIScrollView!
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
     
         /* TODO: Configure the UI */
-        configureUI() { (success, photos) in
-            if success {
-                for photo in photos! {
-                    self.getFoursquareImages(photo) { (success, error, imageData) in
-                        performUIUpdatesOnMain {
-                            if success && error == nil {
-                                let venueImage = UIImage(data: imageData!)
-                                self.venueImages.append(venueImage!)
-                            } else {
-                                print("Image could not be downloaded")
-                            }
-                        self.venueImageView.image = self.venueImages[self.imageIndex]
-                        print("There are \(self.venueImages.count) images")
-                        }
-                    
-                    }
-                }
-            } else {
-                self.displayError("Image could not be downloaded and displayed")
-            }
+        configureSetUp() { (success) in
+            print("SUCCESS")
         }
+        
     }
     
     // MARK: Actions
     
-    @IBAction func swipedRight(_ sender: Any) {
-    
-        print("User swiped right")
-        imageIndex -= 1
-        if imageIndex < 0 {
-            imageIndex = maxImages
-        }
-        venueImageView.image = venueImages[imageIndex]
-    }
-    
-    @IBAction func swipedLeft(_ sender: Any) {
-    
-        print("User swiped left")
-        imageIndex += 1
-        if imageIndex > maxImages {
-            imageIndex = 0
-        }
-        venueImageView.image = venueImages[imageIndex]
-    }
-    
-    
-    
-    @IBAction func userDidSwipe(_ sender: Any) {
-        
-        if let gesture = sender as? UISwipeGestureRecognizer {
-            
-            switch gesture.direction {
-            case UISwipeGestureRecognizerDirection.right:
-                print("User swiped right")
-                imageIndex -= 1
-                if imageIndex < 0 {
-                    imageIndex = maxImages
-                }
-                venueImageView.image = venueImages[imageIndex]
-            case UISwipeGestureRecognizerDirection.left:
-                print("User swiped left")
-                imageIndex += 1
-                if imageIndex > maxImages {
-                    imageIndex = 0
-                }
-                venueImageView.image = venueImages[imageIndex]
-            default:
-                break
-            }
-
-        }
-        
-    }
-    
-    @IBAction func imageSwiped(_ sender: Any) {
-        
-            }
-    
     // MARK: Helpers
-    func configureUI(completion: @escaping (_ success: Bool, [Photo]?) -> Void) {
+    func configureSetUp(completion: @escaping (_ success: Bool) -> Void) {
+        configureUI() { (success, photos) in
+            self.configureImages(success, photos) { (success) in
+                self.configureScrollView()
+            }
+        
+        }
+    }
+    
+    func configureImages(_ success: Bool, _ photos: [Photo]?, _ completion: @escaping (_ success: Bool) -> Void) {
+        guard success else {
+            print("Venue Image data could not be acquired")
+            return
+        }
+        guard let photos = photos else {
+            print("No photos were found!")
+            return
+        }
+        for photo in photos {
+            self.getFoursquareImages(photo) { (success, error, imageData) in
+                performUIUpdatesOnMain {
+                    guard success == true, error == nil else {
+                        print("An error occured trying to use Image Data")
+                        return
+                    }
+                    guard let data = imageData else {
+                        print("No image data was provided")
+                        return
+                    }
+                    let venueImage = UIImage(data: data)
+                    self.venueImages.append(venueImage!)
+                    
+                    if self.venueImages.count == photos.count {
+                        print(self.venueImages.count)
+                        self.scrollViewImages = self.venueImages
+                        completion(true)
+                    }
+                }
+            }
+        }
+    }
+    
+    func configureUI(completion: @escaping (_ success: Bool, _ photos: [Photo]?) -> Void) {
         self.getPhotosForVenue(using: pin?.id) { (success, photoResponses, error) in
             performUIUpdatesOnMain {
                 var photos = [Photo]()
@@ -131,6 +103,19 @@ class BopDetailViewController: UIViewController, FoursquareRequestType {
     // MARK: Utilities
     func displayError(_ error: String?) {
         print(error)
+    }
+    
+    func configureScrollView() {
+        for i in 0..<scrollViewImages.count {
+            let imageView = UIImageView()
+            imageView.image = scrollViewImages[i]
+            imageView.contentMode = .scaleAspectFit
+            let x = self.view.frame.width * CGFloat(i)
+            imageView.frame = CGRect(x: x, y: self.venueScrollView.frame.origin.y, width: self.venueScrollView.frame.width, height: self.venueScrollView.frame.height)
+            
+            venueScrollView.contentSize.width = venueScrollView.frame.width * CGFloat(i + 1)
+            venueScrollView.addSubview(imageView)
+        }
     }
     
 }

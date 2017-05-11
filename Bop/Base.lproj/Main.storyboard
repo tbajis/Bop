@@ -187,46 +187,29 @@
                                     <segue destination="yPM-I8-qWD" kind="embed" id="qUp-C6-w2U"/>
                                 </connections>
                             </containerView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dL1-ut-NTb">
-                                <rect key="frame" x="16" y="64" width="343" height="149"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="149" id="Hyp-TY-bOA"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="9fa-7h-hOX" appends="YES" id="K7E-MY-pYw"/>
-                                    <outletCollection property="gestureRecognizers" destination="rGE-lb-puD" appends="YES" id="gOM-cl-5Dr"/>
-                                </connections>
-                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJz-ge-peg">
+                                <rect key="frame" x="0.0" y="64" width="375" height="152"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dL1-ut-NTb" firstAttribute="trailing" secondItem="L3z-At-CC7" secondAttribute="trailingMargin" id="D8w-v9-rwn"/>
-                            <constraint firstItem="hQB-Ba-ac4" firstAttribute="top" secondItem="y6b-uU-Kfh" secondAttribute="bottom" id="Jal-HE-7QF"/>
-                            <constraint firstItem="y6b-uU-Kfh" firstAttribute="top" secondItem="dL1-ut-NTb" secondAttribute="bottom" constant="59" id="L9h-JQ-cAO"/>
-                            <constraint firstItem="dL1-ut-NTb" firstAttribute="top" secondItem="Ugl-B7-kKN" secondAttribute="bottom" id="TcG-6g-Ubk"/>
-                            <constraint firstItem="y6b-uU-Kfh" firstAttribute="top" secondItem="dL1-ut-NTb" secondAttribute="bottom" constant="59" id="dEv-eS-DyH"/>
-                            <constraint firstItem="dL1-ut-NTb" firstAttribute="leading" secondItem="L3z-At-CC7" secondAttribute="leadingMargin" id="lFP-h6-3uI"/>
-                            <constraint firstItem="y6b-uU-Kfh" firstAttribute="trailing" secondItem="L3z-At-CC7" secondAttribute="trailingMargin" id="xQS-fV-K41"/>
-                            <constraint firstItem="y6b-uU-Kfh" firstAttribute="leading" secondItem="L3z-At-CC7" secondAttribute="leadingMargin" id="z4D-sW-4ba"/>
+                            <constraint firstItem="BJz-ge-peg" firstAttribute="leading" secondItem="L3z-At-CC7" secondAttribute="leading" id="6LT-f0-q2d"/>
+                            <constraint firstItem="hQB-Ba-ac4" firstAttribute="top" secondItem="y6b-uU-Kfh" secondAttribute="bottom" id="CwD-J6-zaF"/>
+                            <constraint firstAttribute="trailing" secondItem="BJz-ge-peg" secondAttribute="trailing" id="bs5-2x-e66"/>
+                            <constraint firstItem="y6b-uU-Kfh" firstAttribute="leading" secondItem="L3z-At-CC7" secondAttribute="leadingMargin" id="g3r-rK-Yha"/>
+                            <constraint firstItem="y6b-uU-Kfh" firstAttribute="trailing" secondItem="L3z-At-CC7" secondAttribute="trailingMargin" id="iXi-kv-nLC"/>
+                            <constraint firstItem="y6b-uU-Kfh" firstAttribute="top" secondItem="L3z-At-CC7" secondAttribute="top" constant="272" id="llX-jN-ZPz"/>
+                            <constraint firstItem="y6b-uU-Kfh" firstAttribute="top" secondItem="BJz-ge-peg" secondAttribute="bottom" constant="56" id="m1q-u0-YlR"/>
+                            <constraint firstItem="y6b-uU-Kfh" firstAttribute="top" secondItem="BJz-ge-peg" secondAttribute="bottom" constant="56" id="qOZ-vC-GCC"/>
+                            <constraint firstItem="BJz-ge-peg" firstAttribute="top" secondItem="Ugl-B7-kKN" secondAttribute="bottom" id="t7z-gH-Y3w"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="twitterView" destination="y6b-uU-Kfh" id="Q3a-Sj-cWx"/>
-                        <outlet property="venueImageView" destination="dL1-ut-NTb" id="oyX-Au-bE6"/>
+                        <outlet property="venueScrollView" destination="BJz-ge-peg" id="Ena-Nd-0ce"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mPI-IG-dnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="9fa-7h-hOX">
-                    <connections>
-                        <action selector="swipedRight:" destination="Ucs-Ev-xIV" id="I02-Bv-FkM"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="left" id="rGE-lb-puD">
-                    <connections>
-                        <action selector="swipedLeft:" destination="Ucs-Ev-xIV" id="htU-WQ-coC"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4148" y="250.52473763118442"/>
         </scene>
@@ -243,7 +226,7 @@
                                 <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ev8-f7-pee" id="AIR-UO-npr">
-                                    <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
