@@ -36,8 +36,6 @@
 		13187E071EAEEEF4003426FB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187E061EAEEEF4003426FB /* CoreDataStack.swift */; };
 		13187E221EAEF95A003426FB /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187E1C1EAEF95A003426FB /* Photo.swift */; };
 		13187E231EAEF95A003426FB /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187E1D1EAEF95A003426FB /* Photo+CoreDataProperties.swift */; };
-		13187E241EAEF95A003426FB /* Interest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187E1E1EAEF95A003426FB /* Interest.swift */; };
-		13187E251EAEF95A003426FB /* Interest+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187E1F1EAEF95A003426FB /* Interest+CoreDataProperties.swift */; };
 		13187E261EAEF95A003426FB /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187E201EAEF95A003426FB /* Pin.swift */; };
 		13187E271EAEF95A003426FB /* Pin+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13187E211EAEF95A003426FB /* Pin+CoreDataProperties.swift */; };
 		13707C3B1EB83ABD00A59482 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13707C3A1EB83ABD00A59482 /* CoreLocation.framework */; };
@@ -102,10 +100,9 @@
 		13187E1B1EAEF753003426FB /* Bop 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Bop 2.xcdatamodel"; sourceTree = "<group>"; };
 		13187E1C1EAEF95A003426FB /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Photo.swift; path = ../Photo.swift; sourceTree = "<group>"; };
 		13187E1D1EAEF95A003426FB /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Photo+CoreDataProperties.swift"; path = "../Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		13187E1E1EAEF95A003426FB /* Interest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Interest.swift; path = ../Interest.swift; sourceTree = "<group>"; };
-		13187E1F1EAEF95A003426FB /* Interest+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Interest+CoreDataProperties.swift"; path = "../Interest+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		13187E201EAEF95A003426FB /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pin.swift; path = ../Pin.swift; sourceTree = "<group>"; };
 		13187E211EAEF95A003426FB /* Pin+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pin+CoreDataProperties.swift"; path = "../Pin+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1360479D1EC7D1210090B496 /* Bop 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Bop 4.xcdatamodel"; sourceTree = "<group>"; };
 		13707C391EB191CA00A59482 /* Bop3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bop3.xcdatamodel; sourceTree = "<group>"; };
 		13707C3A1EB83ABD00A59482 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		13707C3E1EBA437E00A59482 /* CoreDataObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataObject.swift; sourceTree = "<group>"; };
@@ -290,21 +287,11 @@
 			name = Foursquare;
 			sourceTree = "<group>";
 		};
-		13187E141EAEF2CB003426FB /* Interest */ = {
-			isa = PBXGroup;
-			children = (
-				13187E1E1EAEF95A003426FB /* Interest.swift */,
-				13187E1F1EAEF95A003426FB /* Interest+CoreDataProperties.swift */,
-			);
-			name = Interest;
-			sourceTree = "<group>";
-		};
 		13187E151EAEF2DC003426FB /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
 				13187E061EAEEEF4003426FB /* CoreDataStack.swift */,
 				13707C3E1EBA437E00A59482 /* CoreDataObject.swift */,
-				13187E141EAEF2CB003426FB /* Interest */,
 				13187E161EAEF2FC003426FB /* Pin */,
 				13187E171EAEF305003426FB /* Photo */,
 			);
@@ -519,9 +506,7 @@
 				13187DF41EA8477C003426FB /* BopTwitterViewController.swift in Sources */,
 				13707C3F1EBA437E00A59482 /* CoreDataObject.swift in Sources */,
 				13187E271EAEF95A003426FB /* Pin+CoreDataProperties.swift in Sources */,
-				13187E251EAEF95A003426FB /* Interest+CoreDataProperties.swift in Sources */,
 				13707C551EC4D6E300A59482 /* BopPageViewController.swift in Sources */,
-				13187E241EAEF95A003426FB /* Interest.swift in Sources */,
 				13187E021EABE84B003426FB /* PhotoResponse.swift in Sources */,
 				13707C431EBD61C800A59482 /* CoreDataTableViewController.swift in Sources */,
 				13187DEA1EA845CD003426FB /* GCDBlackBox.swift in Sources */,
@@ -817,11 +802,12 @@
 		13187DA91EA842C7003426FB /* Bop.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				1360479D1EC7D1210090B496 /* Bop 4.xcdatamodel */,
 				13707C391EB191CA00A59482 /* Bop3.xcdatamodel */,
 				13187E1B1EAEF753003426FB /* Bop 2.xcdatamodel */,
 				13187DAA1EA842C7003426FB /* Bop.xcdatamodel */,
 			);
-			currentVersion = 13707C391EB191CA00A59482 /* Bop3.xcdatamodel */;
+			currentVersion = 1360479D1EC7D1210090B496 /* Bop 4.xcdatamodel */;
 			path = Bop.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

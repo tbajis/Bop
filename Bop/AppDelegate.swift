@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var docsDir = dirPaths[0]
         
         print("THIS IS THE LINK:\(docsDir):THIS IS THE END OF THE LINK")
+        
         // Register for Twitter with Fabric.app.
         Fabric.with([Twitter.self, Digits.self, Crashlytics.self])
         
@@ -41,12 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
             self.window?.makeKeyAndVisible()
             self.window?.rootViewController = loginViewController
-        } else {
-            if interestSaved() {
-                setInitialToTabViewController()
-            } else {
-                setInitialToInterestPicker()
-            }
         }
         return true
     }
@@ -74,32 +69,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
     }
 
-    func interestSaved() -> Bool {
-        
-        CoreDataObject.sharedInstance().executeInterestSearch()
-        guard let interests = CoreDataObject.sharedInstance().fetchedInterestResultsController.fetchedObjects as? [Interest], interests.count == 1 else {
-            print("No interest in CoreData")
-            return false
-        }
-        for interest in interests {
-            CoreDataObject.sharedInstance().interest = interest
-        }
-        return true
-    }
-    
-    func setInitialToInterestPicker() {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let interestPickerViewController = storyboard.instantiateViewController(withIdentifier: "InterestPickerViewController") as? InterestPickerViewController
-        self.window?.makeKeyAndVisible()
-        self.window?.rootViewController = interestPickerViewController
-    }
-    
-    func setInitialToTabViewController() {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let tabBarController = storyboard.instantiateViewController(withIdentifier: "MapAndTableTabBarController") as? UITabBarController
-        self.window?.makeKeyAndVisible()
-        self.window?.rootViewController = tabBarController
-    }
 }

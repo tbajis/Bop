@@ -15,6 +15,8 @@ import CoreLocation
 class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationManagerDelegate {
     
     // MARK: Properties
+    var interest = UserDefaults.standard.object(forKey: "Interest") as? String
+    
     // Create an instance of CLLocationManager to track user's location
     let locationManager = CLLocationManager()
     
@@ -31,6 +33,15 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadMapRegion()
+        configureMapWithPins() { (success) in
+            if success {
+                self.placePinsOnMap()
+            } else {
+                self.displayError("An eror occured placing pins on the map")
+            }
+        }
  
         
 //        mapView.delegate = self
@@ -63,33 +74,20 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
 
         
     }
-    
-    @IBAction func launchInterestPicker(_ sender: UIBarButtonItem) {
-        
-        if mapView.annotations.count > 0 {
-            for annotation in mapView.annotations {
-                mapView.removeAnnotation(annotation)
-            }
-        }
-        chooseInterest() {
-            self.configureMapWithPins() { (success) in
-                if success {
-                    self.placePinsOnMap()
-                } else {
-                    self.displayError("An error occured placing pins on the map")
-                }
-            }
-        }
-    }
 
     @IBAction func presetButtonPressed(_ sender: UIButton) {
         
         CoreDataObject.sharedInstance().executePinSearch()
-        configureMapWithPins() { (success) in
+        if let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin] {
+            print("PINS REMAINING: \(pins.count)")
+        }
+    }
+    
+    @IBAction func refresh() {
+        
+        removePinsFromMap() { (success) in
             if success {
-                self.placePinsOnMap()
-            } else {
-                self.displayError("An error occured placing pins on the map")
+                /* TODO: FETCH NEW PINS */
             }
         }
     }
@@ -97,12 +95,17 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
     // Helpers
     func configureMapWithPins(_ configCompletionStatus: @escaping(_ success: Bool) -> Void) {
         
-        CoreDataObject.sharedInstance().executePinSearch()
-        if CoreDataObject.sharedInstance().interest?.pins?.count == 0 {
-            searchForPins(searchCompletionStatus: configCompletionStatus)
-        } else {
-            configCompletionStatus(true)
+        guard (UserDefaults.standard.object(forKey: "Interest")) != nil else {
+            print("An error occured in which there is no interest stored!")
+            /* TODO: DISPLAY AN ERROR */
+            return
         }
+        CoreDataObject.sharedInstance().executePinSearch()
+        guard let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin], pins.count > 0 else {
+            searchForPins(searchCompletionStatus: configCompletionStatus)
+            return
+        }
+        configCompletionStatus(true)
     }
     
     func searchForPins(searchCompletionStatus: @escaping(_ success: Bool) -> Void) {
@@ -119,8 +122,7 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
                 }
                 for venue in venues {
                     let locationCoord = CLLocationCoordinate2DMake(venue.latitude!, venue.longitude!)
-                    let pin = Pin(name: venue.name, id: venue.id, latitude: locationCoord.latitude, longitude: locationCoord.longitude, address: "", checkinsCount: venue.checkinsCount!, context: AppDelegate.stack.context)
-                    pin.interest = CoreDataObject.sharedInstance().interest
+                    let _ = Pin(name: venue.name, id: venue.id, latitude: locationCoord.latitude, longitude: locationCoord.longitude, address: "", checkinsCount: venue.checkinsCount!, context: AppDelegate.stack.context)
                     AppDelegate.stack.save()
                 }
                 searchCompletionStatus(true)
@@ -131,14 +133,14 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
     private func placePinsOnMap() {
         
         CoreDataObject.sharedInstance().executePinSearch()
-        if let interests = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin] {
-            print("NUMBER OF PINS IS: \(interests.count)")
+        var pinsToAdd = [Pin]()
+        if let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin] {
+            print("NUMBER OF PINS IS: \(pins.count)")
+            for pin in pins {
+                pinsToAdd.append(pin)
+            }
         } else {
             print("THERE ARE NO PINS")
-        }
-        var pinsToAdd = [Pin]()
-        for pin in CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as! [Pin] {
-            pinsToAdd.append(pin)
         }
         mapView.addAnnotations(pinsToAdd)
     }
@@ -153,9 +155,11 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
     
     func deletePinInfo(deleteCompletionStatus: @escaping(_ success: Bool) -> Void) {
         
-        for pin in CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as! [Pin] {
-            AppDelegate.stack.context.delete(pin)
-            AppDelegate.stack.save()
+        if let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin] {
+            for pin in pins {
+                AppDelegate.stack.context.delete(pin)
+                AppDelegate.stack.save()
+            }
         }
         deleteCompletionStatus(true)
     }
@@ -189,13 +193,6 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
     }
     
     // Utilities
-    func chooseInterest(_ completion: @escaping () -> Void) {
-        
-        let interestController = storyboard?.instantiateViewController(withIdentifier: "InterestPickerViewController") as! InterestPickerViewController
-        interestController.completionHandlerForDismissal = completion
-        present(interestController, animated: true, completion: nil)
-    }
-    
     func displayError(_ error: String?) {
         
         let alertController = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.alert)

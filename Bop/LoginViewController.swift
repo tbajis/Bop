@@ -34,7 +34,7 @@ class LoginViewController: UIViewController, UIAlertViewDelegate {
             if session != nil {
                 performUIUpdatesOnMain {
                     // Navigate to the main app screen to select interests.
-                    self.navigateToMainAppScreen()
+                    self.navigateToInterestPicker()
                 }
                 
                 // Tie crashes to a Twitter user ID and username in Crashlytics.
@@ -63,7 +63,7 @@ class LoginViewController: UIViewController, UIAlertViewDelegate {
             if session != nil {
                 performUIUpdatesOnMain {
                     // Navigate to the main app to select intersts.
-                    self.navigateToMainAppScreen()
+                    self.navigateToInterestPicker()
                 }
                 
                 // Tie crashes to a Digits user ID in Crashlytics.
@@ -84,7 +84,7 @@ class LoginViewController: UIViewController, UIAlertViewDelegate {
         // Log Answers Custom Event.
         Answers.logCustomEvent(withName: "Logged In as Guest", customAttributes: nil)
         UserDefaults.standard.set(true, forKey: "guestLoggedIn")
-        navigateToMainAppScreen()
+        navigateToInterestPicker()
     }
     
     // MARK: Utilities
@@ -93,24 +93,7 @@ class LoginViewController: UIViewController, UIAlertViewDelegate {
     }
     
     // MARK: Helpers 
-    func navigateToMainAppScreen() {
-        
-        if interestSaved() {
-            let tabBarController = storyboard?.instantiateViewController(withIdentifier: "MapAndTableTabBarController") as! UITabBarController
-            present(tabBarController, animated: true, completion: nil)
-        } else {
-            let interestPickerController = storyboard?.instantiateViewController(withIdentifier: "InterestPickerViewController") as! InterestPickerViewController
-            present(interestPickerController, animated: true, completion: nil)
-        }
-    }
-    
-    func interestSaved() -> Bool {
-        
-        CoreDataObject.sharedInstance().executeInterestSearch()
-        guard let interest = CoreDataObject.sharedInstance().fetchedInterestResultsController.fetchedObjects as? [Interest], interest.count > 0 else {
-            print("No interest in CoreData")
-            return false
-        }
-        return true
+    func navigateToInterestPicker() {
+        performSegue(withIdentifier: "showInterestPicker", sender: self)
     }
 }

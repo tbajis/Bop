@@ -13,7 +13,6 @@ import UIKit
 class InterestPickerViewController: UIViewController {
     
     // MARK: Properties
-    var completionHandlerForDismissal: () -> Void = { }
     var isfirstPick = (UserDefaults.standard.object(forKey: "isFirstPick") as? Bool) ?? true
     
     // MARK: Outlets
@@ -25,7 +24,6 @@ class InterestPickerViewController: UIViewController {
         super.viewDidLoad()
 
         continueButton.isEnabled = false
-        CoreDataObject.sharedInstance().executeInterestSearch()
         
         // Set buttons to red background color
         for button in interestButtons {
@@ -36,22 +34,14 @@ class InterestPickerViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let interests = CoreDataObject.sharedInstance().fetchedInterestResultsController.fetchedObjects as? [Interest] {
-            for interest in interests {
-                AppDelegate.stack.context.delete(interest)
-                AppDelegate.stack.save()
-            }
-        }
-        
-        if let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin] {
-            for pin in pins {
-                AppDelegate.stack.context.delete(pin)
-                AppDelegate.stack.save()
-            }
+        if let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin], pins.count > 0 {
+            /* TODO: SET BAR BUTTON TO ENABLE IF PINS STORED*/
         }
     }
     
     // MARK: Actions
+    /* TODO: CREATE ACTION FOR SAVED INTEREST BUTTON */
+    
     @IBAction func interestButtonPressed(_ sender: InterestButton) {
         
         toggleButton(sender, {
@@ -63,27 +53,10 @@ class InterestPickerViewController: UIViewController {
         
         for button in interestButtons {
             if button.isToggle {
-                let category = String(button.tag)
                 let query = button.queryString(for: InterestButton.Category(rawValue: sender.tag)!)
+                UserDefaults.standard.set(query, forKey: "Interest")
+                navigateToTabBarController(with: "continueToTabBar")
                 
-                CoreDataObject.sharedInstance().executeInterestSearch()
-                guard let interest = CoreDataObject.sharedInstance().fetchedInterestResultsController.fetchedObjects as? [Interest], interest.count == 0 else {
-                    print("An error occured: Overwriting Interest")
-                    return
-                }
-                let instance = Interest(category: category, query: query, context: AppDelegate.stack.context)
-                AppDelegate.stack.save()
-                
-                switch isfirstPick {
-                case true:
-                    CoreDataObject.sharedInstance().interest = instance
-                    navigateToTabBarController( {
-                        UserDefaults.standard.set(false, forKey: "isFirstPick")
-                    })
-                case false:
-                    CoreDataObject.sharedInstance().interest = instance
-                    dismissToTabViewController(completionHandlerForDismissal)
-                }
             }
         }
     }
@@ -109,15 +82,27 @@ class InterestPickerViewController: UIViewController {
             }
         }
     }
-    
+
     // Helpers
-    func navigateToTabBarController(_ completion: @escaping(() -> Void)) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let tabBarController = storyboard?.instantiateViewController(withIdentifier: "MapAndTableTabBarController") as! UITabBarController
-        present(tabBarController, animated: true, completion: completion)
+        if segue.identifier == "continueToTabBar" {
+            deletePins()
+        }
+    }
+
+    func navigateToTabBarController(with identifier: String) {
+        performSegue(withIdentifier: identifier, sender: self)
+        
     }
     
-    func dismissToTabViewController(_ completionHandler: @escaping () -> Void) {
-        self.dismiss(animated: true, completion: completionHandler)
+    func deletePins() {
+        
+        if let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin] {
+            for pin in pins {
+                AppDelegate.stack.context.delete(pin)
+                AppDelegate.stack.save()
+            }
+        }
     }
 }

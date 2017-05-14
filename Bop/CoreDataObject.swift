@@ -13,37 +13,18 @@ import CoreData
 class CoreDataObject: NSObject {
     
     // MARK: Properties
-    var interest: Interest?
     var pin: Pin?
     var photo: Photo?
     
-    // MARK: FetchedResultsControllers
-    lazy var fetchedInterestResultsController: NSFetchedResultsController<NSFetchRequestResult> = {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Interest")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: AppDelegate.stack.context, sectionNameKeyPath: nil, cacheName: nil)
-        return fetchedResultsController
-    }()
-
-    
+    // MARK: FetchedResultsController
     lazy var fetchedPinResultsController: NSFetchedResultsController<NSFetchRequestResult> = {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Pin")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
-//        fetchRequest.predicate = NSPredicate(format: "interest == %@", self.interest!)
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: AppDelegate.stack.context, sectionNameKeyPath: nil, cacheName: nil)
         return fetchedResultsController
     }()
     
     // MARK: Methods
-    func executeInterestSearch() {
-        
-        do {
-            try fetchedInterestResultsController.performFetch()
-        } catch let e as NSError {
-            print("Error while trying to perform a search: \n\(e)\n\(fetchedPinResultsController)")
-        }
-    }
-    
     func executePinSearch() {
         
         do {

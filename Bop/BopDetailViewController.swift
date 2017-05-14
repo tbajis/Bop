@@ -92,8 +92,7 @@ class BopDetailViewController: UIViewController, FoursquareRequestType {
                 for photoResponse in photoResponses! {
                     let urlString = photoResponse.mediaURL?.absoluteString
                     print(urlString)
-                    let photo = Photo(id: photoResponse.id, prefix: nil, suffix: nil, height: Double(photoResponse.height!), width: Double(photoResponse.width!), mediaURL: urlString!, context: AppDelegate.stack.context)
-                    photo.pin = self.pin
+                    let photo = Photo(id: photoResponse.id, height: Double(photoResponse.height!), width: Double(photoResponse.width!), mediaURL: urlString!, context: AppDelegate.stack.context)
                     photos.append(photo)
                     AppDelegate.stack.save()
                 }
