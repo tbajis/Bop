@@ -153,7 +153,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Venues" id="GKD-Z3-11N">
                         <barButtonItem key="backBarButtonItem" title="Map" id="8vf-Fw-DPn"/>
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="m5C-Xq-Ls5"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="m5C-Xq-Ls5">
+                            <connections>
+                                <action selector="logout:" destination="qKG-Wg-Njq" id="ZTM-ar-mpC"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="DPo-Dk-2Wl">
                             <connections>
                                 <action selector="refresh" destination="qKG-Wg-Njq" id="fmn-b6-FCY"/>
@@ -325,7 +329,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Venues" id="7wU-M8-aUM">
                         <barButtonItem key="backBarButtonItem" title="Table" id="5v0-Qx-vSp"/>
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="TzI-ow-E9l"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="TzI-ow-E9l">
+                            <connections>
+                                <action selector="logout:" destination="sXC-7X-Qrj" id="D6O-iV-U78"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="Ucs-Ev-xIV" kind="show" identifier="showDetailFromTable" id="e7k-Is-rTd"/>
@@ -482,6 +490,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eeu-ov-Lq0"/>
+        <segue reference="e7k-Is-rTd"/>
     </inferredMetricsTieBreakers>
 </document>
