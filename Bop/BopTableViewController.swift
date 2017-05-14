@@ -36,30 +36,6 @@ class BopTableViewController: CoreDataTableViewController {
         tableView.reloadData()
     }
     
-    // MARK: Actions
-    @IBAction func logout(_ sender: UIBarButtonItem) {
-        // Remove any Twitter or Digits local session for this app.
-        let sessionStore = Twitter.sharedInstance().sessionStore
-        if let userId = sessionStore.session()?.userID {
-            sessionStore.logOutUserID(userId)
-        }
-        Digits.sharedInstance().logOut()
-        
-        // Remove user information for any upcoming crashes in Crashlytics.
-        Crashlytics.sharedInstance().setUserIdentifier(nil)
-        Crashlytics.sharedInstance().setUserName(nil)
-        
-        // Log Answers Custom Event.
-        Answers.logCustomEvent(withName: "Signed Out", customAttributes: nil)
-        
-        // Set Guest Login to false
-        UserDefaults.standard.set(false, forKey: "guestLoggedIn")
-        
-        // Present the Login Screen again
-        let loginViewController = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-        present(loginViewController, animated: true, completion: nil)
-    }
-    
     // MARK: TableView Data Source
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         

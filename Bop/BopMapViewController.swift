@@ -103,26 +103,33 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
     }
     
     @IBAction func logout(_ sender: UIBarButtonItem) {
-        // Remove any Twitter or Digits local session for this app. 
-        let sessionStore = Twitter.sharedInstance().sessionStore
-        if let userId = sessionStore.session()?.userID {
-            sessionStore.logOutUserID(userId)
+        
+        // Remove Pins from CoreData
+        removePinsFromMap() { (success) in
+            if success {
+                // Remove any Twitter or Digits local session for this app.
+                let sessionStore = Twitter.sharedInstance().sessionStore
+                if let userId = sessionStore.session()?.userID {
+                    sessionStore.logOutUserID(userId)
+                }
+                Digits.sharedInstance().logOut()
+                
+                // Remove user information for any upcoming crashes in Crashlytics.
+                Crashlytics.sharedInstance().setUserIdentifier(nil)
+                Crashlytics.sharedInstance().setUserName(nil)
+                
+                // Log Answers Custom Event.
+                Answers.logCustomEvent(withName: "Signed Out", customAttributes: nil)
+                
+                // Set Guest Login to false
+                UserDefaults.standard.set(false, forKey: "guestLoggedIn")
+                
+                // Present the Login Screen again
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                self.present(loginViewController, animated: true, completion: nil)
+            }
         }
-        Digits.sharedInstance().logOut()
-        
-        // Remove user information for any upcoming crashes in Crashlytics.
-        Crashlytics.sharedInstance().setUserIdentifier(nil)
-        Crashlytics.sharedInstance().setUserName(nil)
-        
-        // Log Answers Custom Event.
-        Answers.logCustomEvent(withName: "Signed Out", customAttributes: nil)
-        
-        // Set Guest Login to false
-        UserDefaults.standard.set(false, forKey: "guestLoggedIn")
-        
-        // Present the Login Screen again
-        let loginViewController = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-        present(loginViewController, animated: true, completion: nil)
     }
     
     

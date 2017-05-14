@@ -176,7 +176,7 @@
         <!--Bop Detail View Controller-->
         <scene sceneID="VQV-Dd-S9b">
             <objects>
-                <viewController storyboardIdentifier="TestViewController" id="Ucs-Ev-xIV" customClass="BopDetailViewController" customModule="Bop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TestViewController" hidesBottomBarWhenPushed="YES" id="Ucs-Ev-xIV" customClass="BopDetailViewController" customModule="Bop" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ugl-B7-kKN"/>
                         <viewControllerLayoutGuide type="bottom" id="hQB-Ba-ac4"/>
@@ -329,11 +329,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Venues" id="7wU-M8-aUM">
                         <barButtonItem key="backBarButtonItem" title="Table" id="5v0-Qx-vSp"/>
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="TzI-ow-E9l">
-                            <connections>
-                                <action selector="logout:" destination="sXC-7X-Qrj" id="D6O-iV-U78"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="Ucs-Ev-xIV" kind="show" identifier="showDetailFromTable" id="e7k-Is-rTd"/>
