@@ -41,8 +41,8 @@ extension FoursquareRequestType {
             FoursquareConstants.JSONRequestKeys.Query: query,
             FoursquareConstants.JSONRequestKeys.Limit: "10",
             FoursquareConstants.JSONRequestKeys.Date: generateDate(),
-            FoursquareConstants.JSONRequestKeys.ResponseType: "foursquare"
-//            FoursquareConstants.JSONRequestKeys.Radius: "10"
+            FoursquareConstants.JSONRequestKeys.ResponseType: "foursquare",
+            FoursquareConstants.JSONRequestKeys.Radius: "10000"
         ] as [String:AnyObject]
         
         let _ = taskForGETMethod(FoursquareConstants.Methods.GETSearchVenues, parameters: parameters) { (result, error) in

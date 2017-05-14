@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -119,7 +118,7 @@
                                     <constraint firstAttribute="width" constant="78" id="GkO-rP-lwM"/>
                                     <constraint firstAttribute="height" constant="30" id="NoZ-S4-Wzz"/>
                                 </constraints>
-                                <state key="normal" title="Search DC!"/>
+                                <state key="normal" title="Search NYC!"/>
                                 <connections>
                                     <action selector="presetButtonPressed:" destination="qKG-Wg-Njq" eventType="touchUpInside" id="s0v-0d-Gql"/>
                                 </connections>
@@ -155,14 +154,11 @@
                     <navigationItem key="navigationItem" title="Venues" id="GKD-Z3-11N">
                         <barButtonItem key="backBarButtonItem" title="Map" id="8vf-Fw-DPn"/>
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="m5C-Xq-Ls5"/>
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="DPo-Dk-2Wl">
-                                <connections>
-                                    <action selector="refresh" destination="qKG-Wg-Njq" id="fmn-b6-FCY"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="search" id="cXq-bi-ToC"/>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="DPo-Dk-2Wl">
+                            <connections>
+                                <action selector="refresh" destination="qKG-Wg-Njq" id="fmn-b6-FCY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="in2-O4-PZX" id="dyp-Yj-mVs"/>
@@ -337,7 +333,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TnK-Sy-Zab" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3978" y="693"/>
+            <point key="canvasLocation" x="3977" y="691"/>
         </scene>
         <!--Table-->
         <scene sceneID="OWx-ML-mh3">

@@ -21,11 +21,8 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
     let locationManager = CLLocationManager()
     
     // Create objects for mapView span and region
-    var span: MKCoordinateSpan?
-    var region: MKCoordinateRegion?
-    var userLocation: CLLocation?
-    let dcLocationCenter = CLLocationCoordinate2D(latitude: 40.7, longitude: -74)
-    let dcLocationSpan = MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)
+    var userRegion: MKCoordinateRegion?
+    let newYorkCity = CLLocationCoordinate2D(latitude: 40.7, longitude: -74)
     
     // MARK: Outlets
     @IBOutlet weak var mapView: MKMapView!
@@ -34,52 +31,54 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadMapRegion()
-        configureMapWithPins() { (success) in
-            if success {
-                self.placePinsOnMap()
-            } else {
-                self.displayError("An eror occured placing pins on the map")
-            }
-        }
- 
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         
-//        mapView.delegate = self
-//        loadMapRegion()
-//        configureMapWithPins() { (success) in
-//            if success {
-//                self.loadRegionFromSearch(self.dcLocationCenter, self.dcLocationSpan)
-//                self.placePinsOnMap()
-//            } else {
-//                self.displayError("An error occured placing pins on the map")
-//            }
-//        }
-//        print("ViewDidLoad called")
+        loadMapRegion()
+        CoreDataObject.sharedInstance().executePinSearch()
+        placePinsOnMap()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-
     }
     
     // MARK: Actions
     @IBAction func searchWithLocation(_ sender: UIButton) {
-        /* TODO: Implement getVenuesBySearch for user's current location */
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
         
-        locationManager.startUpdatingLocation()
-
-        
+        guard let coordinate = userRegion?.center else {
+            self.displayError("User location could not be identified")
+            return
+        }
+        removePinsFromMap() { (success) in
+            if success {
+                self.searchForPins(with: coordinate) { (success) in
+                    if success {
+                        self.setRegionFromSearch(using: coordinate)
+                        self.placePinsOnMap()
+                    } else {
+                        self.displayError("An error occured placing pins on map")
+                    }
+                }
+            }
+        }
     }
 
     @IBAction func presetButtonPressed(_ sender: UIButton) {
         
-        CoreDataObject.sharedInstance().executePinSearch()
-        if let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin] {
-            print("PINS REMAINING: \(pins.count)")
+        removePinsFromMap() { (success) in
+            if success {
+                self.searchForPins(with: self.newYorkCity) { (success) in
+                    if success {
+                        self.setRegionFromSearch(using: self.newYorkCity)
+                        self.placePinsOnMap()
+                    } else {
+                        self.displayError("An error occured placing pins on map")
+                    }
+                }
+            }
         }
     }
     
@@ -87,12 +86,20 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
         
         removePinsFromMap() { (success) in
             if success {
-                /* TODO: FETCH NEW PINS */
+                let mapCenter = self.mapView.centerCoordinate
+                self.searchForPins(with: mapCenter) { (success) in
+                    if success {
+                        self.setRegionFromSearch(using: mapCenter)
+                        self.placePinsOnMap()
+                    } else {
+                        self.displayError("An error occured placing pins on map")
+                    }
+                }
             }
         }
     }
     
-    // Helpers
+    // MARK: Helpers
     func configureMapWithPins(_ configCompletionStatus: @escaping(_ success: Bool) -> Void) {
         
         guard (UserDefaults.standard.object(forKey: "Interest")) != nil else {
@@ -102,15 +109,15 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
         }
         CoreDataObject.sharedInstance().executePinSearch()
         guard let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin], pins.count > 0 else {
-            searchForPins(searchCompletionStatus: configCompletionStatus)
+            searchForPins(with: newYorkCity, searchCompletionStatus: configCompletionStatus)
             return
         }
         configCompletionStatus(true)
     }
     
-    func searchForPins(searchCompletionStatus: @escaping(_ success: Bool) -> Void) {
+    func searchForPins(with coordinate: CLLocationCoordinate2D, searchCompletionStatus: @escaping(_ success: Bool) -> Void) {
         
-        getVenuesBySearch(using: "bars", latitude: 40.7, longitude: -74) { (success, venues, error) in
+        getVenuesBySearch(using: "bars", latitude: coordinate.latitude, longitude: coordinate.longitude) { (success, venues, error) in
             performUIUpdatesOnMain {
                 guard success else {
                     self.displayError(error)
@@ -163,10 +170,10 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
         }
         deleteCompletionStatus(true)
     }
-    
-    func loadRegionFromSearch(_ center: CLLocationCoordinate2D, _ span: MKCoordinateSpan) {
+
+    func setRegionFromSearch(using center: CLLocationCoordinate2D) {
         
-        let region = MKCoordinateRegion(center: center, span: span)
+        let region = MKCoordinateRegionMakeWithDistance(center, 15000, 15000)
         mapView.setRegion(region, animated: true)
     }
     
@@ -192,7 +199,7 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
         }
     }
     
-    // Utilities
+    // MARK: Utilities
     func displayError(_ error: String?) {
         
         let alertController = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.alert)
@@ -246,10 +253,8 @@ extension BopMapViewController {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations[0]
-        self.userLocation = location
-        self.span = MKCoordinateSpanMake(0.25, 0.25)
-        let updatedLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-        self.region = MKCoordinateRegionMake(updatedLocation, span!)
+        let currentRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 15000, 15000)
+        self.userRegion = currentRegion
         self.mapView.showsUserLocation = true
     }
 }
