@@ -28,15 +28,23 @@ class BopDetailViewController: UIViewController, FoursquareRequestType {
         super.viewDidLoad()
     
         /* TODO: Configure the UI */
-        configureSetUp() { (success) in
-            print("SUCCESS")
-        }
+//        configureSetUp() { (success) in
+//            print("SUCCESS")
+//        }
         
     }
     
     // MARK: Actions
     
     // MARK: Helpers
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showPageView" {
+            let destinationController = segue.destination as! BopPageViewController
+            destinationController.pin = pin
+        }
+    }
+    
     func configureSetUp(completion: @escaping (_ success: Bool) -> Void) {
         configureUI() { (success, photos) in
             self.configureImages(success, photos) { (success) in

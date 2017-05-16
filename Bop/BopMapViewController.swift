@@ -224,8 +224,9 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
             mapView.setRegion(updatedRegion, animated: true)
         }
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "showDetailFromMap" {
             let pin = sender as! Pin
             let detailController = segue.destination as! BopDetailViewController

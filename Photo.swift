@@ -5,12 +5,11 @@
 //  Created by Thomas Manos Bajis on 4/24/17.
 //  Copyright © 2017 Thomas Manos Bajis. All rights reserved.
 //
-
 import Foundation
 import CoreData
 
 class Photo: NSManagedObject {
-
+    
     // MARK: Initializer
     convenience init(id: String?, height: Double, width: Double, mediaURL: String, context: NSManagedObjectContext) {
         if let ent = NSEntityDescription.entity(forEntityName: "Photo", in: context) {

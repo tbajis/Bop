@@ -194,7 +194,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wht-gu-EwR">
                                 <rect key="frame" x="16" y="64" width="343" height="165"/>
                                 <connections>
-                                    <segue destination="IH9-G4-K5u" kind="embed" id="xOn-qS-gtd"/>
+                                    <segue destination="IH9-G4-K5u" kind="embed" identifier="showPageView" id="xOn-qS-gtd"/>
                                 </connections>
                             </containerView>
                         </subviews>

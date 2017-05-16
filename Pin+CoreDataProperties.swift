@@ -20,6 +20,5 @@ extension Pin {
     @NSManaged var longitude: Double
     @NSManaged var name: String?
     @NSManaged var photos: NSSet?
-
 }
 

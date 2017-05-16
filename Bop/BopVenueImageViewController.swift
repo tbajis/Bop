@@ -12,10 +12,10 @@ class BopVenueImageViewController: UIViewController {
     
     // MARK: Properties
     var itemIndex: Int = 0
-    var imageName: String = "" {
+    var imageName: UIImage = UIImage(named: "placeholder")! {
         didSet {
             if let imageView = contentImageView {
-                imageView.image = UIImage(named: imageName)
+                imageView.image = imageName
             }
         }
     }
@@ -27,7 +27,6 @@ class BopVenueImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        contentImageView.image = UIImage(named: imageName)
-    }
-    
+        contentImageView.image = imageName
+    }    
 }
