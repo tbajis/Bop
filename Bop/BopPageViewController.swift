@@ -7,12 +7,22 @@
 //
 
 import UIKit
+import CoreData
 
 class BopPageViewController: UIPageViewController, UIPageViewControllerDataSource, FoursquareRequestType {
 
     // MARK: Properties
     var contentImages: [UIImage] = [UIImage(named: "placeholder")!]
     var pin: Pin?
+    
+    // Create NSFetchedResultsController
+    lazy var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>? = {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Photo")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        fetchRequest.predicate = NSPredicate(format: "pin == %@", self.pin!)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: AppDelegate.stack.context, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultsController
+    }()
     
     // MARK: Outlets
     
@@ -24,6 +34,26 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
         
         if pin != nil {
             print("This worked!")
+        }
+        
+        executeSearch()
+        guard fetchedResultsController?.fetchedObjects?.count == 0 else {
+            let photos = fetchedResultsController?.fetchedObjects as? [Photo]
+            self.getVenueImages(true, photos){ (success) in
+                performUIUpdatesOnMain {
+                    guard success == true else {
+                        print("AN ERROR OCCURED LOADING PHOTOS FROM CORE DATA")
+                        return
+                    }
+                    print("LOADED PHOTOS FROM COREDATA")
+                    if self.contentImages.count > 0 {
+                        let firstController = self.getItemController(0)!
+                        let startingViewControllers = [firstController]
+                        self.setViewControllers(startingViewControllers, direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+                    }
+                }
+            }
+            return
         }
         
         setVenueImages() { (success) in
@@ -52,6 +82,17 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
     }
 
     // MARK: Helpers
+    func executeSearch() {
+        
+        if let fc = fetchedResultsController {
+            do {
+                try fc.performFetch()
+            } catch let e as NSError {
+                print("Error while trying to perform a search: \n\(e)\n\(fetchedResultsController)")
+            }
+        }
+    }
+    
     func setVenueImages(completion: @escaping (_ success: Bool) -> Void) {
         
         getImageInfo() { (success, photos) in
@@ -187,5 +228,19 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return 0
+    }
+}
+
+// MARK: BopPageViewController - NSFetchedResultsControllerDelegate
+extension BopPageViewController: NSFetchedResultsControllerDelegate {
+    
+    // MARK: - NSFetchedResultsControllerDelegate
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    }
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+    }
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    }
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
     }
 }
