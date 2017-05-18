@@ -488,7 +488,7 @@
     <resources>
         <image name="Phone" width="18" height="30"/>
         <image name="Twitter" width="26" height="22"/>
-        <image name="bgLogin" width="375" height="667"/>
+        <image name="bgLogin" width="750" height="1334"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="e7k-Is-rTd"/>
