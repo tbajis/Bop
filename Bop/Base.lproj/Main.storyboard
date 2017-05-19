@@ -469,17 +469,24 @@
                                     <constraint firstAttribute="height" constant="44" id="Y0R-dD-Dre"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Choose Your Interest!" id="QJS-Gi-TaF"/>
+                                    <navigationItem title="Choose Your Interest!" id="QJS-Gi-TaF">
+                                        <barButtonItem key="rightBarButtonItem" image="pin" id="Q4F-g7-IWL">
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="mapButtonPressed:" destination="0Uq-fh-RlM" id="PeP-3k-8lu"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="vt9-fk-zjs">
-                                <rect key="frame" x="47" y="157" width="281.5" height="500"/>
+                                <rect key="frame" x="47" y="114" width="281.5" height="543"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5Kc-oV-EGJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="281.5" height="109"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="281.5" height="120"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KkC-pR-Rm3" userLabel="Sports" customClass="InterestButton" customModule="Bop" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="131" height="109"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="131" height="120"/>
                                                 <state key="normal" image="football"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -498,7 +505,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peW-ec-xGM" userLabel="Music" customClass="InterestButton" customModule="Bop" customModuleProvider="target">
-                                                <rect key="frame" x="151" y="0.0" width="130.5" height="109"/>
+                                                <rect key="frame" x="151" y="0.0" width="130.5" height="120"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" image="piano"/>
                                                 <userDefinedRuntimeAttributes>
@@ -521,10 +528,10 @@
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="JQ9-eB-7DQ">
-                                        <rect key="frame" x="0.0" y="130" width="281.5" height="109.5"/>
+                                        <rect key="frame" x="0.0" y="141" width="281.5" height="120"/>
                                         <subviews>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7TK-if-eFk" userLabel="Food" customClass="InterestButton" customModule="Bop" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="131" height="109.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="131" height="120"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" image="cake"/>
                                                 <userDefinedRuntimeAttributes>
@@ -544,7 +551,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X9d-LX-Fjg" userLabel="Fashion" customClass="InterestButton" customModule="Bop" customModuleProvider="target">
-                                                <rect key="frame" x="151" y="0.0" width="130.5" height="109.5"/>
+                                                <rect key="frame" x="151" y="0.0" width="130.5" height="120"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" image="disguise"/>
                                                 <userDefinedRuntimeAttributes>
@@ -566,10 +573,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MDg-2g-EnX">
-                                        <rect key="frame" x="0.0" y="260.5" width="281.5" height="109"/>
+                                        <rect key="frame" x="0.0" y="282" width="281.5" height="120"/>
                                         <subviews>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DpV-ST-BGW" userLabel="Art" customClass="InterestButton" customModule="Bop" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="131" height="109"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="131" height="120"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" image="palette"/>
                                                 <userDefinedRuntimeAttributes>
@@ -589,7 +596,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGp-bs-OTV" userLabel="Culture" customClass="InterestButton" customModule="Bop" customModuleProvider="target">
-                                                <rect key="frame" x="151" y="0.0" width="130.5" height="109"/>
+                                                <rect key="frame" x="151" y="0.0" width="130.5" height="120"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" image="shoppingBag"/>
                                                 <userDefinedRuntimeAttributes>
@@ -611,10 +618,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="qmP-r6-WiN">
-                                        <rect key="frame" x="0.0" y="390.5" width="281.5" height="109.5"/>
+                                        <rect key="frame" x="0.0" y="423" width="281.5" height="120"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FuX-Pz-oc0" customClass="LoginButton" customModule="Bop" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="59.5" width="281.5" height="50"/>
+                                                <rect key="frame" x="0.0" y="70" width="281.5" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="nFK-Xr-eJ8"/>
                                                 </constraints>
@@ -644,9 +651,9 @@
                         <constraints>
                             <constraint firstItem="PFq-oz-UWX" firstAttribute="top" secondItem="0lU-80-BPQ" secondAttribute="bottom" id="0pr-N7-cwa"/>
                             <constraint firstItem="PFq-oz-UWX" firstAttribute="leading" secondItem="JXd-1r-rYb" secondAttribute="leading" id="2F6-ae-qwN"/>
+                            <constraint firstItem="vt9-fk-zjs" firstAttribute="top" secondItem="PFq-oz-UWX" secondAttribute="bottom" constant="50" id="6SK-oj-lal"/>
                             <constraint firstItem="5mr-3b-qEK" firstAttribute="top" secondItem="vt9-fk-zjs" secondAttribute="bottom" constant="10" id="7ML-uS-abE"/>
                             <constraint firstItem="vt9-fk-zjs" firstAttribute="centerX" secondItem="JXd-1r-rYb" secondAttribute="centerX" id="DcK-vG-8b7"/>
-                            <constraint firstItem="vt9-fk-zjs" firstAttribute="height" secondItem="JXd-1r-rYb" secondAttribute="height" multiplier="3/4" id="OXW-cg-54q"/>
                             <constraint firstItem="wLe-lW-KEA" firstAttribute="centerY" secondItem="JXd-1r-rYb" secondAttribute="centerY" id="Sl9-LA-PGy"/>
                             <constraint firstItem="vt9-fk-zjs" firstAttribute="width" secondItem="JXd-1r-rYb" secondAttribute="width" multiplier="3/4" id="U0b-PS-7pu"/>
                             <constraint firstItem="wLe-lW-KEA" firstAttribute="centerX" secondItem="JXd-1r-rYb" secondAttribute="centerX" id="Y5p-Fu-khJ"/>
@@ -658,6 +665,7 @@
                     <navigationItem key="navigationItem" id="cnc-IU-vI6"/>
                     <connections>
                         <outlet property="continueButton" destination="FuX-Pz-oc0" id="krV-Z3-xrX"/>
+                        <outlet property="mapButton" destination="Q4F-g7-IWL" id="G23-Ac-41X"/>
                         <outlet property="navigationBar" destination="PFq-oz-UWX" id="oP9-8a-HR7"/>
                         <outletCollection property="interestButtons" destination="KkC-pR-Rm3" collectionClass="NSMutableArray" id="34H-MG-eFq"/>
                         <outletCollection property="interestButtons" destination="peW-ec-xGM" collectionClass="NSMutableArray" id="ERX-pk-OZl"/>
@@ -684,6 +692,7 @@
         <image name="football" width="28" height="28"/>
         <image name="palette" width="26" height="28"/>
         <image name="piano" width="28" height="20"/>
+        <image name="pin" width="19" height="28"/>
         <image name="shoppingBag" width="24" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>

@@ -13,36 +13,49 @@ import UIKit
 class InterestPickerViewController: UIViewController {
     
     // MARK: Properties
-    var isfirstPick = (UserDefaults.standard.object(forKey: "isFirstPick") as? Bool) ?? true
     
     // MARK: Outlets
     @IBOutlet var interestButtons: [InterestButton]!
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var mapButton: UIBarButtonItem!
+    
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationBar.setBackgroundImage(UIImage(named: "bgGradient"), for: .default)
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Avenir-Medium", size: 20)!]
-        continueButton.isEnabled = false
         
-        // Set buttons to red background color
+        // Set buttons to clear background color
         for button in interestButtons {
-            button.backgroundColor = UIColor.red
+            button.backgroundColor = UIColor.clear
         }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        continueButton.isHidden = true
+        
+        CoreDataObject.sharedInstance().executePinSearch()
         if let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin], pins.count > 0 {
-            /* TODO: SET BAR BUTTON TO ENABLE IF PINS STORED*/
+            self.mapButton.isEnabled = true
+        } else {
+            self.mapButton.isEnabled = false
         }
     }
     
     // MARK: Actions
-    /* TODO: CREATE ACTION FOR SAVED INTEREST BUTTON */
+    @IBAction func mapButtonPressed(_ sender: Any) {
+        
+        guard let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin], pins.count > 0 else {
+            print("THERE ARE NO PINS")
+            return
+        }
+        print("THIS WOULD SEGUE")
+        //navigateToTabBarController(with: "continueToTabBar")
+    }
     
     @IBAction func interestButtonPressed(_ sender: InterestButton) {
         
@@ -80,7 +93,7 @@ class InterestPickerViewController: UIViewController {
         
         for button in interestButtons {
             if button.isToggle == true {
-                self.continueButton.isEnabled = true
+                self.continueButton.isHidden = false
             }
         }
     }

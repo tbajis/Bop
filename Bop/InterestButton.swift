@@ -45,7 +45,7 @@ class InterestButton: UIButton {
             if isToggle {
                 self.backgroundColor = UIColor.gray
             } else {
-                self.backgroundColor = UIColor.red
+                self.backgroundColor = UIColor.clear
             }
         }
     }
