@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -459,110 +460,231 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KkC-pR-Rm3" customClass="InterestButton" customModule="Bop" customModuleProvider="target">
-                                <rect key="frame" x="40" y="206" width="46" height="30"/>
-                                <state key="normal" title="Sports"/>
-                                <connections>
-                                    <action selector="interestButtonPressed:" destination="0Uq-fh-RlM" eventType="touchUpInside" id="s1d-QL-Prv"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peW-ec-xGM" customClass="InterestButton" customModule="Bop" customModuleProvider="target">
-                                <rect key="frame" x="124" y="206" width="41" height="30"/>
-                                <state key="normal" title="Music"/>
-                                <connections>
-                                    <action selector="interestButtonPressed:" destination="0Uq-fh-RlM" eventType="touchUpInside" id="Pj2-xp-s5c"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7TK-if-eFk" customClass="InterestButton" customModule="Bop" customModuleProvider="target">
-                                <rect key="frame" x="40" y="290" width="35" height="30"/>
-                                <state key="normal" title="Food"/>
-                                <connections>
-                                    <action selector="interestButtonPressed:" destination="0Uq-fh-RlM" eventType="touchUpInside" id="1Ga-Vz-V8g"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X9d-LX-Fjg" customClass="InterestButton" customModule="Bop" customModuleProvider="target">
-                                <rect key="frame" x="40" y="374" width="53" height="30"/>
-                                <state key="normal" title="Fashion"/>
-                                <connections>
-                                    <action selector="interestButtonPressed:" destination="0Uq-fh-RlM" eventType="touchUpInside" id="ggO-SK-zwt"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGp-bs-OTV" customClass="InterestButton" customModule="Bop" customModuleProvider="target">
-                                <rect key="frame" x="131" y="374" width="50" height="30"/>
-                                <state key="normal" title="Culture"/>
-                                <connections>
-                                    <action selector="interestButtonPressed:" destination="0Uq-fh-RlM" eventType="touchUpInside" id="MWZ-aH-m9E"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FuX-Pz-oc0">
-                                <rect key="frame" x="40" y="502" width="273" height="74"/>
-                                <state key="normal" title="Continue"/>
-                                <connections>
-                                    <action selector="continueButtonPressed:" destination="0Uq-fh-RlM" eventType="touchUpInside" id="Ig1-Su-72Y"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DpV-ST-BGW" customClass="InterestButton" customModule="Bop" customModuleProvider="target">
-                                <rect key="frame" x="113" y="290" width="30" height="30"/>
-                                <state key="normal" title="Art"/>
-                                <connections>
-                                    <action selector="interestButtonPressed:" destination="0Uq-fh-RlM" eventType="touchUpInside" id="F08-K4-VG9"/>
-                                </connections>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgGradient" translatesAutoresizingMaskIntoConstraints="NO" id="wLe-lW-KEA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" shadowImage="bgGradient" translatesAutoresizingMaskIntoConstraints="NO" id="PFq-oz-UWX">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Y0R-dD-Dre"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Choose Your Interest!" id="QJS-Gi-TaF"/>
+                                </items>
+                            </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="vt9-fk-zjs">
+                                <rect key="frame" x="47" y="157" width="281.5" height="500"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5Kc-oV-EGJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="281.5" height="109"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KkC-pR-Rm3" userLabel="Sports" customClass="InterestButton" customModule="Bop" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="131" height="109"/>
+                                                <state key="normal" image="football"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="interestButtonPressed:" destination="0Uq-fh-RlM" eventType="touchUpInside" id="s1d-QL-Prv"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peW-ec-xGM" userLabel="Music" customClass="InterestButton" customModule="Bop" customModuleProvider="target">
+                                                <rect key="frame" x="151" y="0.0" width="130.5" height="109"/>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" image="piano"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="interestButtonPressed:" destination="0Uq-fh-RlM" eventType="touchUpInside" id="Pj2-xp-s5c"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="JQ9-eB-7DQ">
+                                        <rect key="frame" x="0.0" y="130" width="281.5" height="109.5"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7TK-if-eFk" userLabel="Food" customClass="InterestButton" customModule="Bop" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="131" height="109.5"/>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" image="cake"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="interestButtonPressed:" destination="0Uq-fh-RlM" eventType="touchUpInside" id="1Ga-Vz-V8g"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X9d-LX-Fjg" userLabel="Fashion" customClass="InterestButton" customModule="Bop" customModuleProvider="target">
+                                                <rect key="frame" x="151" y="0.0" width="130.5" height="109.5"/>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" image="disguise"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="interestButtonPressed:" destination="0Uq-fh-RlM" eventType="touchUpInside" id="ggO-SK-zwt"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MDg-2g-EnX">
+                                        <rect key="frame" x="0.0" y="260.5" width="281.5" height="109"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DpV-ST-BGW" userLabel="Art" customClass="InterestButton" customModule="Bop" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="131" height="109"/>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" image="palette"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="interestButtonPressed:" destination="0Uq-fh-RlM" eventType="touchUpInside" id="F08-K4-VG9"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGp-bs-OTV" userLabel="Culture" customClass="InterestButton" customModule="Bop" customModuleProvider="target">
+                                                <rect key="frame" x="151" y="0.0" width="130.5" height="109"/>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" image="shoppingBag"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="interestButtonPressed:" destination="0Uq-fh-RlM" eventType="touchUpInside" id="MWZ-aH-m9E"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="qmP-r6-WiN">
+                                        <rect key="frame" x="0.0" y="390.5" width="281.5" height="109.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FuX-Pz-oc0" customClass="LoginButton" customModule="Bop" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="59.5" width="281.5" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="nFK-Xr-eJ8"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                <state key="normal" title="Continue"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="continueButtonPressed:" destination="0Uq-fh-RlM" eventType="touchUpInside" id="Ig1-Su-72Y"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DpV-ST-BGW" firstAttribute="leading" secondItem="7TK-if-eFk" secondAttribute="trailing" constant="38" id="1ru-Oo-xxO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="peW-ec-xGM" secondAttribute="trailing" constant="194" id="3r6-NZ-N3G"/>
-                            <constraint firstItem="yGp-bs-OTV" firstAttribute="top" secondItem="DpV-ST-BGW" secondAttribute="bottom" constant="54" id="8Ij-cU-pmX"/>
-                            <constraint firstItem="X9d-LX-Fjg" firstAttribute="top" secondItem="DpV-ST-BGW" secondAttribute="bottom" constant="54" id="BpC-xa-Uql"/>
-                            <constraint firstItem="7TK-if-eFk" firstAttribute="top" secondItem="peW-ec-xGM" secondAttribute="bottom" constant="54" id="DgV-1r-fpG"/>
-                            <constraint firstItem="FuX-Pz-oc0" firstAttribute="top" secondItem="yGp-bs-OTV" secondAttribute="bottom" constant="98" id="HeU-Dt-TiP"/>
-                            <constraint firstItem="yGp-bs-OTV" firstAttribute="leading" secondItem="X9d-LX-Fjg" secondAttribute="trailing" constant="38" id="PM3-9g-DI9"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="DpV-ST-BGW" secondAttribute="trailing" constant="216" id="RgI-3K-fVT"/>
-                            <constraint firstItem="KkC-pR-Rm3" firstAttribute="top" secondItem="0lU-80-BPQ" secondAttribute="bottom" constant="186" id="SCz-ac-R76"/>
-                            <constraint firstItem="X9d-LX-Fjg" firstAttribute="top" secondItem="7TK-if-eFk" secondAttribute="bottom" constant="54" id="Tn3-64-xa0"/>
-                            <constraint firstItem="X9d-LX-Fjg" firstAttribute="top" secondItem="DpV-ST-BGW" secondAttribute="bottom" constant="54" id="UdP-8x-gj1"/>
-                            <constraint firstItem="FuX-Pz-oc0" firstAttribute="top" secondItem="X9d-LX-Fjg" secondAttribute="bottom" constant="98" id="eAo-ax-c3L"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="yGp-bs-OTV" secondAttribute="trailing" constant="178" id="eeZ-dm-zaS"/>
-                            <constraint firstItem="peW-ec-xGM" firstAttribute="leading" secondItem="KkC-pR-Rm3" secondAttribute="trailing" constant="38" id="ezd-ah-yF1"/>
-                            <constraint firstItem="peW-ec-xGM" firstAttribute="leading" secondItem="KkC-pR-Rm3" secondAttribute="trailing" constant="38" id="hTd-qV-iDw"/>
-                            <constraint firstItem="FuX-Pz-oc0" firstAttribute="leading" secondItem="JXd-1r-rYb" secondAttribute="leadingMargin" constant="24" id="hgF-Jk-sGZ"/>
-                            <constraint firstItem="7TK-if-eFk" firstAttribute="leading" secondItem="JXd-1r-rYb" secondAttribute="leadingMargin" constant="24" id="ivS-Xu-5oQ"/>
-                            <constraint firstItem="KkC-pR-Rm3" firstAttribute="leading" secondItem="JXd-1r-rYb" secondAttribute="leadingMargin" constant="24" id="jFi-qZ-MH3"/>
-                            <constraint firstItem="X9d-LX-Fjg" firstAttribute="leading" secondItem="JXd-1r-rYb" secondAttribute="leadingMargin" constant="24" id="lFB-yD-Wig"/>
-                            <constraint firstItem="7TK-if-eFk" firstAttribute="top" secondItem="KkC-pR-Rm3" secondAttribute="bottom" constant="54" id="nPU-dm-FNc"/>
-                            <constraint firstItem="7TK-if-eFk" firstAttribute="top" secondItem="peW-ec-xGM" secondAttribute="bottom" constant="54" id="p7a-uQ-soZ"/>
-                            <constraint firstItem="DpV-ST-BGW" firstAttribute="leading" secondItem="7TK-if-eFk" secondAttribute="trailing" constant="38" id="pDP-gw-GPn"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="FuX-Pz-oc0" secondAttribute="trailing" constant="46" id="pGT-NB-f8c"/>
-                            <constraint firstItem="DpV-ST-BGW" firstAttribute="top" secondItem="peW-ec-xGM" secondAttribute="bottom" constant="54" id="qUz-Gk-nSh"/>
-                            <constraint firstItem="FuX-Pz-oc0" firstAttribute="top" secondItem="yGp-bs-OTV" secondAttribute="bottom" constant="98" id="r3x-y6-oVM"/>
-                            <constraint firstItem="yGp-bs-OTV" firstAttribute="leading" secondItem="X9d-LX-Fjg" secondAttribute="trailing" constant="38" id="rEu-TD-fmB"/>
-                            <constraint firstItem="peW-ec-xGM" firstAttribute="top" secondItem="0lU-80-BPQ" secondAttribute="bottom" constant="186" id="sQu-JQ-aqL"/>
-                            <constraint firstItem="5mr-3b-qEK" firstAttribute="top" secondItem="FuX-Pz-oc0" secondAttribute="bottom" constant="91" id="tKT-Px-OOw"/>
+                            <constraint firstItem="PFq-oz-UWX" firstAttribute="top" secondItem="0lU-80-BPQ" secondAttribute="bottom" id="0pr-N7-cwa"/>
+                            <constraint firstItem="PFq-oz-UWX" firstAttribute="leading" secondItem="JXd-1r-rYb" secondAttribute="leading" id="2F6-ae-qwN"/>
+                            <constraint firstItem="5mr-3b-qEK" firstAttribute="top" secondItem="vt9-fk-zjs" secondAttribute="bottom" constant="10" id="7ML-uS-abE"/>
+                            <constraint firstItem="vt9-fk-zjs" firstAttribute="centerX" secondItem="JXd-1r-rYb" secondAttribute="centerX" id="DcK-vG-8b7"/>
+                            <constraint firstItem="vt9-fk-zjs" firstAttribute="height" secondItem="JXd-1r-rYb" secondAttribute="height" multiplier="3/4" id="OXW-cg-54q"/>
+                            <constraint firstItem="wLe-lW-KEA" firstAttribute="centerY" secondItem="JXd-1r-rYb" secondAttribute="centerY" id="Sl9-LA-PGy"/>
+                            <constraint firstItem="vt9-fk-zjs" firstAttribute="width" secondItem="JXd-1r-rYb" secondAttribute="width" multiplier="3/4" id="U0b-PS-7pu"/>
+                            <constraint firstItem="wLe-lW-KEA" firstAttribute="centerX" secondItem="JXd-1r-rYb" secondAttribute="centerX" id="Y5p-Fu-khJ"/>
+                            <constraint firstItem="wLe-lW-KEA" firstAttribute="height" secondItem="JXd-1r-rYb" secondAttribute="height" id="dhF-tB-OW2"/>
+                            <constraint firstItem="wLe-lW-KEA" firstAttribute="width" secondItem="JXd-1r-rYb" secondAttribute="width" id="sg0-l1-OMG"/>
+                            <constraint firstAttribute="trailing" secondItem="PFq-oz-UWX" secondAttribute="trailing" id="wz8-Wz-zEU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cnc-IU-vI6"/>
                     <connections>
                         <outlet property="continueButton" destination="FuX-Pz-oc0" id="krV-Z3-xrX"/>
+                        <outlet property="navigationBar" destination="PFq-oz-UWX" id="oP9-8a-HR7"/>
                         <outletCollection property="interestButtons" destination="KkC-pR-Rm3" collectionClass="NSMutableArray" id="34H-MG-eFq"/>
                         <outletCollection property="interestButtons" destination="peW-ec-xGM" collectionClass="NSMutableArray" id="ERX-pk-OZl"/>
                         <outletCollection property="interestButtons" destination="7TK-if-eFk" collectionClass="NSMutableArray" id="Ihl-Ut-Vwh"/>
-                        <outletCollection property="interestButtons" destination="DpV-ST-BGW" collectionClass="NSMutableArray" id="DVA-gn-KAD"/>
                         <outletCollection property="interestButtons" destination="X9d-LX-Fjg" collectionClass="NSMutableArray" id="phO-q2-TRC"/>
+                        <outletCollection property="interestButtons" destination="DpV-ST-BGW" collectionClass="NSMutableArray" id="DVA-gn-KAD"/>
                         <outletCollection property="interestButtons" destination="yGp-bs-OTV" collectionClass="NSMutableArray" id="EsW-VH-3ce"/>
                         <segue destination="Stq-qN-A4O" kind="show" identifier="continueToTabBar" id="S2l-WB-jz9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mic-gR-9QW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1530" y="319"/>
+            <point key="canvasLocation" x="1528.8" y="318.89055472263868"/>
         </scene>
     </scenes>
     <resources>
         <image name="Glyph" width="164" height="260"/>
         <image name="Phone" width="18" height="30"/>
         <image name="Twitter" width="26" height="22"/>
+        <image name="bgGradient" width="750" height="1334"/>
         <image name="bgLogin" width="750" height="1334"/>
+        <image name="cake" width="28" height="26"/>
+        <image name="disguise" width="30" height="18"/>
+        <image name="football" width="28" height="28"/>
+        <image name="palette" width="26" height="28"/>
+        <image name="piano" width="28" height="20"/>
+        <image name="shoppingBag" width="24" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="e7k-Is-rTd"/>

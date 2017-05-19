@@ -12,6 +12,30 @@ import UIKit
 class InterestButton: UIButton {
     
     // MARK: Properties
+    @IBInspectable var cornerRadius: CGFloat = 0 {
+        didSet {
+            self.layer.cornerRadius = cornerRadius
+        }
+    }
+    
+    @IBInspectable var borderWidth: CGFloat = 0 {
+        didSet {
+            self.layer.borderWidth = borderWidth
+        }
+    }
+    
+    @IBInspectable var borderColor: UIColor = UIColor.clear {
+        didSet {
+            self.layer.borderColor = borderColor.cgColor
+        }
+    }
+    
+    @IBInspectable var masksToBounds: Bool = false {
+        didSet {
+            self.layer.masksToBounds = masksToBounds
+        }
+    }
+    
     enum Category: Int {
         case Sport = 0, Music = 1, Food = 2, Art = 3, Fashion = 4, Culture = 5
     }

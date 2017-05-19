@@ -56,7 +56,8 @@ class LoginViewController: UIViewController, UIAlertViewDelegate {
         // Create a custom appearance for Digits theme
         let configuration = DGTAuthenticationConfiguration(accountFields: .defaultOptionMask)
         configuration?.appearance = DGTAppearance()
-        /* TODO: Add more customized appearances for configuration (ie. configuration?.backgroundColor, configuration?.accentColor */
+        configuration?.appearance.backgroundColor = UIColor.white
+        configuration?.appearance.accentColor = UIColor.black
         
         // Start Digits authentication flow
         Digits.sharedInstance().authenticate(with: nil, configuration: configuration!) { (session, error) in

@@ -18,11 +18,13 @@ class InterestPickerViewController: UIViewController {
     // MARK: Outlets
     @IBOutlet var interestButtons: [InterestButton]!
     @IBOutlet weak var continueButton: UIButton!
-
+    @IBOutlet weak var navigationBar: UINavigationBar!
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationBar.setBackgroundImage(UIImage(named: "bgGradient"), for: .default)
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Avenir-Medium", size: 20)!]
         continueButton.isEnabled = false
         
         // Set buttons to red background color
