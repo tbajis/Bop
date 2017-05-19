@@ -29,4 +29,10 @@ class LoginButton: UIButton {
             self.layer.borderColor = borderColor.cgColor
         }
     }
+    
+    @IBInspectable var masksToBounds: Bool = false {
+        didSet {
+            self.layer.masksToBounds = masksToBounds
+        }
+    }
 }
