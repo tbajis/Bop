@@ -45,6 +45,8 @@
 		13960A341ECA953800820416 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13960A321ECA953800820416 /* Photo.swift */; };
 		13960A351ECA953800820416 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13960A331ECA953800820416 /* Photo+CoreDataProperties.swift */; };
 		13BFA6E51ECE886C007A7D23 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BFA6E41ECE886C007A7D23 /* LoginButton.swift */; };
+		13BFA6E71ECF9BF9007A7D23 /* BopNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BFA6E61ECF9BF9007A7D23 /* BopNavigationBar.swift */; };
+		13BFA6EA1ECFA9C9007A7D23 /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BFA6E91ECFA9C9007A7D23 /* SegueHandlerType.swift */; };
 		13E718FE1ECE070800F719F3 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 13E718EF1ECE070800F719F3 /* Contents.json */; };
 		13E718FF1ECE070800F719F3 /* Icon-167.png in Resources */ = {isa = PBXBuildFile; fileRef = 13E718F01ECE070800F719F3 /* Icon-167.png */; };
 		13E719001ECE070800F719F3 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13E718F11ECE070800F719F3 /* Icon-60@2x.png */; };
@@ -127,6 +129,8 @@
 		13960A321ECA953800820416 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		13960A331ECA953800820416 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		13BFA6E41ECE886C007A7D23 /* LoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		13BFA6E61ECF9BF9007A7D23 /* BopNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BopNavigationBar.swift; sourceTree = "<group>"; };
+		13BFA6E91ECFA9C9007A7D23 /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
 		13E718EF1ECE070800F719F3 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		13E718F01ECE070800F719F3 /* Icon-167.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-167.png"; sourceTree = "<group>"; };
 		13E718F11ECE070800F719F3 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
@@ -263,6 +267,7 @@
 			children = (
 				13187DEB1EA84651003426FB /* InterestButton.swift */,
 				13BFA6E41ECE886C007A7D23 /* LoginButton.swift */,
+				13BFA6E61ECF9BF9007A7D23 /* BopNavigationBar.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 		13187DE61EA84574003426FB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				13BFA6E91ECFA9C9007A7D23 /* SegueHandlerType.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -588,6 +594,8 @@
 				13187DA31EA842C7003426FB /* AppDelegate.swift in Sources */,
 				13187E001EAAB3C8003426FB /* VenueResponse.swift in Sources */,
 				13187DF21EA8474F003426FB /* BopTableViewController.swift in Sources */,
+				13BFA6EA1ECFA9C9007A7D23 /* SegueHandlerType.swift in Sources */,
+				13BFA6E71ECF9BF9007A7D23 /* BopNavigationBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

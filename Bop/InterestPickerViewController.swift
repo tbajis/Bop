@@ -10,9 +10,13 @@ import Foundation
 import UIKit
 
 // MARK: - InterestPickerViewController: UIViewController
-class InterestPickerViewController: UIViewController {
+class InterestPickerViewController: UIViewController, SegueHandlerType {
     
     // MARK: Properties
+    enum SegueIdentifier: String {
+        case ContinueButtonPressed
+        case PinButtonPressed
+    }
     
     // MARK: Outlets
     @IBOutlet var interestButtons: [InterestButton]!
@@ -23,21 +27,8 @@ class InterestPickerViewController: UIViewController {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigationBar.setBackgroundImage(UIImage(named: "bgGradient"), for: .default)
-        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Avenir-Medium", size: 20)!]
-        
-        // Set buttons to clear background color
-        for button in interestButtons {
-            button.backgroundColor = UIColor.clear
-        }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         continueButton.isHidden = true
-        
         CoreDataObject.sharedInstance().executePinSearch()
         if let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin], pins.count > 0 {
             self.mapButton.isEnabled = true
@@ -45,16 +36,14 @@ class InterestPickerViewController: UIViewController {
             self.mapButton.isEnabled = false
         }
     }
-    
+
     // MARK: Actions
     @IBAction func mapButtonPressed(_ sender: Any) {
         
         guard let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin], pins.count > 0 else {
-            print("THERE ARE NO PINS")
             return
         }
-        print("THIS WOULD SEGUE")
-        //navigateToTabBarController(with: "continueToTabBar")
+        performSegue(withIdentifier: .PinButtonPressed, sender: self)
     }
     
     @IBAction func interestButtonPressed(_ sender: InterestButton) {
@@ -70,8 +59,7 @@ class InterestPickerViewController: UIViewController {
             if button.isToggle {
                 let query = button.queryString(for: InterestButton.Category(rawValue: sender.tag)!)
                 UserDefaults.standard.set(query, forKey: "Interest")
-                navigateToTabBarController(with: "continueToTabBar")
-                
+                performSegue(withIdentifier: .ContinueButtonPressed, sender: self)
             }
         }
     }
@@ -101,14 +89,11 @@ class InterestPickerViewController: UIViewController {
     // Helpers
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "continueToTabBar" {
+        switch segueIdentifierForSegue(segue: segue) {
+        case .ContinueButtonPressed:
             deletePins()
+        case .PinButtonPressed: break
         }
-    }
-
-    func navigateToTabBarController(with identifier: String) {
-        performSegue(withIdentifier: identifier, sender: self)
-        
     }
     
     func deletePins() {

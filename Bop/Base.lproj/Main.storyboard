@@ -348,7 +348,7 @@
                                 <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ev8-f7-pee" id="AIR-UO-npr">
-                                    <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -463,7 +463,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgGradient" translatesAutoresizingMaskIntoConstraints="NO" id="wLe-lW-KEA">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <navigationBar contentMode="scaleToFill" shadowImage="bgGradient" translatesAutoresizingMaskIntoConstraints="NO" id="PFq-oz-UWX">
+                            <navigationBar contentMode="scaleToFill" shadowImage="bgGradient" translatesAutoresizingMaskIntoConstraints="NO" id="PFq-oz-UWX" customClass="BopNavigationBar" customModule="Bop" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Y0R-dD-Dre"/>
@@ -478,6 +478,10 @@
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="backgroundImage" value="bgGradient"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="titleText" value="Avenir-Medium"/>
+                                </userDefinedRuntimeAttributes>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="vt9-fk-zjs">
                                 <rect key="frame" x="47" y="114" width="281.5" height="543"/>
@@ -673,7 +677,8 @@
                         <outletCollection property="interestButtons" destination="X9d-LX-Fjg" collectionClass="NSMutableArray" id="phO-q2-TRC"/>
                         <outletCollection property="interestButtons" destination="DpV-ST-BGW" collectionClass="NSMutableArray" id="DVA-gn-KAD"/>
                         <outletCollection property="interestButtons" destination="yGp-bs-OTV" collectionClass="NSMutableArray" id="EsW-VH-3ce"/>
-                        <segue destination="Stq-qN-A4O" kind="show" identifier="continueToTabBar" id="S2l-WB-jz9"/>
+                        <segue destination="Stq-qN-A4O" kind="show" identifier="ContinueButtonPressed" id="S2l-WB-jz9"/>
+                        <segue destination="Stq-qN-A4O" kind="show" identifier="PinButtonPressed" id="h2F-aU-Epf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mic-gR-9QW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -697,5 +702,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="e7k-Is-rTd"/>
+        <segue reference="h2F-aU-Epf"/>
     </inferredMetricsTieBreakers>
 </document>
