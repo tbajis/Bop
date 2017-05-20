@@ -196,7 +196,7 @@
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86F-5a-Qn8" customClass="LoginButton" customModule="Bop" customModuleProvider="target">
-                                <rect key="frame" x="17.5" y="554.5" width="70" height="25"/>
+                                <rect key="frame" x="17" y="554.5" width="70" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="Id5-r5-AvS"/>
                                     <constraint firstAttribute="height" constant="25" id="tbJ-cX-hTy"/>
@@ -219,7 +219,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="presetButtonPressed:" destination="qKG-Wg-Njq" eventType="touchUpInside" id="s0v-0d-Gql"/>
+                                    <action selector="bigAppleButtonPressed:" destination="qKG-Wg-Njq" eventType="touchUpInside" id="1HJ-h0-t2O"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iES-1Y-o3E" userLabel="location">
@@ -263,7 +263,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="in2-O4-PZX" id="dyp-Yj-mVs"/>
-                        <segue destination="Ucs-Ev-xIV" kind="show" identifier="showDetailFromMap" id="eeu-ov-Lq0"/>
+                        <segue destination="Ucs-Ev-xIV" kind="show" identifier="MapPinPressed" id="eeu-ov-Lq0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vVt-Oe-329" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -282,6 +282,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bgGradient" translatesAutoresizingMaskIntoConstraints="NO" id="O3k-Wc-0xY">
+                                <rect key="frame" x="-375" y="-667" width="750" height="1334"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6b-uU-Kfh">
                                 <rect key="frame" x="16" y="272" width="343" height="346"/>
                                 <connections>
@@ -291,7 +295,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wht-gu-EwR">
                                 <rect key="frame" x="16" y="64" width="343" height="165"/>
                                 <connections>
-                                    <segue destination="IH9-G4-K5u" kind="embed" identifier="showPageView" id="xOn-qS-gtd"/>
+                                    <segue destination="IH9-G4-K5u" kind="embed" identifier="InjectPageViewController" id="xOn-qS-gtd"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -314,7 +318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mPI-IG-dnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4767" y="91"/>
+            <point key="canvasLocation" x="4765.6000000000004" y="90.404797601199405"/>
         </scene>
         <!--Bop Page View Controller-->
         <scene sceneID="uyC-88-AQh">
@@ -426,6 +430,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Venues" id="7wU-M8-aUM">
                         <barButtonItem key="backBarButtonItem" title="Table" id="5v0-Qx-vSp"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="2Y0-YA-Kzo">
+                            <connections>
+                                <action selector="logout:" destination="sXC-7X-Qrj" id="wXd-cp-032"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="Ucs-Ev-xIV" kind="show" identifier="showDetailFromTable" id="e7k-Is-rTd"/>
@@ -433,14 +442,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TnK-Sy-Zab" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3977" y="691"/>
+            <point key="canvasLocation" x="3976.8000000000002" y="690.40479760119945"/>
         </scene>
         <!--Table-->
         <scene sceneID="OWx-ML-mh3">
             <objects>
                 <navigationController id="ykC-JU-Kmo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Table" image="table" id="rSn-Ig-yPG"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NqE-2X-LR5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="NqE-2X-LR5" customClass="BopNavigationBar" customModule="Bop" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -727,7 +736,7 @@
         <image name="table" width="26" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eeu-ov-Lq0"/>
         <segue reference="h2F-aU-Epf"/>
+        <segue reference="eeu-ov-Lq0"/>
     </inferredMetricsTieBreakers>
 </document>

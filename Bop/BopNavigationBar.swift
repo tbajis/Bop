@@ -19,7 +19,7 @@ class BopNavigationBar: UINavigationBar {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        self.setBackgroundImage(UIImage.image(with: UIColor.clear), for: UIBarMetrics(rawValue: 0)!)
+        self.setBackgroundImage(UIImage(named: "bgGradient"), for: UIBarMetrics(rawValue: 0)!)
         self.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Avenir-Medium", size: 20)!]
     }
 }

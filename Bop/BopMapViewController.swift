@@ -15,15 +15,18 @@ import Crashlytics
 import TwitterKit
 import DigitsKit
 
-class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationManagerDelegate {
+class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationManagerDelegate, SegueHandlerType {
     
     // MARK: Properties
+    enum SegueIdentifier: String {
+        case MapPinPressed
+    }
     var interest = UserDefaults.standard.object(forKey: "Interest") as? String
     
     // Create an instance of CLLocationManager to track user's location
     let locationManager = CLLocationManager()
     
-    // Create objects for mapView span and region
+    // Create objects for user's current region and a preset New York City option
     var userRegion: MKCoordinateRegion?
     let newYorkCity = CLLocationCoordinate2D(latitude: 40.7, longitude: -74)
     
@@ -45,11 +48,8 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
         }
         loadMapRegion()
         CoreDataObject.sharedInstance().executePinSearch()
+        /* TODO: Check if there are pins already persisted and put them on the map. */
         placePinsOnMap()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
     // MARK: Actions
@@ -73,7 +73,7 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
         }
     }
 
-    @IBAction func presetButtonPressed(_ sender: UIButton) {
+    @IBAction func bigAppleButtonPressed(_ sender: UIButton) {
         
         removePinsFromMap() { (success) in
             if success {
@@ -136,23 +136,7 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
         }
     }
     
-    
     // MARK: Helpers
-    func configureMapWithPins(_ configCompletionStatus: @escaping(_ success: Bool) -> Void) {
-        
-        guard (UserDefaults.standard.object(forKey: "Interest")) != nil else {
-            print("An error occured in which there is no interest stored!")
-            /* TODO: DISPLAY AN ERROR */
-            return
-        }
-        CoreDataObject.sharedInstance().executePinSearch()
-        guard let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin], pins.count > 0 else {
-            searchForPins(with: newYorkCity, searchCompletionStatus: configCompletionStatus)
-            return
-        }
-        configCompletionStatus(true)
-    }
-    
     func searchForPins(with coordinate: CLLocationCoordinate2D, searchCompletionStatus: @escaping(_ success: Bool) -> Void) {
         
         getVenuesBySearch(using: "bars", latitude: coordinate.latitude, longitude: coordinate.longitude) { (success, venues, error) in
@@ -180,12 +164,11 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
         CoreDataObject.sharedInstance().executePinSearch()
         var pinsToAdd = [Pin]()
         if let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin] {
-            print("NUMBER OF PINS IS: \(pins.count)")
             for pin in pins {
                 pinsToAdd.append(pin)
             }
         } else {
-            print("THERE ARE NO PINS")
+            self.displayError("An errr occured putting pins on the map")
         }
         mapView.addAnnotations(pinsToAdd)
     }
@@ -231,7 +214,8 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "showDetailFromMap" {
+        switch segueIdentifierForSegue(segue: segue) {
+        case .MapPinPressed:
             let pin = sender as! Pin
             let detailController = segue.destination as! BopDetailViewController
             detailController.pin = pin
@@ -273,7 +257,7 @@ extension BopMapViewController: MKMapViewDelegate {
         
         if control == view.rightCalloutAccessoryView {
             let pin = view.annotation as! Pin
-            performSegue(withIdentifier: "showDetailFromMap", sender: pin)
+            performSegue(withIdentifier: .MapPinPressed, sender: pin)
         }
     }
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
