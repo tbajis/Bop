@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+@IBDesignable
 
 class InterestButton: UIButton {
     
@@ -48,13 +49,6 @@ class InterestButton: UIButton {
                 self.backgroundColor = UIColor.clear
             }
         }
-    }
-    
-    // Life Cycle
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        self.backgroundColor = UIColor.clear
     }
     
     // MARK: Methods

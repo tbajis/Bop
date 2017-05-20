@@ -28,6 +28,9 @@ class InterestPickerViewController: UIViewController, SegueHandlerType {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        for button in interestButtons {
+            button.backgroundColor = UIColor.clear
+        }
         continueButton.isHidden = true
         CoreDataObject.sharedInstance().executePinSearch()
         if let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin], pins.count > 0 {
@@ -57,7 +60,7 @@ class InterestPickerViewController: UIViewController, SegueHandlerType {
         
         for button in interestButtons {
             if button.isToggle {
-                let query = button.queryString(for: InterestButton.Category(rawValue: sender.tag)!)
+                let query = button.queryString(for: InterestButton.Category(rawValue: button.tag)!)
                 UserDefaults.standard.set(query, forKey: "Interest")
                 performSegue(withIdentifier: .ContinueButtonPressed, sender: self)
             }
@@ -81,6 +84,7 @@ class InterestPickerViewController: UIViewController, SegueHandlerType {
         
         for button in interestButtons {
             if button.isToggle == true {
+                print(button.tag)
                 self.continueButton.isHidden = false
             }
         }

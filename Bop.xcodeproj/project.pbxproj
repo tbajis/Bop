@@ -47,6 +47,8 @@
 		13BFA6E51ECE886C007A7D23 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BFA6E41ECE886C007A7D23 /* LoginButton.swift */; };
 		13BFA6E71ECF9BF9007A7D23 /* BopNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BFA6E61ECF9BF9007A7D23 /* BopNavigationBar.swift */; };
 		13BFA6EA1ECFA9C9007A7D23 /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BFA6E91ECFA9C9007A7D23 /* SegueHandlerType.swift */; };
+		13BFA6EC1ECFC7A3007A7D23 /* UIImage+Bop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BFA6EB1ECFC7A3007A7D23 /* UIImage+Bop.swift */; };
+		13BFA6EE1ECFC866007A7D23 /* FrostyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BFA6ED1ECFC866007A7D23 /* FrostyTabBar.swift */; };
 		13E718FE1ECE070800F719F3 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 13E718EF1ECE070800F719F3 /* Contents.json */; };
 		13E718FF1ECE070800F719F3 /* Icon-167.png in Resources */ = {isa = PBXBuildFile; fileRef = 13E718F01ECE070800F719F3 /* Icon-167.png */; };
 		13E719001ECE070800F719F3 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13E718F11ECE070800F719F3 /* Icon-60@2x.png */; };
@@ -131,6 +133,8 @@
 		13BFA6E41ECE886C007A7D23 /* LoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		13BFA6E61ECF9BF9007A7D23 /* BopNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BopNavigationBar.swift; sourceTree = "<group>"; };
 		13BFA6E91ECFA9C9007A7D23 /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
+		13BFA6EB1ECFC7A3007A7D23 /* UIImage+Bop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Bop.swift"; sourceTree = "<group>"; };
+		13BFA6ED1ECFC866007A7D23 /* FrostyTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrostyTabBar.swift; sourceTree = "<group>"; };
 		13E718EF1ECE070800F719F3 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		13E718F01ECE070800F719F3 /* Icon-167.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-167.png"; sourceTree = "<group>"; };
 		13E718F11ECE070800F719F3 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
@@ -268,6 +272,7 @@
 				13187DEB1EA84651003426FB /* InterestButton.swift */,
 				13BFA6E41ECE886C007A7D23 /* LoginButton.swift */,
 				13BFA6E61ECF9BF9007A7D23 /* BopNavigationBar.swift */,
+				13BFA6ED1ECFC866007A7D23 /* FrostyTabBar.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				13BFA6E91ECFA9C9007A7D23 /* SegueHandlerType.swift */,
+				13BFA6EB1ECFC7A3007A7D23 /* UIImage+Bop.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -570,6 +576,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13187E071EAEEEF4003426FB /* CoreDataStack.swift in Sources */,
+				13BFA6EC1ECFC7A3007A7D23 /* UIImage+Bop.swift in Sources */,
 				13187E261EAEF95A003426FB /* Pin.swift in Sources */,
 				13187DFD1EA855F1003426FB /* FoursquareConvenience.swift in Sources */,
 				13707C4F1EBE9C6900A59482 /* BopDetailViewController.swift in Sources */,
@@ -590,6 +597,7 @@
 				13187DEA1EA845CD003426FB /* GCDBlackBox.swift in Sources */,
 				13187DA51EA842C7003426FB /* LoginViewController.swift in Sources */,
 				13187DAB1EA842C7003426FB /* Bop.xcdatamodeld in Sources */,
+				13BFA6EE1ECFC866007A7D23 /* FrostyTabBar.swift in Sources */,
 				13187DF81EA855B4003426FB /* FoursquareRequestType.swift in Sources */,
 				13187DA31EA842C7003426FB /* AppDelegate.swift in Sources */,
 				13187E001EAAB3C8003426FB /* VenueResponse.swift in Sources */,

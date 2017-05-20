@@ -39,6 +39,10 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
+        self.navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Avenir-Light", size: 15)!], for: .normal)
+        if let interest = interest {
+            self.navigationItem.title = "Venues for \(interest)"
+        }
         loadMapRegion()
         CoreDataObject.sharedInstance().executePinSearch()
         placePinsOnMap()

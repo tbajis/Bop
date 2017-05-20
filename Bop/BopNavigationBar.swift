@@ -7,20 +7,19 @@
 //
 
 import UIKit
-@IBDesignable
 
 // MARK: - BopNavigationBar: UINaivgationBar
 class BopNavigationBar: UINavigationBar {
 
-    // MARK: Properties
-    @IBInspectable var backgroundImage: String = "bgGradient" {
-        didSet {
-            self.setBackgroundImage(UIImage(named: backgroundImage), for: .default)
-        }
+    // MARK: Initializers
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
-    @IBInspectable var titleText: String = "Avenir-Medium" {
-        didSet {
-            self.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: titleText, size: 20)!]
-        }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        self.setBackgroundImage(UIImage.image(with: UIColor.clear), for: UIBarMetrics(rawValue: 0)!)
+        self.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Avenir-Medium", size: 20)!]
     }
 }
