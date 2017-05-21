@@ -12,7 +12,7 @@ class BopVenueImageViewController: UIViewController {
     
     // MARK: Properties
     var itemIndex: Int = 0
-    var imageName: UIImage = UIImage(named: "placeholder")! {
+    var imageName: UIImage = UIImage(named: "detailPlaceholder")! {
         didSet {
             if let imageView = contentImageView {
                 imageView.image = imageName
@@ -27,6 +27,11 @@ class BopVenueImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if imageName == UIImage(named: "detailPlaceholder") {
+            contentImageView.contentMode = UIViewContentMode.scaleAspectFill
+        }
+        let screenSize: CGRect = UIScreen.main.bounds
+        contentImageView.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: imageName.size.height)
         contentImageView.image = imageName
     }    
 }

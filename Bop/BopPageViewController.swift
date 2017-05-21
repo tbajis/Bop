@@ -12,7 +12,7 @@ import CoreData
 class BopPageViewController: UIPageViewController, UIPageViewControllerDataSource, FoursquareRequestType {
 
     // MARK: Properties
-    var contentImages: [UIImage] = [UIImage(named: "placeholder")!]
+    var contentImages: [UIImage] = [UIImage(named: "detailPlaceholder")!]
     var pin: Pin?
     
     // Create NSFetchedResultsController
@@ -76,9 +76,9 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
             }
         }
         let appearance = UIPageControl.appearance()
-        appearance.pageIndicatorTintColor = UIColor.gray
+        appearance.pageIndicatorTintColor = UIColor.darkGray
         appearance.currentPageIndicatorTintColor = UIColor.white
-        appearance.backgroundColor = UIColor.darkGray
+        appearance.backgroundColor = UIColor.clear
     }
 
     // MARK: Helpers
@@ -96,11 +96,15 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
     func setVenueImages(completion: @escaping (_ success: Bool) -> Void) {
         
         getImageInfo() { (success, photos) in
-            guard success else {
+            guard success == true else {
                 completion(false)
                 return
             }
             self.getVenueImages(success, photos) { (success) in
+                guard success == true else {
+                    completion(false)
+                    return
+                }
                 print("THIS SHOULD HAVE WORKED")
                 completion(success)
             }
@@ -154,7 +158,7 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
                         self.displayError(error)
                         return
                     }
-                    guard success else {
+                    guard success == true else {
                         self.displayError("Venue image data acquire was not successful")
                         return
                     }
@@ -165,7 +169,7 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
                         return
                     }
                     self.contentImages.append(venueImage)
-                    if self.contentImages.count == photos.count {
+                    if self.contentImages.count == (photos.count + 1) {
                         completion(true)
                     }
                 }

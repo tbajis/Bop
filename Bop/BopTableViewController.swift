@@ -40,7 +40,11 @@ class BopTableViewController: CoreDataTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         tableView.reloadData()
+        
+        // Set Navigation Bar to backgroundGradient
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "bgGradient"), for: UIBarMetrics(rawValue: 0)!)
     }
     
     // MARK: Actions

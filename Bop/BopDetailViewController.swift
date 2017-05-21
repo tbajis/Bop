@@ -19,6 +19,24 @@ class BopDetailViewController: UIViewController {
     // MARK: Outlets
     @IBOutlet weak var twitterView: UIView!
     @IBOutlet weak var imagePageView: UIView!
+    @IBOutlet weak var venueLabel: UILabel!
+    
+    // MARK: Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Set navigation bar to be transparent
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage.image(with: UIColor.clear), for: UIBarMetrics(rawValue: 0)!)
+        
+        // Set venue label to pin's title
+        if let title = pin?.title {
+            let mutableTitle = title as NSString
+            let newTitle = mutableTitle.replacingOccurrences(of: " " , with: "")
+            venueLabel.text = "#\(newTitle)"
+        } else {
+            venueLabel.text = nil
+        }
+    }
     
     // MARK: Helpers
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
