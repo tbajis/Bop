@@ -23,7 +23,7 @@ class LoginViewController: UIViewController, UIAlertViewDelegate {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loginPhoneButton.tintColor = UIColor.yellow
     }
     
     // MARK: Actions
@@ -57,7 +57,7 @@ class LoginViewController: UIViewController, UIAlertViewDelegate {
         let configuration = DGTAuthenticationConfiguration(accountFields: .defaultOptionMask)
         configuration?.appearance = DGTAppearance()
         configuration?.appearance.backgroundColor = UIColor.white
-        configuration?.appearance.accentColor = UIColor.black
+        configuration?.appearance.accentColor = UIColor.yellow
         
         // Start Digits authentication flow
         Digits.sharedInstance().authenticate(with: nil, configuration: configuration!) { (session, error) in
