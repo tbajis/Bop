@@ -255,7 +255,7 @@
                                 <action selector="logout:" destination="qKG-Wg-Njq" id="ZTM-ar-mpC"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="refresh" id="DPo-Dk-2Wl">
+                        <barButtonItem key="rightBarButtonItem" image="refresh" style="plain" id="DPo-Dk-2Wl">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="refresh" destination="qKG-Wg-Njq" id="fmn-b6-FCY"/>

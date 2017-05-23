@@ -42,13 +42,25 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
-        self.navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Avenir-Light", size: 15)!], for: .normal)
         if let interest = interest {
             self.navigationItem.title = "Venues for \(interest)"
         }
         loadMapRegion()
         CoreDataObject.sharedInstance().executePinSearch()
-        /* TODO: Check if there are pins already persisted and put them on the map. */
+        if let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin], pins.count == 0 {
+            removePinsFromMap() { (success) in
+                if success {
+                    self.searchForPins(with: self.newYorkCity) { (success) in
+                        if success {
+                            self.setRegionFromSearch(using: self.newYorkCity)
+                            self.placePinsOnMap()
+                        } else {
+                            self.displayError("An error occured placing pins on map")
+                        }
+                    }
+                }
+            }
+        }
         placePinsOnMap()
     }
     
