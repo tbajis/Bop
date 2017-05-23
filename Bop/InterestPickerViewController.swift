@@ -8,6 +8,10 @@
 
 import Foundation
 import UIKit
+import CoreData
+import Crashlytics
+import TwitterKit
+import DigitsKit
 
 // MARK: - InterestPickerViewController: UIViewController
 class InterestPickerViewController: UIViewController, SegueHandlerType {
@@ -41,6 +45,39 @@ class InterestPickerViewController: UIViewController, SegueHandlerType {
     }
 
     // MARK: Actions
+    @IBAction func logout(_ sender: Any) {
+        
+        // Remove pins from Core Data
+        CoreDataObject.sharedInstance().executePinSearch()
+        if let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin] {
+            for pin in pins {
+                AppDelegate.stack.context.delete(pin)
+                AppDelegate.stack.save()
+            }
+        }
+        // Remove any Twitter or Digits local session for this app.
+        let sessionStore = Twitter.sharedInstance().sessionStore
+        if let userId = sessionStore.session()?.userID {
+            sessionStore.logOutUserID(userId)
+        }
+        Digits.sharedInstance().logOut()
+        
+        // Remove user information for any upcoming crashes in Crashlytics.
+        Crashlytics.sharedInstance().setUserIdentifier(nil)
+        Crashlytics.sharedInstance().setUserName(nil)
+        
+        // Log Answers Custom Event.
+        Answers.logCustomEvent(withName: "Signed Out", customAttributes: nil)
+        
+        // Set Guest Login to false
+        UserDefaults.standard.set(false, forKey: "guestLoggedIn")
+        
+        // Present the Login Screen again
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        self.present(loginViewController, animated: true, completion: nil)
+    }
+    
     @IBAction func mapButtonPressed(_ sender: Any) {
         
         guard let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin], pins.count > 0 else {

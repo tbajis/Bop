@@ -196,7 +196,7 @@
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86F-5a-Qn8" customClass="LoginButton" customModule="Bop" customModuleProvider="target">
-                                <rect key="frame" x="18" y="554.5" width="70" height="25"/>
+                                <rect key="frame" x="17" y="554.5" width="70" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="Id5-r5-AvS"/>
                                     <constraint firstAttribute="height" constant="25" id="tbJ-cX-hTy"/>
@@ -250,6 +250,7 @@
                     <navigationItem key="navigationItem" title="Venues" id="GKD-Z3-11N">
                         <barButtonItem key="backBarButtonItem" title=" " id="JFO-cS-dWz"/>
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="m5C-Xq-Ls5">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="logout:" destination="qKG-Wg-Njq" id="ZTM-ar-mpC"/>
                             </connections>
@@ -525,6 +526,12 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Choose Your Interest!" id="QJS-Gi-TaF">
+                                        <barButtonItem key="leftBarButtonItem" title="Logout" id="ppv-gm-A1x">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="logout:" destination="0Uq-fh-RlM" id="x9B-be-Vdd"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" image="pin" id="Q4F-g7-IWL">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -761,6 +768,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="h2F-aU-Epf"/>
-        <segue reference="e7k-Is-rTd"/>
+        <segue reference="eeu-ov-Lq0"/>
     </inferredMetricsTieBreakers>
 </document>
