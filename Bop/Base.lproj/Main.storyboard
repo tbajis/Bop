@@ -223,7 +223,7 @@
                                     <action selector="bigAppleButtonPressed:" destination="qKG-Wg-Njq" eventType="touchUpInside" id="1HJ-h0-t2O"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iES-1Y-o3E" userLabel="location">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iES-1Y-o3E" userLabel="location" customClass="LoginButton" customModule="Bop" customModuleProvider="target">
                                 <rect key="frame" x="301" y="547" width="40" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -232,6 +232,18 @@
                                 </constraints>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="location"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="searchWithLocation:" destination="qKG-Wg-Njq" eventType="touchUpInside" id="cbv-36-kGS"/>
                                 </connections>
@@ -250,7 +262,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Venues" id="GKD-Z3-11N">
-                        <barButtonItem key="backBarButtonItem" title=" " id="JFO-cS-dWz"/>
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="m5C-Xq-Ls5">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -733,6 +744,7 @@
                     <navigationItem key="navigationItem" id="cnc-IU-vI6"/>
                     <connections>
                         <outlet property="continueButton" destination="FuX-Pz-oc0" id="krV-Z3-xrX"/>
+                        <outlet property="logoutButton" destination="ppv-gm-A1x" id="xio-fG-MSA"/>
                         <outlet property="mapButton" destination="Q4F-g7-IWL" id="G23-Ac-41X"/>
                         <outlet property="navigationBar" destination="PFq-oz-UWX" id="oP9-8a-HR7"/>
                         <outletCollection property="interestButtons" destination="KkC-pR-Rm3" collectionClass="NSMutableArray" id="34H-MG-eFq"/>

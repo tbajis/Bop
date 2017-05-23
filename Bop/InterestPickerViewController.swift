@@ -27,6 +27,7 @@ class InterestPickerViewController: UIViewController, SegueHandlerType {
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var mapButton: UIBarButtonItem!
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -35,6 +36,7 @@ class InterestPickerViewController: UIViewController, SegueHandlerType {
         for button in interestButtons {
             button.backgroundColor = UIColor.clear
         }
+        logoutButton.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Avenir-Light", size: 15)!], for: .normal)
         continueButton.isHidden = true
         CoreDataObject.sharedInstance().executePinSearch()
         if let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin], pins.count > 0 {

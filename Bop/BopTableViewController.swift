@@ -93,9 +93,10 @@ class BopTableViewController: CoreDataTableViewController {
         let venue = fetchedResultsController?.object(at: indexPath) as! Pin
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "PinTableCell", for: indexPath)
+        let count = Int(venue.checkinsCount)
         
         cell.textLabel?.text = venue.name
-        cell.detailTextLabel?.text = "Checkin count is \(venue.checkinsCount)"
+        cell.detailTextLabel?.text = "Checkin count is \(count)"
         
         return cell
     }

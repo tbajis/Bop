@@ -21,5 +21,6 @@ class BopNavigationBar: UINavigationBar {
         
         self.setBackgroundImage(UIImage(named: "bgGradient"), for: UIBarMetrics(rawValue: 0)!)
         self.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Avenir-Medium", size: 20)!]
+        self.tintColor = UIColor.white
     }
 }
