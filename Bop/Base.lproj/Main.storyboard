@@ -196,7 +196,7 @@
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86F-5a-Qn8" customClass="LoginButton" customModule="Bop" customModuleProvider="target">
-                                <rect key="frame" x="17" y="554.5" width="70" height="25"/>
+                                <rect key="frame" x="18" y="554.5" width="70" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="Id5-r5-AvS"/>
                                     <constraint firstAttribute="height" constant="25" id="tbJ-cX-hTy"/>
@@ -373,8 +373,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4cG-6e-1Z9" firstAttribute="width" secondItem="w1i-5c-n9X" secondAttribute="width" id="0sD-WQ-Ctt"/>
+                            <constraint firstItem="4cG-6e-1Z9" firstAttribute="height" secondItem="w1i-5c-n9X" secondAttribute="height" id="1md-s6-CnZ"/>
                             <constraint firstItem="4cG-6e-1Z9" firstAttribute="centerX" secondItem="w1i-5c-n9X" secondAttribute="centerX" id="75A-6E-qti"/>
-                            <constraint firstItem="4cG-6e-1Z9" firstAttribute="height" secondItem="w1i-5c-n9X" secondAttribute="height" id="CZh-CP-Q87"/>
                             <constraint firstItem="4cG-6e-1Z9" firstAttribute="centerY" secondItem="w1i-5c-n9X" secondAttribute="centerY" id="KGy-Tr-F1u"/>
                         </constraints>
                     </view>

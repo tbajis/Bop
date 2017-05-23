@@ -59,6 +59,7 @@
 		13A684361ED2B29800D26A90 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 13A684271ED2B29800D26A90 /* Icon-Small.png */; };
 		13A684371ED2B29800D26A90 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13A684281ED2B29800D26A90 /* Icon-Small@2x.png */; };
 		13A684381ED2B29800D26A90 /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13A684291ED2B29800D26A90 /* Icon-Small@3x.png */; };
+		13A6843B1ED3B78D00D26A90 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A6843A1ED3B78D00D26A90 /* ActivityIndicator.swift */; };
 		13BFA6E51ECE886C007A7D23 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BFA6E41ECE886C007A7D23 /* LoginButton.swift */; };
 		13BFA6E71ECF9BF9007A7D23 /* BopNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BFA6E61ECF9BF9007A7D23 /* BopNavigationBar.swift */; };
 		13BFA6EA1ECFA9C9007A7D23 /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BFA6E91ECFA9C9007A7D23 /* SegueHandlerType.swift */; };
@@ -145,6 +146,7 @@
 		13A684271ED2B29800D26A90 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
 		13A684281ED2B29800D26A90 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		13A684291ED2B29800D26A90 /* Icon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@3x.png"; sourceTree = "<group>"; };
+		13A6843A1ED3B78D00D26A90 /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		13BFA6E41ECE886C007A7D23 /* LoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		13BFA6E61ECF9BF9007A7D23 /* BopNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BopNavigationBar.swift; sourceTree = "<group>"; };
 		13BFA6E91ECFA9C9007A7D23 /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				13BFA6E41ECE886C007A7D23 /* LoginButton.swift */,
 				13BFA6E61ECF9BF9007A7D23 /* BopNavigationBar.swift */,
 				13BFA6ED1ECFC866007A7D23 /* FrostyTabBar.swift */,
+				13A6843A1ED3B78D00D26A90 /* ActivityIndicator.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				13187DF41EA8477C003426FB /* BopTwitterViewController.swift in Sources */,
 				13707C3F1EBA437E00A59482 /* CoreDataObject.swift in Sources */,
 				13187E271EAEF95A003426FB /* Pin+CoreDataProperties.swift in Sources */,
+				13A6843B1ED3B78D00D26A90 /* ActivityIndicator.swift in Sources */,
 				13707C551EC4D6E300A59482 /* BopPageViewController.swift in Sources */,
 				13187E021EABE84B003426FB /* PhotoResponse.swift in Sources */,
 				13707C431EBD61C800A59482 /* CoreDataTableViewController.swift in Sources */,

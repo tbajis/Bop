@@ -14,6 +14,7 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
     // MARK: Properties
     var contentImages: [UIImage] = [UIImage(named: "detailPlaceholder")!]
     var pin: Pin?
+    var imagePageView: UIView?
     
     // Create NSFetchedResultsController
     lazy var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>? = {
@@ -37,10 +38,13 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
         }
         
         executeSearch()
+        
+        ActivityIndicator.sharedInstance().startActivityIndicator(inView: imagePageView!)
         guard fetchedResultsController?.fetchedObjects?.count == 0 else {
             let photos = fetchedResultsController?.fetchedObjects as? [Photo]
             self.getVenueImages(true, photos){ (success) in
                 performUIUpdatesOnMain {
+                    ActivityIndicator.sharedInstance().stopActivityIndicator(inView: self.imagePageView!)
                     guard success == true else {
                         print("AN ERROR OCCURED LOADING PHOTOS FROM CORE DATA")
                         return
@@ -58,6 +62,7 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
         
         setVenueImages() { (success) in
             performUIUpdatesOnMain {
+                ActivityIndicator.sharedInstance().stopActivityIndicator(inView: self.imagePageView!)
                 guard success == true else {
                     print("THIS DIDN'T WORK")
                     if self.contentImages.count > 0 {

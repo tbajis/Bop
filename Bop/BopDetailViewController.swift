@@ -15,7 +15,7 @@ class BopDetailViewController: UIViewController {
     
     // MARK: Properties
     var pin: Pin?
-
+    
     // MARK: Outlets
     @IBOutlet weak var twitterView: UIView!
     @IBOutlet weak var imagePageView: UIView!
@@ -44,6 +44,7 @@ class BopDetailViewController: UIViewController {
         if segue.identifier == "InjectPageViewController" {
             let destinationViewController = segue.destination as! BopPageViewController
             destinationViewController.pin = pin
+            destinationViewController.imagePageView = imagePageView
         }
     }
 }
