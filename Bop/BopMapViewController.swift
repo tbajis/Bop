@@ -151,13 +151,13 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
     // MARK: Helpers
     func searchForPins(with coordinate: CLLocationCoordinate2D, searchCompletionStatus: @escaping(_ success: Bool) -> Void) {
         
-        getVenuesBySearch(using: "bars", latitude: coordinate.latitude, longitude: coordinate.longitude) { (success, venues, error) in
+        getVenuesBySearch(using: interest!, latitude: coordinate.latitude, longitude: coordinate.longitude) { (success, venues, error) in
             performUIUpdatesOnMain {
                 guard success else {
                     self.displayError(error)
                     return
                 }
-                guard let venues = venues else {
+                guard let venues = venues, venues.count > 0 else {
                     self.displayError(FoursquareConstants.Error.Data)
                     return
                 }

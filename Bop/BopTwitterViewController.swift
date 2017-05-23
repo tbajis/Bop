@@ -21,6 +21,7 @@ class BopTwitterViewController: TWTRTimelineViewController {
         
         title = "Updates for (CITY)"
         let client = TWTRAPIClient()
-        self.dataSource = TWTRSearchTimelineDataSource(searchQuery: "#Trump", apiClient: client)
+        let interest = UserDefaults.standard.object(forKey: "Interest") as? String
+        self.dataSource = TWTRSearchTimelineDataSource(searchQuery: interest!, apiClient: client)
     }
 }

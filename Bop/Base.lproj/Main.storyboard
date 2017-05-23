@@ -196,7 +196,8 @@
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86F-5a-Qn8" customClass="LoginButton" customModule="Bop" customModuleProvider="target">
-                                <rect key="frame" x="18" y="554.5" width="70" height="25"/>
+                                <rect key="frame" x="17.5" y="554.5" width="70" height="25"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="Id5-r5-AvS"/>
                                     <constraint firstAttribute="height" constant="25" id="tbJ-cX-hTy"/>
@@ -224,6 +225,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iES-1Y-o3E" userLabel="location">
                                 <rect key="frame" x="301" y="547" width="40" height="40"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="c5R-Bf-HPK"/>
                                     <constraint firstAttribute="height" constant="40" id="ecw-g9-zlk"/>
@@ -307,7 +309,7 @@
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6b-uU-Kfh">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="340"/>
                                                 <connections>
-                                                    <segue destination="yPM-I8-qWD" kind="embed" id="qUp-C6-w2U"/>
+                                                    <segue destination="yPM-I8-qWD" kind="embed" identifier="InjectTwitterViewController" id="qUp-C6-w2U"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>

@@ -46,5 +46,10 @@ class BopDetailViewController: UIViewController {
             destinationViewController.pin = pin
             destinationViewController.imagePageView = imagePageView
         }
+        
+        if segue.identifier == "InjectTwitterViewController" {
+            let destinationViewController = segue.destination as! BopTwitterViewController
+            destinationViewController.pin = pin
+        }
     }
 }
