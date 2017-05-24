@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class BopPageViewController: UIPageViewController, UIPageViewControllerDataSource, FoursquareRequestType {
+class BopPageViewController: UIPageViewController, UIPageViewControllerDataSource, FoursquareRequestType, BopAlertViewControllerDelegate {
 
     // MARK: Properties
     var contentImages: [UIImage] = [UIImage(named: "detailPlaceholder")!]
@@ -32,11 +32,6 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
         super.viewDidLoad()
         
         dataSource = self
-        
-        if pin != nil {
-            print("This worked!")
-        }
-        
         executeSearch()
         
         ActivityIndicator.sharedInstance().startActivityIndicator(inView: imagePageView!)
@@ -46,10 +41,9 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
                 performUIUpdatesOnMain {
                     ActivityIndicator.sharedInstance().stopActivityIndicator(inView: self.imagePageView!)
                     guard success == true else {
-                        print("AN ERROR OCCURED LOADING PHOTOS FROM CORE DATA")
+                        self.displayError(from: self, with: BopError.PhotosLoad)
                         return
                     }
-                    print("LOADED PHOTOS FROM COREDATA")
                     if self.contentImages.count > 0 {
                         let firstController = self.getItemController(0)!
                         let startingViewControllers = [firstController]
@@ -64,7 +58,6 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
             performUIUpdatesOnMain {
                 ActivityIndicator.sharedInstance().stopActivityIndicator(inView: self.imagePageView!)
                 guard success == true else {
-                    print("THIS DIDN'T WORK")
                     if self.contentImages.count > 0 {
                         let firstController = self.getItemController(0)!
                         let startingViewControllers = [firstController]
@@ -75,7 +68,6 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
                 if self.contentImages.count > 0 {
                     let firstController = self.getItemController(0)!
                     let startingViewControllers = [firstController]
-                    
                     self.setViewControllers(startingViewControllers, direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
                 }
             }
@@ -110,7 +102,6 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
                     completion(false)
                     return
                 }
-                print("THIS SHOULD HAVE WORKED")
                 completion(success)
             }
         }
@@ -122,18 +113,16 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
             performUIUpdatesOnMain {
                 var photos = [Photo]()
                 guard error == nil else {
-                    self.displayError(error)
+                    self.displayError(from: self, with: error)
                     completion(false, nil)
                     return
                 }
                 guard let responses = photoResponses, responses.count > 0 else {
-                    self.displayError("Photo responses were not downloaded")
                     completion(false, nil)
                     return
                 }
                 for response in responses {
                     let urlString = response.mediaURL?.absoluteString
-                    print(urlString)
                     let photo = Photo(id: response.id, height: Double(response.height!), width: Double(response.width!), mediaURL: urlString!, context: AppDelegate.stack.context)
                     photo.pin = self.pin
                     photos.append(photo)
@@ -147,12 +136,10 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
     func getVenueImages(_ success: Bool, _ photos: [Photo]?, _ completion: @escaping (_ success: Bool) -> Void) {
         
         guard success else {
-            print("Venue image data could not be acquired")
             completion(false)
             return
         }
         guard let photos = photos else {
-            print("No photos were found!")
             completion(false)
             return
         }
@@ -160,11 +147,10 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
             self.getFoursquareImages(photo) { (success, error, imageData) in
                 performUIUpdatesOnMain {
                     guard error == nil else {
-                        self.displayError(error)
+                        self.displayError(from: self, with: error)
                         return
                     }
                     guard success == true else {
-                        self.displayError("Venue image data acquire was not successful")
                         return
                     }
                     guard let data = imageData else {
@@ -200,11 +186,6 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
             return pageItemController
         }
         return nil
-    }
-    
-    // MARK: Utilities
-    func displayError(_ error: String?) {
-        print(error)
     }
     
     // MARK: Page ViewController Data Source

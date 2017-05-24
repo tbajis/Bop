@@ -65,6 +65,8 @@
 		13BFA6EA1ECFA9C9007A7D23 /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BFA6E91ECFA9C9007A7D23 /* SegueHandlerType.swift */; };
 		13BFA6EC1ECFC7A3007A7D23 /* UIImage+Bop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BFA6EB1ECFC7A3007A7D23 /* UIImage+Bop.swift */; };
 		13BFA6EE1ECFC866007A7D23 /* FrostyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BFA6ED1ECFC866007A7D23 /* FrostyTabBar.swift */; };
+		13EEB82B1ED50679000280F2 /* BopAlertViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EEB82A1ED50679000280F2 /* BopAlertViewControllerDelegate.swift */; };
+		13EEB82D1ED51F9F000280F2 /* BopError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EEB82C1ED51F9F000280F2 /* BopError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +154,8 @@
 		13BFA6E91ECFA9C9007A7D23 /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
 		13BFA6EB1ECFC7A3007A7D23 /* UIImage+Bop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Bop.swift"; sourceTree = "<group>"; };
 		13BFA6ED1ECFC866007A7D23 /* FrostyTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrostyTabBar.swift; sourceTree = "<group>"; };
+		13EEB82A1ED50679000280F2 /* BopAlertViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BopAlertViewControllerDelegate.swift; sourceTree = "<group>"; };
+		13EEB82C1ED51F9F000280F2 /* BopError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BopError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +265,7 @@
 		13187DE31EA8455A003426FB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				13EEB82C1ED51F9F000280F2 /* BopError.swift */,
 				13187DA91EA842C7003426FB /* Bop.xcdatamodeld */,
 				13187E151EAEF2DC003426FB /* CoreData */,
 				13187DF51EA85582003426FB /* Clients */,
@@ -276,6 +281,7 @@
 				13BFA6E61ECF9BF9007A7D23 /* BopNavigationBar.swift */,
 				13BFA6ED1ECFC866007A7D23 /* FrostyTabBar.swift */,
 				13A6843A1ED3B78D00D26A90 /* ActivityIndicator.swift */,
+				13EEB82A1ED50679000280F2 /* BopAlertViewControllerDelegate.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -586,6 +592,7 @@
 				13187DEE1EA846CE003426FB /* InterestPickerViewController.swift in Sources */,
 				13BFA6E51ECE886C007A7D23 /* LoginButton.swift in Sources */,
 				13707C511EC4CC0800A59482 /* BopVenueImageViewController.swift in Sources */,
+				13EEB82B1ED50679000280F2 /* BopAlertViewControllerDelegate.swift in Sources */,
 				13960A351ECA953800820416 /* Photo+CoreDataProperties.swift in Sources */,
 				13960A341ECA953800820416 /* Photo.swift in Sources */,
 				13187DEC1EA84651003426FB /* InterestButton.swift in Sources */,
@@ -597,6 +604,7 @@
 				13A6843B1ED3B78D00D26A90 /* ActivityIndicator.swift in Sources */,
 				13707C551EC4D6E300A59482 /* BopPageViewController.swift in Sources */,
 				13187E021EABE84B003426FB /* PhotoResponse.swift in Sources */,
+				13EEB82D1ED51F9F000280F2 /* BopError.swift in Sources */,
 				13707C431EBD61C800A59482 /* CoreDataTableViewController.swift in Sources */,
 				13187DEA1EA845CD003426FB /* GCDBlackBox.swift in Sources */,
 				13187DA51EA842C7003426FB /* LoginViewController.swift in Sources */,

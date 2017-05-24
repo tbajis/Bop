@@ -32,18 +32,7 @@ class InterestPickerViewController: UIViewController, SegueHandlerType {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        for button in interestButtons {
-            button.backgroundColor = UIColor.clear
-        }
-        logoutButton.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Avenir-Light", size: 15)!], for: .normal)
-        continueButton.isHidden = true
-        CoreDataObject.sharedInstance().executePinSearch()
-        if let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin], pins.count > 0 {
-            self.mapButton.isEnabled = true
-        } else {
-            self.mapButton.isEnabled = false
-        }
+        configureUI()
     }
 
     // MARK: Actions
@@ -80,11 +69,7 @@ class InterestPickerViewController: UIViewController, SegueHandlerType {
         self.present(loginViewController, animated: true, completion: nil)
     }
     
-    @IBAction func mapButtonPressed(_ sender: Any) {
-        
-        guard let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin], pins.count > 0 else {
-            return
-        }
+    @IBAction func mapButtonPressed(_ sender: Any) {        
         performSegue(withIdentifier: .PinButtonPressed, sender: self)
     }
     
@@ -107,6 +92,21 @@ class InterestPickerViewController: UIViewController, SegueHandlerType {
     }
     
     // Utilities
+    func configureUI() {
+        
+        for button in interestButtons {
+            button.backgroundColor = UIColor.clear
+        }
+        logoutButton.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Avenir-Light", size: 15)!], for: .normal)
+        continueButton.isHidden = true
+        CoreDataObject.sharedInstance().executePinSearch()
+        if let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin], pins.count > 0 {
+            self.mapButton.isEnabled = true
+        } else {
+            self.mapButton.isEnabled = false
+        }
+    }
+    
     func toggleButton(_ sender: InterestButton, _ handler: @escaping () -> Void) {
         
         for button in interestButtons {

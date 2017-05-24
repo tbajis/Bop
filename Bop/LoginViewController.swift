@@ -11,10 +11,10 @@ import TwitterKit
 import DigitsKit
 import Crashlytics
 
-class LoginViewController: UIViewController, UIAlertViewDelegate {
+class LoginViewController: UIViewController {
     
     // MARK: Properties
-
+    
     // MARK: Outlets
     @IBOutlet weak var loginTwitterButton: UIButton!
     @IBOutlet weak var loginPhoneButton: UIButton!
@@ -23,7 +23,7 @@ class LoginViewController: UIViewController, UIAlertViewDelegate {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginPhoneButton.tintColor = UIColor.yellow
+        configureButton()
     }
     
     // MARK: Actions
@@ -90,7 +90,7 @@ class LoginViewController: UIViewController, UIAlertViewDelegate {
     
     // MARK: Utilities
     func configureButton() {
-        /* TODO: Configure button attributes here */
+        loginPhoneButton.tintColor = UIColor.yellow
     }
     
     // MARK: Helpers 

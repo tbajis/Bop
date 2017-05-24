@@ -23,18 +23,11 @@ class BopTableViewController: CoreDataTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set title
-        title = "Venues"
-        
-        self.navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Avenir-Light", size: 15)!], for: .normal)
-        if let interest = interest {
-            self.navigationItem.title = "Venues for \(interest)"
-        }
+        configureUI()
         
         // Create a fetchedResultsController
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Pin")
         fr.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
-        
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fr, managedObjectContext: AppDelegate.stack.context, sectionNameKeyPath: nil, cacheName: nil)
     }
     
@@ -87,6 +80,19 @@ class BopTableViewController: CoreDataTableViewController {
             deleteCompletionStatus(true)
         }
     }
+    
+    // MARK: Utilities
+    func configureUI() {
+        
+        // Set title
+        title = "Venues"
+        
+        self.navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Avenir-Light", size: 15)!], for: .normal)
+        if let interest = interest {
+            self.navigationItem.title = "Venues for \(interest)"
+        }
+
+    }
     // MARK: TableView Data Source
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -106,6 +112,7 @@ class BopTableViewController: CoreDataTableViewController {
         let pin = fetchedResultsController?.object(at: indexPath) as! Pin
         performSegue(withIdentifier: "showDetailFromTable", sender: pin)
     }
+    
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

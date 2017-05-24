@@ -15,7 +15,7 @@ import Crashlytics
 import TwitterKit
 import DigitsKit
 
-class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationManagerDelegate, SegueHandlerType {
+class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationManagerDelegate, SegueHandlerType, BopAlertViewControllerDelegate {
     
     // MARK: Properties
     enum SegueIdentifier: String {
@@ -42,13 +42,9 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
-        if let interest = interest {
-            self.navigationItem.title = "Venues for \(interest)"
-        }
-        self.navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Avenir-Light", size: 15)!], for: .normal)
+        configureUI()
         loadMapRegion()
 
-        CoreDataObject.sharedInstance().executePinSearch()
         placePinsOnMap()
     }
     
@@ -56,7 +52,7 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
     @IBAction func searchWithLocation(_ sender: UIButton) {
         
         guard let coordinate = userRegion?.center else {
-            self.displayError("User location could not be identified")
+            self.displayError(from: self, with: BopError.UserLocation)
             return
         }
         removePinsFromMap() { (success) in
@@ -66,7 +62,7 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
                         self.setRegionFromSearch(using: coordinate)
                         self.placePinsOnMap()
                     } else {
-                        self.displayError("An error occured placing pins on map")
+                        self.displayError(from: self, with: BopError.PinPlacement)
                     }
                 }
             }
@@ -82,7 +78,7 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
                         self.setRegionFromSearch(using: self.newYorkCity)
                         self.placePinsOnMap()
                     } else {
-                        self.displayError("An error occured placing pins on map")
+                        self.displayError(from: self, with: BopError.PinPlacement)
                     }
                 }
             }
@@ -99,7 +95,7 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
                         self.setRegionFromSearch(using: mapCenter)
                         self.placePinsOnMap()
                     } else {
-                        self.displayError("An error occured placing pins on map")
+                        self.displayError(from: self, with: BopError.PinPlacement)
                     }
                 }
             }
@@ -142,11 +138,11 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
         getVenuesBySearch(using: interest!, latitude: coordinate.latitude, longitude: coordinate.longitude) { (success, venues, error) in
             performUIUpdatesOnMain {
                 guard success else {
-                    self.displayError(error)
+                    self.displayError(from: self, with: error)
                     return
                 }
                 guard let venues = venues, venues.count > 0 else {
-                    self.displayError(FoursquareConstants.Error.Data)
+                    self.displayError(from: self, with: BopError.NoVenues)
                     return
                 }
                 for venue in venues {
@@ -168,7 +164,7 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
                 pinsToAdd.append(pin)
             }
         } else {
-            self.displayError("An errr occured putting pins on the map")
+            self.displayError(from: self, with: BopError.PinPlacement)
         }
         mapView.addAnnotations(pinsToAdd)
     }
@@ -223,11 +219,12 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
     }
     
     // MARK: Utilities
-    func displayError(_ error: String?) {
+    func configureUI() {
         
-        let alertController = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
+        if let interest = interest {
+            self.navigationItem.title = "Venues for \(interest)"
+        }
+        self.navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Avenir-Light", size: 15)!], for: .normal)
     }
 }
 

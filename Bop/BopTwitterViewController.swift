@@ -19,7 +19,6 @@ class BopTwitterViewController: TWTRTimelineViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Updates for (CITY)"
         let client = TWTRAPIClient()
         let interest = UserDefaults.standard.object(forKey: "Interest") as? String
         self.dataSource = TWTRSearchTimelineDataSource(searchQuery: interest!, apiClient: client)
