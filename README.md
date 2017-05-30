@@ -23,8 +23,6 @@ To get started and run the app, you need to follow these steps:
 
 * Fork the [official repository](https://github.com/tbajis/Bop) and run the project file in Xcode.
 
-* You will need to supply a valid Flickr API Key. You can apply for your own Flickr API Key [here.](https://www.flickr.com/services/apps/create/apply) 
-
 ## Compatibility
 This project is written in Swift. Bop is compatible with iOS 8+.
 
@@ -45,7 +43,7 @@ I'd love to get pull requests from everyone. Here are some ways _you_ can contri
 
 ### Submitting a Pull Request
 
-1. [Fork](https://help.github.com/articles/fork-a-repo/) the [official repository.](https://github.com/tbajis/VirtualTourist)
+1. [Fork](https://help.github.com/articles/fork-a-repo/) the [official repository.](https://github.com/tbajis/Bop)
 2. [Create a topic branch.](https://help.github.com/articles/creating-and-deleting-branches-within-your-repository/)
 3. Implement your feature or bug fix.
 4. Add, commit, and push your changes. Please try to use the [Udacity Git Commit Message Style Guide.](http://udacity.github.io/git-styleguide/)
