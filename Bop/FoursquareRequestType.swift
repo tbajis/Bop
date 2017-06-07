@@ -53,7 +53,9 @@ extension FoursquareRequestType {
         task.resume()
         return task
     }
+    
     // MARK: Helpers
+    
     // Create a url from parameters
     private func foursquareURLBuilder(parameters: [String:AnyObject], withPathExtension: String?) -> URL {
         

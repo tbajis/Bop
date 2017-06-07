@@ -130,8 +130,8 @@
 		13707C4E1EBE9C6900A59482 /* BopDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BopDetailViewController.swift; sourceTree = "<group>"; };
 		13707C501EC4CC0800A59482 /* BopVenueImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BopVenueImageViewController.swift; sourceTree = "<group>"; };
 		13707C541EC4D6E300A59482 /* BopPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BopPageViewController.swift; sourceTree = "<group>"; };
-		13960A321ECA953800820416 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
-		13960A331ECA953800820416 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		13960A321ECA953800820416 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Photo.swift; path = ../Photo.swift; sourceTree = "<group>"; };
+		13960A331ECA953800820416 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Photo+CoreDataProperties.swift"; path = "../Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		13A684181ED2B1F800D26A90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13A6841B1ED2B29800D26A90 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		13A6841C1ED2B29800D26A90 /* Icon-167.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-167.png"; sourceTree = "<group>"; };
@@ -192,8 +192,6 @@
 		13187D961EA842C7003426FB = {
 			isa = PBXGroup;
 			children = (
-				13960A321ECA953800820416 /* Photo.swift */,
-				13960A331ECA953800820416 /* Photo+CoreDataProperties.swift */,
 				13187DE21EA844DD003426FB /* Frameworks */,
 				13187DA11EA842C7003426FB /* Bop */,
 				13187DB91EA842C7003426FB /* BopTests */,
@@ -367,6 +365,8 @@
 		13187E171EAEF305003426FB /* Photo */ = {
 			isa = PBXGroup;
 			children = (
+				13960A321ECA953800820416 /* Photo.swift */,
+				13960A331ECA953800820416 /* Photo+CoreDataProperties.swift */,
 			);
 			name = Photo;
 			sourceTree = "<group>";
