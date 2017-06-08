@@ -37,11 +37,11 @@ When you've secured Client ID and Secret Key, perform the following instructions
 * In the project navigator, find the **FoursquareConstants.swift** file
 * Enter your Foursquare Client ID and Secret in the appropriate fields:
 
-```
-static let ClientId = "YOUR CLIENT ID HERE"
-static let ClientSecret = YOUR CLIENT SECRET HERE"
+	```
+	static let ClientId = "YOUR CLIENT ID HERE"
+	static let ClientSecret = YOUR CLIENT SECRET HERE"
 
-```
+	```
 
 ## Usage
 
@@ -49,6 +49,20 @@ This app has three view controller scenes
 1. **Login View**
 2. **Map and Table View**
 3. **Detail View**
+
+These three scenes are described in detail below.
+
+### Login View
+
+<img src="screenshots/loginView.png" height="450">
+
+### Venue Map and Table View
+
+
+
+### Venue Detail View
+
+
 
 ## Contributing
 
