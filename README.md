@@ -1,4 +1,4 @@
-# Bop for iOS
+# Bop
 
 This repository contains the source code for **Bop**, an iOS application written in Swift built with [Fabric](https://get.fabric.io) and [Foursquare](https://foursquare.com).
 
@@ -40,25 +40,53 @@ When you've secured Client ID and Secret Key, perform the following instructions
 	```
 	static let ClientId = "YOUR CLIENT ID HERE"
 	static let ClientSecret = YOUR CLIENT SECRET HERE"
-
 	```
 
 ## Usage
 
-This app has three view controller scenes
+<p align="center">
+	<figure><img src="screenshots/combinedView.png" width="100%"></figure>
+</p>
+
+This app has four view controller scenes (shown left to right above)
 1. **Login View**
-2. **Map and Table View**
-3. **Detail View**
+2. **Interest Picker View**
+3. **Map and Table Tab View**
+4. **Detail View**
 
 These three scenes are described in detail below.
 
 ### Login View
 
-<img src="screenshots/loginView.png" height="450">
+The **Login View** is presented to the user with three options for logging into **Bop**. The user may login by using their **Twitter** credentials or phone number. Optionally, the user may also login as a guest by pressing the **Continue as Guest** button. After logging in, the user will segue to the **Interest Picker View**  
+
+### Interest Picker View
+
+When the **Interest Picker View** loads, the user will be prompted to choose from one of six different "Interest" categories. The six categories to choose from are "Sports", "Music", "Food", "Art", "Fashion" and "Culture." When the user selects an interest, a **Continue** button will appear at the bottom of the view. Pressing the **Continue** button will segue the user to the **Map and Table Tab View**. 
+
+Note that if the user has already searched and persisted venues previously, the **Pin** button in the top navigation item will be illuminated. Pressing this button will allow the user to segue to the **Map and Table Tab View** and view their saved venues. 
+
+At any time, the user may press the **Logout** button in the top navigation item. This will cancel any previously started session with Twitter or Digits and return the user to the **Login View**.   
 
 ### Venue Map and Table View
 
+#### Map View
 
+The **Map View** is the first view controller scene shown when the tab bar controller is loaded. The user will be prompted to allow **Bop** to access their location. A blank map will load for the user like shown below. At this point, the user can search for venues from Foursquare, pertaining to their selected interest. This can be done in any one of three ways:
+
+1. By pressing the **Location Marker** button (lower right corner)
+2. By pressing the **Big Apple!** button (lower left corner)
+3. By pressing the **Refresh** button (top navigation item)
+
+When the user selects any of the buttons mentioned above, **Bop** will search for venues querying the user's selected "Interest" category. In addition, **Bop** will query a geographic coordinate with the search to return venues near a specific location. The coordinate used for each search is broken down below.
+
+Note that when the **Location Marker** is selected, **Bop** will query the user's current location in the search. If the user did not previously authorize **Bop** to use their location, a search error will occur.
+
+**Bop** will place the venues returned from the GET request onto the map as pins. By tapping a pin, a callout will be presented that provides the venues name and "Foursquare Check in Count". Pressing the callout accessory (i), the user will be segued to the **Detail View**.
+
+#### Table View
+
+   
 
 ### Venue Detail View
 
