@@ -49,7 +49,6 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
         
         configureUI()
         loadMapRegion()
-
         placePinsOnMap()
     }
     

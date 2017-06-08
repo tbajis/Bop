@@ -11,9 +11,9 @@ import TwitterKit
 import DigitsKit
 import Crashlytics
 
-// MARK: - LoginViewController: UIViewController
+// MARK: - LoginViewController: UIViewController, BopAlertViewControllerDelegate
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, BopAlertViewControllerDelegate {
 
     // MARK: Outlets
     
@@ -47,10 +47,14 @@ class LoginViewController: UIViewController {
                 
                 // Log Answers Custom Event.
                 Answers.logLogin(withMethod: "Twitter", success: true, customAttributes: ["User ID": session!.userID])
+                
             } else {
                 
                 // Log Answers Custom Event.
                 Answers.logLogin(withMethod: "Twitter", success: false, customAttributes: ["Error": error!.localizedDescription])
+                
+                // Display error to user
+                self.displayError(from: self, with: BopError.LoginTwitter)
             }
         }
     }
@@ -78,8 +82,12 @@ class LoginViewController: UIViewController {
                 Answers.logLogin(withMethod: "Digits", success: true, customAttributes: ["User ID": session?.userID as Any])
                 
             } else {
+                
                 // Log Answers Custom Event.
                 Answers.logLogin(withMethod: "Digits", success: false, customAttributes: ["Error": error?.localizedDescription as Any])
+                
+                // Display error to user
+                self.displayError(from: self, with: BopError.LoginDigits)
             }
         }
     }
@@ -95,12 +103,14 @@ class LoginViewController: UIViewController {
     // MARK: Utilities
     
     func configureButton() {
+        
         loginPhoneButton.tintColor = UIColor.yellow
     }
     
     // MARK: Helpers 
     
     func navigateToInterestPicker() {
+        
         performSegue(withIdentifier: "showInterestPicker", sender: self)
     }
 }

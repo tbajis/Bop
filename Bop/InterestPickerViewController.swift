@@ -57,6 +57,7 @@ class InterestPickerViewController: UIViewController, SegueHandlerType {
         if let userId = sessionStore.session()?.userID {
             sessionStore.logOutUserID(userId)
         }
+        
         Digits.sharedInstance().logOut()
         
         // Remove user information for any upcoming crashes in Crashlytics.

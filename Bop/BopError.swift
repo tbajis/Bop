@@ -12,6 +12,11 @@ import Foundation
 
 struct BopError {
     
+    // MARK: Login
+    
+    static var LoginTwitter = "Sorry! An error occured trying to login with Twitter"
+    static var LoginDigits = "Sorry! An error occured trying to login with Digits"
+    
     // MARK: Map
     
     static var UserLocation = "An error occured trying to get user location"
