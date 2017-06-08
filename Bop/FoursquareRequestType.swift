@@ -8,15 +8,18 @@
 
 import Foundation
 
+// MARK: - FoursquareRequestType (Protocol)
+
 protocol FoursquareRequestType {
 
 }
 
-// MARK: - FoursquareRequestType
+// MARK: - FoursquareRequestType (Protocol Extension)
 
 extension FoursquareRequestType {
 
     // MARK: GET
+    
     func taskForGETMethod(_ method: String, parameters: [String:AnyObject], completionHandlerForGET: @escaping (_ result: [String:AnyObject]?, _ error: String?) -> Void) -> URLSessionDataTask {
         
         // Set any method parameters

@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: Perform UI Updates on Main (Convenience method)
+
 func performUIUpdatesOnMain(_ updates: @escaping () -> Void) {
     DispatchQueue.main.async {
         updates()

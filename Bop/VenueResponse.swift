@@ -9,9 +9,12 @@
 import Foundation
 import UIKit
 
+// MARK: - VenueResponse
+
 struct VenueResponse {
     
     // MARK: Properties
+    
     var id: String?
     var name: String?
     var address: [String]?
@@ -20,6 +23,7 @@ struct VenueResponse {
     var checkinsCount: Double?
     
     // MARK: Initializers
+    
     init(value: [String:AnyObject]) {
         
         self.id = value[FoursquareConstants.JSONResponseKeys.Id] as? String

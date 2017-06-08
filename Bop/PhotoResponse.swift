@@ -9,15 +9,19 @@
 import Foundation
 import UIKit
 
+// MARK: - PhotoResponse
+
 struct PhotoResponse {
     
     // MARK: Properties
+    
     var id: String?
     var mediaURL: URL?
     var height: Int?
     var width: Int?
     
     // MARK: Initializers
+    
     init(value: [String:AnyObject]) {
         self.id = value[FoursquareConstants.JSONResponseKeys.Id] as? String
         self.mediaURL = value["mediaURL"] as? URL

@@ -14,6 +14,7 @@ import CoreData
 class CoreDataTableViewController: UITableViewController {
     
     // MARK: Properties
+    
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>? {
         didSet {
             fetchedResultsController?.delegate = self
@@ -23,6 +24,7 @@ class CoreDataTableViewController: UITableViewController {
     }
     
     // MARK: Initializers
+    
     init(fetchedResultsController fc: NSFetchedResultsController<NSFetchRequestResult>, style: UITableViewStyle = .plain) {
         fetchedResultsController = fc
         super.init(style: style)

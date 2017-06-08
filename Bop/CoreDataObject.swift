@@ -10,13 +10,16 @@ import Foundation
 import CoreData
 
 // MARK: - CoreDataObject: NSObject
+
 class CoreDataObject: NSObject {
     
     // MARK: Properties
+    
     var pin: Pin?
     var photo: Photo?
     
     // MARK: FetchedResultsController
+    
     lazy var fetchedPinResultsController: NSFetchedResultsController<NSFetchRequestResult> = {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Pin")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
@@ -25,6 +28,7 @@ class CoreDataObject: NSObject {
     }()
     
     // MARK: Methods
+    
     func executePinSearch() {
         
         do {
@@ -35,6 +39,7 @@ class CoreDataObject: NSObject {
     }
     
     // MARK: Shared Instance
+    
     class func sharedInstance() -> CoreDataObject {
         struct Singleton {
             static var sharedInstance = CoreDataObject()
@@ -44,6 +49,7 @@ class CoreDataObject: NSObject {
 }
 
 // MARK: - NSFetchedResultsControllerDelegate
+
 extension CoreDataObject: NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

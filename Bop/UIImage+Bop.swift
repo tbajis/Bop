@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-// MARK: - UIImage
+// MARK: - UIImage (Class Extension)
+
 extension UIImage {
     
     class func image(with color: UIColor) -> UIImage {

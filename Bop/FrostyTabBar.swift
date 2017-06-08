@@ -9,9 +9,11 @@
 import UIKit
 
 // MARK: - FrostyTabBar: UITabBar
+
 class FrostyTabBar: UITabBar {
 
     // MARK: Initializers
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -26,5 +28,4 @@ class FrostyTabBar: UITabBar {
         frost.autoresizingMask = .flexibleWidth
         insertSubview(frost, at: 0)
     }
-
 }

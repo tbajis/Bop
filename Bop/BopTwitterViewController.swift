@@ -10,12 +10,15 @@ import UIKit
 import TwitterKit
 
 // MARK: BopTwitterViewController: TWTRTTimelineViewController
+
 class BopTwitterViewController: TWTRTimelineViewController {
     
     // MARK: Properties
+    
     var pin: Pin?
     
     // MARK: Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -11,8 +11,9 @@ import UIKit
 
 // MARK: - FoursquareRequestType (Convenient Resource Method[s])
 
-
 extension FoursquareRequestType {
+    
+    // MARK: - GET Foursquare Images
     
     func getFoursquareImages(_ photo: Photo?, completionHandlerForGETFoursquarePhotos: @escaping ( _ success: Bool, _ errorString: String?, _ imageData: Data?) -> Void) -> URLSessionTask {
         
@@ -31,6 +32,8 @@ extension FoursquareRequestType {
         return task
     }
     
+    // MARK: - GET Venues By Search
+    
     func getVenuesBySearch(using query: String, latitude: Double, longitude: Double, completionHandlerForSearchVenues: @escaping(_ success: Bool, _ venues: [VenueResponse]?, _ error: String?) -> Void) {
         
         // Create Parameters for request
@@ -47,20 +50,26 @@ extension FoursquareRequestType {
         
         let _ = taskForGETMethod(FoursquareConstants.Methods.GETSearchVenues, parameters: parameters) { (result, error) in
         
+            // GUARD against a response error
             guard error == nil else {
                 print("There was an error in getVenuesBySearch()")
                 completionHandlerForSearchVenues(false, nil, error)
                 return
             }
+            
+            // GUARD against againt bad response data
             guard let responseDict = result?["response"] as? [String:AnyObject], let venuesArray = responseDict["venues"] as? [[String:AnyObject]] else {
                 print("There was an error parsing in getVenuesBySearch")
                 completionHandlerForSearchVenues(false, nil, "An error occured!")
                 return
             }
+            
             let venues = self.venuesFromJSON(venuesArray)
             completionHandlerForSearchVenues(true, venues, nil)
         }
     }
+    
+    // MARK: - GET Photos For Venues
     
     func getPhotosForVenue(using id: String?, completionHandlerForGetPhotos: @escaping(_ success: Bool, _ photos: [PhotoResponse]?, _ error: String?) -> Void) {
         
@@ -77,20 +86,26 @@ extension FoursquareRequestType {
         
         let _ = taskForGETMethod(mutableMethod, parameters: parameters) { (result, error) in
         
+            // GUARD against a response error
             guard error == nil else {
                 print("There was an error in getPhotosForVenue")
                 completionHandlerForGetPhotos(false, nil, error)
                 return
             }
+            
+            // GUARD against bad response data
             guard let responseDict = result?["response"] as? [String:AnyObject], let photoDict = responseDict["photos"] as? [String:AnyObject], let itemsArrayOfDicts = photoDict["items"] as? [[String:AnyObject]] else {
                 print("There was an error parsing in getVenuesBySearch")
                 completionHandlerForGetPhotos(false, nil, nil)
                 return
             }
+            
             let photos = self.photosFromJSON(itemsArrayOfDicts)
             completionHandlerForGetPhotos(true, photos, nil)
         }
     }
+    
+    // MARK: Helpers
     
     // Generate the date in specified format "YYYMMDD"
     func generateDate() -> String {

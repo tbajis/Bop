@@ -10,9 +10,12 @@ import Foundation
 import UIKit
 @IBDesignable
 
+// MARK: - InterestButton: UIButton
+
 class InterestButton: UIButton {
     
     // MARK: Properties
+    
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
             self.layer.cornerRadius = cornerRadius
@@ -37,6 +40,8 @@ class InterestButton: UIButton {
         }
     }
     
+    // MARK: Category
+    
     enum Category: Int {
         case Sport = 0, Music = 1, Food = 2, Art = 3, Fashion = 4, Culture = 5
     }
@@ -52,6 +57,7 @@ class InterestButton: UIButton {
     }
     
     // MARK: Methods
+    
     func queryString(for buttonType: Category) -> String {
         
         switch buttonType {

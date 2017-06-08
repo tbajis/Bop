@@ -9,11 +9,15 @@
 import Foundation
 import UIKit
 
+// MARK: SegueHandlerType (Protocol)
+
 protocol SegueHandlerType {
+    
     associatedtype SegueIdentifier: RawRepresentable
 }
 
-// MARK: - SegueHandlerType
+// MARK: - SegueHandlerType (Protocol Extension)
+
 extension SegueHandlerType where Self: UIViewController, SegueIdentifier.RawValue == String {
 
     func performSegue(withIdentifier identifier: SegueIdentifier, sender: Any?) {

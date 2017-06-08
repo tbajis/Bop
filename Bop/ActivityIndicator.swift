@@ -9,11 +9,16 @@
 import UIKit
 
 // MARK: - ActivityIndicator
+
 class ActivityIndicator {
+    
+    // MARK: Properties
     
     private var container = UIView()
     private var loadingView = UIView()
     private var activityIndicator = UIActivityIndicatorView()
+    
+    // MARK: Convenience Methods
     
     func startActivityIndicator(inView hostView: UIView) {
         
@@ -47,6 +52,7 @@ class ActivityIndicator {
     }
     
     // MARK: Shared Instance
+    
     class func sharedInstance() -> ActivityIndicator {
         struct Singleton {
             static var sharedInstance = ActivityIndicator()

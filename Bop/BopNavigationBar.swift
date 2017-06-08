@@ -9,9 +9,11 @@
 import UIKit
 
 // MARK: - BopNavigationBar: UINaivgationBar
+
 class BopNavigationBar: UINavigationBar {
 
     // MARK: Initializers
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

@@ -219,10 +219,7 @@
 				13187DE41EA84561003426FB /* Views */,
 				13187DE51EA84568003426FB /* View Controllers */,
 				13187DE61EA84574003426FB /* Extensions */,
-				13187DA61EA842C7003426FB /* Main.storyboard */,
-				13187DAE1EA842C7003426FB /* LaunchScreen.storyboard */,
-				13A684181ED2B1F800D26A90 /* Assets.xcassets */,
-				13A6841A1ED2B29800D26A90 /* AppIcon.appiconset */,
+				136AAA501EE8D76300F27245 /* Assets */,
 				13187DE71EA8457C003426FB /* Supporting Files */,
 				13187DE81EA84586003426FB /* Resources */,
 			);
@@ -308,6 +305,8 @@
 		13187DE71EA8457C003426FB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				13187DA61EA842C7003426FB /* Main.storyboard */,
+				13187DAE1EA842C7003426FB /* LaunchScreen.storyboard */,
 				13187DB11EA842C7003426FB /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -369,6 +368,15 @@
 				13960A331ECA953800820416 /* Photo+CoreDataProperties.swift */,
 			);
 			name = Photo;
+			sourceTree = "<group>";
+		};
+		136AAA501EE8D76300F27245 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				13A684181ED2B1F800D26A90 /* Assets.xcassets */,
+				13A6841A1ED2B29800D26A90 /* AppIcon.appiconset */,
+			);
+			name = Assets;
 			sourceTree = "<group>";
 		};
 		13707C521EC4D65500A59482 /* BopTableViewController */ = {

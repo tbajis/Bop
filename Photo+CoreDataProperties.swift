@@ -9,10 +9,12 @@
 import Foundation
 import CoreData
 
+// MARK: - Photo (Core Data Properties)
 
 extension Photo {
     
     // MARK: Properties
+    
     @NSManaged var height: Double
     @NSManaged var id: String?
     @NSManaged var mediaURL: String

@@ -9,10 +9,12 @@
 import Foundation
 import CoreData
 
+// MARK: - Pin (Core Data Properties)
 
 extension Pin {
 
     // MARK: Properties
+    
     @NSManaged var address: String?
     @NSManaged var checkinsCount: Double
     @NSManaged var id: String?

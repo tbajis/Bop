@@ -8,9 +8,12 @@
 
 import UIKit
 
+// MARK: BopVenueImageViewController: UIViewController
+
 class BopVenueImageViewController: UIViewController {
     
     // MARK: Properties
+    
     var itemIndex: Int = 0
     var imageName: UIImage = UIImage(named: "detailPlaceholder")! {
         didSet {
@@ -21,9 +24,11 @@ class BopVenueImageViewController: UIViewController {
     }
     
     // MARK: Outlets
+    
     @IBOutlet weak var contentImageView: UIImageView!
     
     // MARK: Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

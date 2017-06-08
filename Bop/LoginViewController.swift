@@ -11,22 +11,26 @@ import TwitterKit
 import DigitsKit
 import Crashlytics
 
+// MARK: - LoginViewController: UIViewController
+
 class LoginViewController: UIViewController {
-    
-    // MARK: Properties
-    
+
     // MARK: Outlets
+    
     @IBOutlet weak var loginTwitterButton: UIButton!
     @IBOutlet weak var loginPhoneButton: UIButton!
     @IBOutlet weak var loginGuestButton: UIButton!
     
     // MARK: Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureButton()
     }
     
     // MARK: Actions
+    
     @IBAction func loginWithTwitter(_ sender: UIButton) {
         
         // Create an instance of a twitter session.
@@ -89,11 +93,13 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: Utilities
+    
     func configureButton() {
         loginPhoneButton.tintColor = UIColor.yellow
     }
     
     // MARK: Helpers 
+    
     func navigateToInterestPicker() {
         performSegue(withIdentifier: "showInterestPicker", sender: self)
     }

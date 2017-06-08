@@ -15,9 +15,12 @@ import Crashlytics
 import TwitterKit
 import DigitsKit
 
+// MARK: BopMapViewController: UIViewController, FoursquareRequestType, CLLocationManagerDelegate, SegueHandlerType, BopAlertViewControllerDelegate
+
 class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationManagerDelegate, SegueHandlerType, BopAlertViewControllerDelegate {
     
     // MARK: Properties
+    
     enum SegueIdentifier: String {
         case MapPinPressed
     }
@@ -31,9 +34,11 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
     let newYorkCity = CLLocationCoordinate2D(latitude: 40.7, longitude: -74)
     
     // MARK: Outlets
+    
     @IBOutlet weak var mapView: MKMapView!
     
     // MARK: Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,6 +54,7 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
     }
     
     // MARK: Actions
+    
     @IBAction func searchWithLocation(_ sender: UIButton) {
         
         guard let coordinate = userRegion?.center else {
@@ -133,6 +139,7 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
     }
     
     // MARK: Helpers
+    
     func searchForPins(with coordinate: CLLocationCoordinate2D, searchCompletionStatus: @escaping(_ success: Bool) -> Void) {
         
         getVenuesBySearch(using: interest!, latitude: coordinate.latitude, longitude: coordinate.longitude) { (success, venues, error) in
@@ -219,6 +226,7 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
     }
     
     // MARK: Utilities
+    
     func configureUI() {
         
         if let interest = interest {
@@ -229,6 +237,7 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
 }
 
 // MARK: - MKMapViewDelegate
+
 extension BopMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -269,6 +278,7 @@ extension BopMapViewController: MKMapViewDelegate {
 }
 
 // MARK: - CLLocationManagerDelegate
+
 extension BopMapViewController {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         

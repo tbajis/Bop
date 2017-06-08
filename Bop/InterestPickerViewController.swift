@@ -13,16 +13,19 @@ import Crashlytics
 import TwitterKit
 import DigitsKit
 
-// MARK: - InterestPickerViewController: UIViewController
+// MARK: - InterestPickerViewController: UIViewController. SegueHandlerType
+
 class InterestPickerViewController: UIViewController, SegueHandlerType {
     
     // MARK: Properties
+    
     enum SegueIdentifier: String {
         case ContinueButtonPressed
         case PinButtonPressed
     }
     
     // MARK: Outlets
+    
     @IBOutlet var interestButtons: [InterestButton]!
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var navigationBar: UINavigationBar!
@@ -30,12 +33,15 @@ class InterestPickerViewController: UIViewController, SegueHandlerType {
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     
     // MARK: Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureUI()
     }
 
     // MARK: Actions
+    
     @IBAction func logout(_ sender: Any) {
         
         // Remove pins from Core Data
@@ -91,7 +97,8 @@ class InterestPickerViewController: UIViewController, SegueHandlerType {
         }
     }
     
-    // Utilities
+    // MARK: Utilities
+    
     func configureUI() {
         
         for button in interestButtons {
@@ -129,7 +136,8 @@ class InterestPickerViewController: UIViewController, SegueHandlerType {
         }
     }
 
-    // Helpers
+    // MARK: Helpers
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         switch segueIdentifierForSegue(segue: segue) {

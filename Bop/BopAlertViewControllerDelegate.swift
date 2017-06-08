@@ -8,10 +8,14 @@
 
 import UIKit
 
+// MARK: - BopAlertControllerDelegate (Protocol)
+
 protocol BopAlertViewControllerDelegate {
     
     func displayError(from hostViewController: UIViewController, with message: String?)
 }
+
+// MARK: - BopAlertViewControllerDelegate (Protocol Extension)
 
 extension BopAlertViewControllerDelegate {
     

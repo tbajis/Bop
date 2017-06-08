@@ -14,14 +14,17 @@ import CoreData
 class BopDetailViewController: UIViewController {
     
     // MARK: Properties
+    
     var pin: Pin?
     
     // MARK: Outlets
+    
     @IBOutlet weak var twitterView: UIView!
     @IBOutlet weak var imagePageView: UIView!
     @IBOutlet weak var venueLabel: UILabel!
     
     // MARK: Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,6 +42,7 @@ class BopDetailViewController: UIViewController {
     }
     
     // MARK: Helpers
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "InjectPageViewController" {

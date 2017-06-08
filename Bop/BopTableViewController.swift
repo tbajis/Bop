@@ -17,9 +17,11 @@ import DigitsKit
 class BopTableViewController: CoreDataTableViewController {
     
     // MARK: Properties
+    
     var interest = UserDefaults.standard.object(forKey: "Interest") as? String
     
     // MARK: Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +43,7 @@ class BopTableViewController: CoreDataTableViewController {
     }
     
     // MARK: Actions
+    
     @IBAction func logout(_ sender: Any) {
         deletePinInfo() { (success) in
             if success {
@@ -70,6 +73,7 @@ class BopTableViewController: CoreDataTableViewController {
     }
     
     // MARK: Helpers
+    
     func deletePinInfo(deleteCompletionStatus: @escaping(_ success: Bool) -> Void) {
         
         if let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin] {
@@ -82,6 +86,7 @@ class BopTableViewController: CoreDataTableViewController {
     }
     
     // MARK: Utilities
+    
     func configureUI() {
         
         // Set title
@@ -94,6 +99,7 @@ class BopTableViewController: CoreDataTableViewController {
 
     }
     // MARK: TableView Data Source
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let venue = fetchedResultsController?.object(at: indexPath) as! Pin
@@ -114,6 +120,7 @@ class BopTableViewController: CoreDataTableViewController {
     }
     
     // MARK: Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "showDetailFromTable" {

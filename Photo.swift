@@ -8,9 +8,12 @@
 import Foundation
 import CoreData
 
+// MARK: - Photo: NSManagedObject
+
 class Photo: NSManagedObject {
     
     // MARK: Initializer
+    
     convenience init(id: String?, height: Double, width: Double, mediaURL: String, context: NSManagedObjectContext) {
         if let ent = NSEntityDescription.entity(forEntityName: "Photo", in: context) {
             self.init(entity: ent, insertInto: context)

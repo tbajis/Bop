@@ -12,6 +12,7 @@ import CoreData
 class BopPageViewController: UIPageViewController, UIPageViewControllerDataSource, FoursquareRequestType, BopAlertViewControllerDelegate {
 
     // MARK: Properties
+    
     var contentImages: [UIImage] = [UIImage(named: "detailPlaceholder")!]
     var pin: Pin?
     var imagePageView: UIView?
@@ -25,9 +26,8 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
         return fetchedResultsController
     }()
     
-    // MARK: Outlets
-    
     // MARK: Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -79,6 +79,7 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
     }
 
     // MARK: Helpers
+    
     func executeSearch() {
         
         if let fc = fetchedResultsController {
@@ -188,7 +189,8 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
         return nil
     }
     
-    // MARK: Page ViewController Data Source
+    // MARK: PageViewController (Data Source)
+    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
         let itemController = viewController as! BopVenueImageViewController
@@ -222,9 +224,9 @@ class BopPageViewController: UIPageViewController, UIPageViewControllerDataSourc
 }
 
 // MARK: BopPageViewController - NSFetchedResultsControllerDelegate
+
 extension BopPageViewController: NSFetchedResultsControllerDelegate {
     
-    // MARK: - NSFetchedResultsControllerDelegate
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
     }
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {

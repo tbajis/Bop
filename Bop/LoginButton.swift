@@ -10,8 +10,11 @@ import UIKit
 @IBDesignable
 
 // MARK: - LoginButton: UIButton
+
 class LoginButton: UIButton {
 
+    // MARK: Properties
+    
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
             self.layer.cornerRadius = cornerRadius
