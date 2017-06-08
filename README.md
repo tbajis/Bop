@@ -62,9 +62,13 @@ The **Login View** is presented to the user with three options for logging into 
 
 ### Interest Picker View
 
-When the **Interest Picker View** loads, the user will be prompted to choose from one of six different "Interest" categories. The six categories to choose from are "Sports", "Music", "Food", "Art", "Fashion" and "Culture." When the user selects an interest, a **Continue** button will appear at the bottom of the view. Pressing the **Continue** button will segue the user to the **Map and Table Tab View**. 
+<p align="center">
+	<figure><img src="screenshots/interestPicker_selected.png" width="20%"></figure>
+</p>
 
-Note that if the user has already searched and persisted venues previously, the **Pin** button in the top navigation item will be illuminated. Pressing this button will allow the user to segue to the **Map and Table Tab View** and view their saved venues. 
+When the **Interest Picker View** loads, the user will be prompted to choose from one of six different "Interest" categories. The six categories to choose from are "Sports", "Music", "Food", "Art", "Fashion" and "Culture." When the user selects an interest, a **Continue** button will appear at the bottom of the view as shown above. Pressing the **Continue** button will segue the user to the **Map and Table Tab View**. 
+
+Note that if the user has already searched and persisted venues previously, the **Pin** button in the top navigation item will be illuminated and enabled. Pressing this button will allow the user to segue to the **Map and Table Tab View** and view their saved venues. 
 
 At any time, the user may press the **Logout** button in the top navigation item. This will cancel any previously started session with Twitter or Digits and return the user to the **Login View**.   
 
@@ -72,25 +76,41 @@ At any time, the user may press the **Logout** button in the top navigation item
 
 #### Map View
 
-The **Map View** is the first view controller scene shown when the tab bar controller is loaded. The user will be prompted to allow **Bop** to access their location. A blank map will load for the user like shown below. At this point, the user can search for venues from Foursquare, pertaining to their selected interest. This can be done in any one of three ways:
+<img src="screenshots/mapView_blank.png" width="20%"> <img src="screenshots/mapView_pins.png" width="20%">
+
+The **Map View** is the first view controller scene shown when the tab bar controller is loaded. The user will be prompted to allow **Bop** to access their location and a blank map will load for the user like shown above. At this point, the user can search for venues from Foursquare based on their selected interest. This can be done in one of three ways:
 
 1. By pressing the **Location Marker** button (lower right corner)
 2. By pressing the **Big Apple!** button (lower left corner)
 3. By pressing the **Refresh** button (top navigation item)
 
-When the user selects any of the buttons mentioned above, **Bop** will search for venues querying the user's selected "Interest" category. In addition, **Bop** will query a geographic coordinate with the search to return venues near a specific location. The coordinate used for each search is broken down below.
+When the user selects any of the buttons mentioned above, **Bop** will search for venues querying the user's selected "Interest" category. In addition, **Bop** will query a specific geographic coordinate with the search to return venues near a location. The coordinate used for each search is broken down below.
+
+ | Search Button | Coordinate Searched
+ | ------------- | ---------------------------------- |
+ | Location Marker | Current Location
+ | Big Apple | (lat = 40.7, lng = -74) (New York City)
+ | Refresh | MapView's current center
 
 Note that when the **Location Marker** is selected, **Bop** will query the user's current location in the search. If the user did not previously authorize **Bop** to use their location, a search error will occur.
 
 **Bop** will place the venues returned from the GET request onto the map as pins. By tapping a pin, a callout will be presented that provides the venues name and "Foursquare Check in Count". Pressing the callout accessory (i), the user will be segued to the **Detail View**.
 
+At any time, the user may press the **Logout** button in the top navigation item. This will cancel any previously started session with Twitter or Digits and return the user to the **Login View**. 
+
 #### Table View
 
-   
+<img src="screenshots/tableView_pins.png" width="20%">
+
+The **Table View** is the second view controller scene shown when the **Table** tab is selected. The table will show all of the venues returned by the Foursquare search request. The venue's name and "Fousquare Check in Count" will be shown. By tapping on a venue in the table, the user will be segued to the **Detail View**. 
+
+At any time, the user may press the **Logout** button in the top navigation item. This will cancel any previously started session with Twitter or Digits and return the user to the **Login View**.    
 
 ### Venue Detail View
 
+<img src="screenshots/detailView_blank.png" width="20%">
 
+The **Detail View** displays photos of the venue they selected from the **Map View** or **Table View** scenes. Additionally, a Twitter feed is embedded in the bottom half of the view to provide the user with Twitter Timeline posts where their specified "Interest" is searched.
 
 ## Contributing
 
@@ -121,6 +141,3 @@ I'd love to get pull requests from everyone. Here are some ways _you_ can contri
 Copyright 2017 Thomas Bajis.  
 
 Licensed under the [Apache License, Version 2.0:](http://www.apache.org/licenses/LICENSE-2.0).
-
-## Issues
-
