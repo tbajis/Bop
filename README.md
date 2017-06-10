@@ -10,11 +10,11 @@ This repository contains the source code for **Bop**, an iOS application written
 
 ## Foursquare
 
-**Bop** uses the [Fousquare API](https://developer.foursquare.com/) to search for venues using an interest keyword and geographic location. Photos are downloaded using venues unique "ID" parameter from [Foursquare](https://foursquare.com).  
+**Bop** uses the [Fousquare API](https://developer.foursquare.com/) to search for venues using an interest keyword and geographic location. Photos are downloaded using the venue's unique "ID" parameter from [Foursquare](https://foursquare.com).  
 
 ## Compatibiity
 
-This project is written in **Swift 3**. Please have the **latest version** of Xcode (version 8) installed prior to running. **Bop** is compatible with iOS 8+
+This project is written in Swift **3**. Please have the **latest version** of Xcode (version 8) installed prior to running. **Bop** is compatible with iOS 8+
 
 ## Getting Started
 
@@ -58,7 +58,7 @@ These three scenes are described in detail below.
 
 ### Login View
 
-The **Login View** is presented to the user with three options for logging into **Bop**. The user may login by using their **Twitter** credentials or phone number. Optionally, the user may also login as a guest by pressing the **Continue as Guest** button. After logging in, the user will segue to the **Interest Picker View**  
+The **Login View** is presented to the user with three options for logging into **Bop**. The user may login by using their Twitter credentials or phone number. Optionally, the user may also login as a guest by pressing the **Continue as Guest** button. After logging in, the user will segue to the **Interest Picker View**  
 
 ### Interest Picker View
 
@@ -84,7 +84,7 @@ The **Map View** is the first view controller scene shown when the tab bar contr
 2. By pressing the **Big Apple!** button (lower left corner)
 3. By pressing the **Refresh** button (top navigation item)
 
-When the user selects any of the buttons mentioned above, **Bop** will search for venues querying the user's selected "Interest" category. In addition, **Bop** will query a specific geographic coordinate with the search to return venues near a location. The coordinate used for each search is broken down below.
+When the user selects any of the buttons mentioned above, **Bop** will search for venues, querying the user's selected "Interest" category. In addition, **Bop** will query a specific geographic coordinate with the search to return venues near a location. The coordinate used for each search is broken down below.
 
  | Search Button | Coordinate Searched
  | ------------- | ---------------------------------- |
@@ -94,7 +94,7 @@ When the user selects any of the buttons mentioned above, **Bop** will search fo
 
 Note that when the **Location Marker** is selected, **Bop** will query the user's current location in the search. If the user did not previously authorize **Bop** to use their location, a search error will occur.
 
-**Bop** will place the venues returned from the GET request onto the map as pins. By tapping a pin, a callout will be presented that provides the venues name and "Foursquare Check in Count". Pressing the callout accessory (i), the user will be segued to the **Detail View**.
+**Bop** will place the venues returned from the search request onto the map as pins. By tapping a pin, a callout will be presented that shows the venue's name and "Foursquare Check in Count". Pressing the callout accessory (i), the user will be segued to the **Detail View**.
 
 At any time, the user may press the **Logout** button in the top navigation item. This will cancel any previously started session with Twitter or Digits and return the user to the **Login View**. 
 
@@ -102,7 +102,7 @@ At any time, the user may press the **Logout** button in the top navigation item
 
 <img src="screenshots/tableView_pins.png" width="20%">
 
-The **Table View** is the second view controller scene shown when the **Table** tab is selected. The table will show all of the venues returned by the Foursquare search request. The venue's name and "Fousquare Check in Count" will be shown. By tapping on a venue in the table, the user will be segued to the **Detail View**. 
+The **Table View** is the second view controller scene shown when the Table tab is selected. The table will show all of the venues returned by the Foursquare search request. The venue's name and "Fousquare Check in Count" will be shown. By tapping on a venue in the table, the user will be segued to the **Detail View**. 
 
 At any time, the user may press the **Logout** button in the top navigation item. This will cancel any previously started session with Twitter or Digits and return the user to the **Login View**.    
 
@@ -110,7 +110,7 @@ At any time, the user may press the **Logout** button in the top navigation item
 
 <img src="screenshots/detailView_blank.png" width="20%">
 
-The **Detail View** displays photos of the venue they selected from the **Map View** or **Table View** scenes. Additionally, a Twitter feed is embedded in the bottom half of the view to provide the user with Twitter Timeline posts where their specified "Interest" is searched.
+The **Detail View** displays photos of the venue the user selected from the **Map View** or **Table View** scenes. Additionally, a Twitter feed is embedded in the bottom half of the view to provide the user with Twitter Timeline posts associated with their chosen interest.
 
 ## Contributing
 
