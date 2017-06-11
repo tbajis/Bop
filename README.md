@@ -66,7 +66,7 @@ The **Login View** is presented to the user with three options for logging into 
 	<figure><img src="screenshots/interestPicker_selected.png" width="20%"></figure>
 </p>
 
-When the **Interest Picker View** loads, the user will be prompted to choose from one of six different "Interest" categories. The six categories to choose from are "Sports", "Music", "Food", "Art", "Fashion" and "Culture." When the user selects an interest, a **Continue** button will appear at the bottom of the view as shown above. Pressing the **Continue** button will segue the user to the **Map and Table Tab View**. 
+When the **Interest Picker View** loads, the user will be prompted to choose from one of six different "Interest" categories. The six categories to choose from are "Sports", "Music", "Food", "Art", "Fashion" and "Culture." When the user selects an interest, a **Continue** button will appear at the bottom of the view as shown above. Pressing the **Continue** button will segue the user to the **Map and Table Tab View**. Note that once an interest is selected, **Bop** will save that selected interest.
 
 Note that if the user has already searched and persisted venues previously, the **Pin** button in the top navigation item will be illuminated and enabled. Pressing this button will allow the user to segue to the **Map and Table Tab View** and view their saved venues. 
 
@@ -84,7 +84,7 @@ The **Map View** is the first view controller scene shown when the tab bar contr
 2. By pressing the **Big Apple!** button (lower left corner)
 3. By pressing the **Refresh** button (top navigation item)
 
-When the user selects any of the buttons mentioned above, **Bop** will search for venues, querying the user's selected "Interest" category. In addition, **Bop** will query a specific geographic coordinate with the search to return venues near a location. The coordinate used for each search is broken down below.
+When the user selects any of the buttons mentioned above, **Bop** will search for venues, querying the user's selected "Interest" category. In addition, **Bop** will query a specific geographic coordinate with the search to return venues near a location. **Bop** will then save these venues for future use. The coordinate used for each search is broken down below.
 
  | Search Button | Coordinate Searched
  | ------------- | ---------------------------------- |

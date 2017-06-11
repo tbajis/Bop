@@ -49,6 +49,19 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
         
         configureUI()
         loadMapRegion()
+        
+        CoreDataObject.sharedInstance().executePinSearch()
+        guard let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin], pins.count > 0 else {
+            self.searchForPins(with: self.newYorkCity, searchCompletionStatus: { (success) in
+                if success {
+                    self.setRegionFromSearch(using: self.newYorkCity)
+                    self.placePinsOnMap()
+                } else {
+                    self.displayError(from: self, with: BopError.PinPlacement)
+                }
+            })
+            return
+        }
         placePinsOnMap()
     }
     
@@ -129,10 +142,17 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
                 // Set Guest Login to false
                 UserDefaults.standard.set(false, forKey: "guestLoggedIn")
                 
-                // Present the Login Screen again
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-                self.present(loginViewController, animated: true, completion: nil)
+                let appDelegate  = UIApplication.shared.delegate as! AppDelegate
+                
+                if let _ = appDelegate.window?.rootViewController as? LoginViewController {
+                    
+                    // if Login View is window's root view, dismiss to it. Otherwise set it and dismiss to it.
+                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                } else {
+                    let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                    appDelegate.window?.rootViewController = loginViewController
+                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                }
             }
         }
     }
