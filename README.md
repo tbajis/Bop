@@ -76,9 +76,9 @@ At any time, the user may press the **Logout** button in the top navigation item
 
 #### Map View
 
-<img src="screenshots/mapView_blank.png" width="20%"> <img src="screenshots/mapView_pins.png" width="20%">
+<img src="screenshots/mapView_pins.png" width="20%"> <img src="screenshots/mapView_pins.png" width="20%">
 
-The **Map View** is the first view controller scene shown when the tab bar controller is loaded. The user will be prompted to allow **Bop** to access their location and a blank map will load for the user like shown above. At this point, the user can search for venues from Foursquare based on their selected interest. This can be done in one of three ways:
+The **Map View** is the first view controller scene shown when the tab bar controller is loaded. The user will be prompted to allow **Bop** to access their location and a map will load and search for venues in the New York area like shown above. At this point, the user can search for venues from Foursquare based on their selected interest. This can be done in one of three ways:
 
 1. By pressing the **Location Marker** button (lower right corner)
 2. By pressing the **Big Apple!** button (lower left corner)
@@ -111,6 +111,8 @@ At any time, the user may press the **Logout** button in the top navigation item
 <img src="screenshots/detailView_blank.png" width="20%">
 
 The **Detail View** displays photos of the venue the user selected from the **Map View** or **Table View** scenes. Additionally, a Twitter feed is embedded in the bottom half of the view to provide the user with Twitter Timeline posts associated with their chosen interest.
+
+If no internet connection can be established at the time of loading the view, a message, "Sorry, there are no recent Tweets to display." will appear in place of the Twitter feed.
 
 ## Contributing
 
