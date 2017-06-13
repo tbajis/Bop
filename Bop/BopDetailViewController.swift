@@ -11,7 +11,7 @@ import CoreData
 
 // MARK: BopDetailViewController: UIViewController
 
-class BopDetailViewController: UIViewController {
+class BopDetailViewController: UIViewController, BopAlertViewControllerDelegate {
     
     // MARK: Properties
     
@@ -41,7 +41,39 @@ class BopDetailViewController: UIViewController {
         }
     }
     
+    // MARK: Actions
+    
+    @IBAction func moreDetailsPressed(_ sender: Any) {
+        
+        // GUARD against incomplete venueID and ClientId
+        guard let venueId = pin?.id, let clientId = FoursquareConstants.ClientId as? String, let venueUrl = FoursquareConstants.Constants.VenueUrl as? String else {
+            self.displayError(from: self, with: "An error occured trying to show more details")
+            return
+        }
+        
+        var mutableString = substituteKeyInMethod(venueUrl, key: "VenueID", value: venueId)
+        mutableString = substituteKeyInMethod(mutableString, key: "ClientId", value: clientId)
+        
+        // Be sure that application can open url
+        if let url = URL(string: mutableString!) {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                self.displayError(from: self, with: "An error occured opening venue page")
+            }
+        }
+    }
+    
     // MARK: Helpers
+    
+    func substituteKeyInMethod(_ method: String?, key: String, value: String) -> String? {
+        
+        if method?.range(of: "<\(key)>") != nil {
+            return method?.replacingOccurrences(of: "<\(key)>", with: value)
+        } else {
+            return nil
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

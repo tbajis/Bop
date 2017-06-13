@@ -21,6 +21,7 @@ class FoursquareConstants {
         static let ApiScheme = "https"
         static let ApiHost = "api.foursquare.com"
         static let ApiPath = "/v2"
+        static let VenueUrl = "https://foursquare.com/v/<VenueID>?ref=<ClientId>"
     }
     
     // MARK: Credentials
