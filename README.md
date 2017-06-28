@@ -14,7 +14,7 @@ This repository contains the source code for **Bop**, an iOS application written
 
 ## Compatibiity
 
-This project is written in Swift **3**. Please have the **latest version** of Xcode (version 8) installed prior to running. **Bop** is compatible with iOS 8+
+This project is written in Swift **3**. Please have the **latest version** of Xcode (version 8) installed prior to running. **Bop** is compatible with iPhones running iOS 8+ 
 
 ## Getting Started
 
