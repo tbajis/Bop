@@ -251,7 +251,7 @@ class BopMapViewController: UIViewController, FoursquareRequestType, CLLocationM
         if let interest = interest {
             self.navigationItem.title = "Venues for \(interest)"
         }
-        self.navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Avenir-Light", size: 15)!], for: .normal)
+        self.navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.foregroundColor:UIColor.white, NSAttributedStringKey.font:UIFont(name: "Avenir-Light", size: 15)!], for: .normal)
     }
 }
 

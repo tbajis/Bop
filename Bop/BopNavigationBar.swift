@@ -22,7 +22,7 @@ class BopNavigationBar: UINavigationBar {
         super.init(coder: aDecoder)
         
         self.setBackgroundImage(UIImage(named: "bgGradient"), for: UIBarMetrics(rawValue: 0)!)
-        self.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Avenir-Medium", size: 20)!]
+        self.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white, NSAttributedStringKey.font:UIFont(name: "Avenir-Medium", size: 20)!]
         self.tintColor = UIColor.white
     }
 }

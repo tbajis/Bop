@@ -113,7 +113,7 @@ class InterestPickerViewController: UIViewController, SegueHandlerType {
         for button in interestButtons {
             button.backgroundColor = UIColor.clear
         }
-        logoutButton.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Avenir-Light", size: 15)!], for: .normal)
+        logoutButton.setTitleTextAttributes([NSAttributedStringKey.foregroundColor:UIColor.white, NSAttributedStringKey.font:UIFont(name: "Avenir-Light", size: 15)!], for: .normal)
         continueButton.isHidden = true
         CoreDataObject.sharedInstance().executePinSearch()
         if let pins = CoreDataObject.sharedInstance().fetchedPinResultsController.fetchedObjects as? [Pin], pins.count > 0 {

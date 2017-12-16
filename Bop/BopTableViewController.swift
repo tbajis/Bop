@@ -100,7 +100,7 @@ class BopTableViewController: CoreDataTableViewController {
         // Set title
         title = "Venues"
         
-        self.navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName:UIFont(name: "Avenir-Light", size: 15)!], for: .normal)
+        self.navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.foregroundColor:UIColor.white, NSAttributedStringKey.font:UIFont(name: "Avenir-Light", size: 15)!], for: .normal)
         if let interest = interest {
             self.navigationItem.title = "Venues for \(interest)"
         }
